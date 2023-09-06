@@ -11,6 +11,9 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+GEONAMES_USERNAME = "pranav1801"
+unique_bakeries_set = set()
+
 def infoScrapper(query, bakery_name):
     url = f"https://www.google.com/search?q={urllib.parse.quote_plus(query)}"
     headers = {
@@ -78,7 +81,7 @@ def is_valid_website_url(url, company_name):
     
     return False
 
-# done with the section
+
 def fetch_bakeries(business_type, business_location):
     bakery_data = []
     base_url = "https://maps.googleapis.com/maps/api/place/"
@@ -110,27 +113,48 @@ def fetch_bakeries(business_type, business_location):
         print(f"An error occurred: {e}")
     return bakery_data
 
+
+def get_geoname_id_from_location(location_name):
+    base_url = f"http://api.geonames.org/search?name={location_name}&maxRows=1&username={GEONAMES_USERNAME}"
+    response = requests.get(base_url)
+    soup = BeautifulSoup(response.text, "xml")
+    geoname_id = soup.find('geonameId')
+    return geoname_id.text
+
+def get_subregions_of_location(location_id):
+    base_url = f"http://api.geonames.org/children?geonameId={location_id}&username={GEONAMES_USERNAME}"
+    response = requests.get(base_url)
+    soup = BeautifulSoup(response.text, "xml")
+    subregions = []
+    for city in soup.find_all('geoname'):
+        subregions.append(city.find('name').text)
+    return subregions
+
+
 def main(business_type, business_location):
     df = pd.DataFrame(columns=['Bakery Name', 'Address', 'Bakery Type', 'Phone Number', 'Email', 'Instagram', 'Facebook', 'LinkedIn', 'Website URL', 'Most Relevant Website'])
-    
-    bakery_data = fetch_bakeries(business_type, business_location)
-    unique_bakeries_set = set()
-    
-    for bakery_name, address, bakery_type, phone_number in bakery_data:
-        if bakery_name in unique_bakeries_set:
-            continue
-        unique_bakeries_set.add(bakery_name)
-        
-        try:
-            query = bakery_name + " " + address
-            business_name = bakery_name
-            website_url, email, facebook_link, instagram_link, linkedin_link, most_relevant_website = infoScrapper(query, business_name)
-        except Exception as e:
-            print(f"Failed to scrape info for {query}: {e}")
-            continue
-        
-        row_data = [bakery_name, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
-        df.loc[len(df)] = row_data
+    geoname_id = get_geoname_id_from_location(business_location)
+    subregions = get_subregions_of_location(geoname_id)
+    if business_location not in subregions:
+        subregions.append(business_location)
+    print(subregions)
+    for subregion in subregions:
+        bakery_data = fetch_bakeries(business_type, subregion)
+        for bakery_name, address, bakery_type, phone_number in bakery_data:
+            if bakery_name in unique_bakeries_set:
+                continue
+            unique_bakeries_set.add(bakery_name)
+            
+            try:
+                query = bakery_name + " " + address
+                business_name = bakery_name
+                website_url, email, facebook_link, instagram_link, linkedin_link, most_relevant_website = infoScrapper(query, business_name)
+            except Exception as e:
+                print(f"Failed to scrape info for {query}: {e}")
+                continue
+            
+            row_data = [bakery_name, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
+            df.loc[len(df)] = row_data
     
     return df
 
@@ -139,12 +163,11 @@ def fetch_bakeries_api():
     request_data = request.get_json()
     business_type = request_data['business_type']
     business_locations = request_data['business_locations']
-    
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for business_location in business_locations:
             df = main(business_type, business_location)
-            df.to_excel(writer, sheet_name=business_location, index=False)
+            df.to_excel(writer, sheet_name=f"{business_location}", index=False)
     
     output.seek(0)
     response = make_response(output.getvalue())
