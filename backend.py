@@ -132,7 +132,7 @@ def get_subregions_of_location(location_id):
 
 
 def main(business_type, business_location):
-    df = pd.DataFrame(columns=['Bakery Name', 'Address', 'Bakery Type', 'Phone Number', 'Email', 'Instagram', 'Facebook', 'LinkedIn', 'Website URL', 'Most Relevant Website'])
+    df = pd.DataFrame(columns=['Bakery Name', 'Sub region', 'Address', 'Bakery Type', 'Phone Number', 'Email', 'Instagram', 'Facebook', 'LinkedIn', 'Website URL', 'Most Relevant Website'])
     geoname_id = get_geoname_id_from_location(business_location)
     subregions = get_subregions_of_location(geoname_id)
     if business_location not in subregions:
@@ -153,7 +153,7 @@ def main(business_type, business_location):
                 print(f"Failed to scrape info for {query}: {e}")
                 continue
             
-            row_data = [bakery_name, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
+            row_data = [bakery_name, subregion, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
             df.loc[len(df)] = row_data
     
     return df
