@@ -98,8 +98,7 @@ def fetch_bakeries(business_type, business_location):
                 details_response = requests.get(details_url)
                 details_data = details_response.json()
                 address = details_data['result'].get('formatted_address', 'No address')
-                # phone_number = details_data['result'].get('formatted_phone_number', 'No phone number')
-                phone_number = "No phone number"
+                phone_number = details_data['result'].get('formatted_phone_number', 'No phone number')
                 bakery_data.append((bakery_name, address, bakery_type, phone_number))
             if 'next_page_token' in data:
                 next_page_token = data['next_page_token']
