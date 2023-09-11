@@ -12,6 +12,7 @@ app = Flask(__name__)
 CORS(app)
 
 GEONAMES_USERNAME = "pranav1801"
+free_trial_bakeries = 20
 unique_bakeries_set = set()
 
 def infoScrapper(query, bakery_name):
@@ -121,30 +122,63 @@ def get_geoname_id_from_location(location_name):
     geoname_id = soup.find('geonameId')
     return geoname_id.text
 
+
+def get_population_from_osm(place_name):
+    overpass_url = "http://overpass-api.de/api/interpreter"
+    
+    overpass_query = f"""
+    [out:json];
+    area["name"="{place_name}"]->.searchArea;
+    (
+        node["name"="{place_name}"]["population"](area.searchArea);
+        way["name"="{place_name}"]["population"](area.searchArea);
+        relation["name"="{place_name}"]["population"](area.searchArea);
+    );
+    out body;
+    """
+    response = requests.get(overpass_url, params={'data': overpass_query})
+    data = response.json()
+    
+    for element in data['elements']:
+        if 'tags' in element and 'population' in element['tags']:
+            return int(element['tags']['population'])
+    
+    return 0 
+
 def get_subregions_of_location(location_id):
     base_url = f"http://api.geonames.org/children?geonameId={location_id}&username={GEONAMES_USERNAME}"
     response = requests.get(base_url)
     soup = BeautifulSoup(response.text, "xml")
     subregions = []
+    
     for city in soup.find_all('geoname'):
-        subregions.append(city.find('name').text)
-    return subregions
+        city_name = city.find('name').text
+        population = get_population_from_osm(city_name)
+        subregions.append((city_name, population))
+
+    # print(subregions)
+    sorted_subregions = [name for name, population in sorted(subregions, key=lambda x: x[1], reverse=True)]
+    return sorted_subregions
 
 
-def main(business_type, business_location):
+
+def main(business_type, business_location, fetch_all = True):
     df = pd.DataFrame(columns=['Bakery Name', 'Sub region', 'Address', 'Bakery Type', 'Phone Number', 'Email', 'Instagram', 'Facebook', 'LinkedIn', 'Website URL', 'Most Relevant Website'])
     geoname_id = get_geoname_id_from_location(business_location)
     subregions = get_subregions_of_location(geoname_id)
     if business_location not in subregions:
         subregions.append(business_location)
-    print(subregions)
+    # print(subregions)
     for subregion in subregions:
         bakery_data = fetch_bakeries(business_type, subregion)
         for bakery_name, address, bakery_type, phone_number in bakery_data:
             if bakery_name in unique_bakeries_set:
                 continue
             unique_bakeries_set.add(bakery_name)
-            
+          
+            if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
+                continue
+
             try:
                 query = bakery_name + " " + address
                 business_name = bakery_name
@@ -155,7 +189,7 @@ def main(business_type, business_location):
             
             row_data = [bakery_name, subregion, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
             df.loc[len(df)] = row_data
-    
+
     return df
 
 @app.route('/fetch_bakeries', methods=['POST'])
@@ -174,6 +208,26 @@ def fetch_bakeries_api():
     response.headers['Content-Disposition'] = 'attachment; filename=output.xlsx'
     response.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     return response
+
+@app.route('/free_trial', methods=['POST'])
+def free_trial():
+    request_data = request.get_json()
+    business_type = request_data['business_type']
+    business_locations = request_data['business_locations']
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        for business_location in business_locations:
+            df = main(business_type, business_location, fetch_all=False)
+            df.to_excel(writer, sheet_name=f"{business_location}", index=False)
+    
+    output.seek(0)
+    response = make_response(output.getvalue())
+    response.headers['Content-Disposition'] = 'attachment; filename=output.xlsx'
+    response.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    response.headers['Unique-Bakeries-Count'] = str(len(unique_bakeries_set))
+    unique_bakeries_set.clear()
+    return response
+
 
 if __name__ == '__main__':
     app.run(debug=True)
