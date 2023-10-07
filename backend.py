@@ -5,11 +5,12 @@ import re
 import urllib.parse
 import pandas as pd
 import io
+import base64
 from flask import Flask, request, send_file, jsonify, make_response
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 GEONAMES_USERNAME = "pranav1801"
 free_trial_bakeries = 20
@@ -86,7 +87,7 @@ def is_valid_website_url(url, company_name):
 def fetch_bakeries(business_type, business_location):
     bakery_data = []
     base_url = "https://maps.googleapis.com/maps/api/place/"
-    api_key = "AIzaSyCaA0nEwnBY2xRlNUBAJ-xK4FzohVGiIdA"
+    api_key = "AIzaSyBbLTKTtqXnHtyAHkFbSrmMRF9cXLre__I"
     try:
         place_query = urllib.parse.quote_plus(f"{business_type} in {business_location}")
         url = f"{base_url}textsearch/json?query={place_query}&key={api_key}"
@@ -107,7 +108,6 @@ def fetch_bakeries(business_type, business_location):
             if 'next_page_token' in data:
                 next_page_token = data['next_page_token']
                 url = f"{base_url}textsearch/json?pagetoken={next_page_token}&key={api_key}"
-                time.sleep(2)
             else:
                 break
     except Exception as e:
@@ -156,29 +156,34 @@ def get_subregions_of_location(location_id):
         population = get_population_from_osm(city_name)
         subregions.append((city_name, population))
 
-    # print(subregions)
+    print(subregions)
     sorted_subregions = [name for name, population in sorted(subregions, key=lambda x: x[1], reverse=True)]
     return sorted_subregions
 
 
 
-def main(business_type, business_location, fetch_all = True):
-    df = pd.DataFrame(columns=['Bakery Name', 'Sub region', 'Address', 'Bakery Type', 'Phone Number', 'Email', 'Instagram', 'Facebook', 'LinkedIn', 'Website URL', 'Most Relevant Website'])
+def main(business_type, business_location, num_lines, fetch_all = True):
+    df = pd.DataFrame(columns=['businessName', 'subRegion', 'address', 'type', 'phoneNumber', 'email', 'instagram', 'facebook', 'linkedIn', 'websiteBusiness', 'websiteRelevant'])
     geoname_id = get_geoname_id_from_location(business_location)
     subregions = get_subregions_of_location(geoname_id)
     if business_location not in subregions:
-        subregions.append(business_location)
-    # print(subregions)
+        subregions.insert(0, business_location)
+    
     for subregion in subregions:
+        if fetch_all and len(df) >= int(num_lines):
+            break
+        
         bakery_data = fetch_bakeries(business_type, subregion)
         for bakery_name, address, bakery_type, phone_number in bakery_data:
             if bakery_name in unique_bakeries_set:
                 continue
             unique_bakeries_set.add(bakery_name)
-          
+            print(len(unique_bakeries_set))
             if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
                 continue
-
+            if fetch_all and len(df) >= int(num_lines):
+                print("hello")
+                break
             try:
                 query = bakery_name + " " + address
                 business_name = bakery_name
@@ -197,10 +202,16 @@ def fetch_bakeries_api():
     request_data = request.get_json()
     business_type = request_data['business_type']
     business_locations = request_data['business_locations']
+    lines_requested = request_data['num_lines']
+    print(business_locations)
+    business_locations = [city.split(',')[0].strip() for city in business_locations]
+    print(business_locations)
+    print(business_type)
+    print(lines_requested)
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for business_location in business_locations:
-            df = main(business_type, business_location)
+            df = main(business_type, business_location, lines_requested)
             df.to_excel(writer, sheet_name=f"{business_location}", index=False)
     
     output.seek(0)
@@ -214,19 +225,31 @@ def free_trial():
     request_data = request.get_json()
     business_type = request_data['business_type']
     business_locations = request_data['business_locations']
+    print(business_locations)
+    business_locations = [city.split(',')[0].strip() for city in business_locations]
+    print(business_locations)
+    print(business_type)
+    lines_requested = request_data['num_lines']
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for business_location in business_locations:
-            df = main(business_type, business_location, fetch_all=False)
+            df = main(business_type, business_location, lines_requested, fetch_all=False)
             df.to_excel(writer, sheet_name=f"{business_location}", index=False)
     
     output.seek(0)
-    response = make_response(output.getvalue())
-    response.headers['Content-Disposition'] = 'attachment; filename=output.xlsx'
-    response.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    response.headers['Unique-Bakeries-Count'] = str(len(unique_bakeries_set))
+    base64_excel = base64.b64encode(output.getvalue()).decode('utf-8')
+    response_data = {
+        'file': base64_excel,
+        'unique_bakeries_count': len(unique_bakeries_set)
+    }
     unique_bakeries_set.clear()
-    return response
+    return jsonify(response_data)
+    # response = make_response(output.getvalue())
+    # response.headers['Content-Disposition'] = 'attachment; filename=output.xlsx'
+    # response.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    # response.headers['Unique-Bakeries-Count'] = str(len(unique_bakeries_set))
+    # unique_bakeries_set.clear()
+    # return response
 
 
 if __name__ == '__main__':
