@@ -8,13 +8,16 @@ import io
 import base64
 from flask import Flask, request, send_file, jsonify, make_response
 from flask_cors import CORS
+from threading import Thread, Lock
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 GEONAMES_USERNAME = "pranav1801"
 free_trial_bakeries = 20
-unique_bakeries_set = set()
+df_lock = Lock()
+unique_bakeries_lock = Lock()
+# unique_bakeries_set = set()
 
 def infoScrapper(query, bakery_name):
     url = f"https://www.google.com/search?q={urllib.parse.quote_plus(query)}"
@@ -161,41 +164,88 @@ def get_subregions_of_location(location_id):
     return sorted_subregions
 
 
+def process_subregion(business_type, subregion, num_lines, fetch_all, output_df):
+    bakery_data = fetch_bakeries(business_type, subregion)
+    for bakery_name, address, bakery_type, phone_number in bakery_data:
+        with unique_bakeries_lock:
+            if bakery_name in unique_bakeries_set:
+                continue
+            unique_bakeries_set.add(bakery_name)
+        print(len(unique_bakeries_set))
+        if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
+            continue
+        if fetch_all and len(output_df) >= int(num_lines):
+            print("hello")
+            break
+        try:
+            query = bakery_name + " " + address
+            business_name = bakery_name
+            website_url, email, facebook_link, instagram_link, linkedin_link, most_relevant_website = infoScrapper(query, business_name)
+        except Exception as e:
+            print(f"Failed to scrape info for {query}: {e}")
+            continue
+        row_data = [bakery_name, subregion, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
+        with df_lock:
+            output_df.loc[len(output_df)] = row_data
+            
 
-def main(business_type, business_location, num_lines, fetch_all = True):
-    df = pd.DataFrame(columns=['businessName', 'subRegion', 'address', 'type', 'phoneNumber', 'email', 'instagram', 'facebook', 'linkedIn', 'websiteBusiness', 'websiteRelevant'])
+# def main(business_type, business_location, num_lines, fetch_all = True):
+#     df = pd.DataFrame(columns=['businessName', 'subRegion', 'address', 'type', 'phoneNumber', 'email', 'instagram', 'facebook', 'linkedIn', 'websiteBusiness', 'websiteRelevant'])
+#     geoname_id = get_geoname_id_from_location(business_location)
+#     subregions = get_subregions_of_location(geoname_id)
+#     if business_location not in subregions:
+#         subregions.insert(0, business_location)
+    
+#     for subregion in subregions:
+#         if fetch_all and len(df) >= int(num_lines):
+#             break
+        
+#         bakery_data = fetch_bakeries(business_type, subregion)
+#         for bakery_name, address, bakery_type, phone_number in bakery_data:
+#             if bakery_name in unique_bakeries_set:
+#                 continue
+#             unique_bakeries_set.add(bakery_name)
+#             print(len(unique_bakeries_set))
+#             if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
+#                 continue
+#             if fetch_all and len(df) >= int(num_lines):
+#                 print("hello")
+#                 break
+#             try:
+#                 query = bakery_name + " " + address
+#                 business_name = bakery_name
+#                 website_url, email, facebook_link, instagram_link, linkedin_link, most_relevant_website = infoScrapper(query, business_name)
+#             except Exception as e:
+#                 print(f"Failed to scrape info for {query}: {e}")
+#                 continue
+            
+#             row_data = [bakery_name, subregion, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
+#             df.loc[len(df)] = row_data
+
+#     return df
+
+def main(business_type, business_location, num_lines, fetch_all=True):
+    global unique_bakeries_set
+    unique_bakeries_set = set()
+    output_df = pd.DataFrame(columns=['businessName', 'subRegion', 'address', 'type', 'phoneNumber', 'email', 'instagram', 'facebook', 'linkedIn', 'websiteBusiness', 'websiteRelevant'])
     geoname_id = get_geoname_id_from_location(business_location)
     subregions = get_subregions_of_location(geoname_id)
     if business_location not in subregions:
         subregions.insert(0, business_location)
+
+    threads = []
     
     for subregion in subregions:
-        if fetch_all and len(df) >= int(num_lines):
+        if fetch_all and len(output_df) >= int(num_lines):
             break
+        thread = Thread(target=process_subregion, args=(business_type, subregion, num_lines, fetch_all, output_df))
+        thread.start()
+        threads.append(thread)
         
-        bakery_data = fetch_bakeries(business_type, subregion)
-        for bakery_name, address, bakery_type, phone_number in bakery_data:
-            if bakery_name in unique_bakeries_set:
-                continue
-            unique_bakeries_set.add(bakery_name)
-            print(len(unique_bakeries_set))
-            if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
-                continue
-            if fetch_all and len(df) >= int(num_lines):
-                print("hello")
-                break
-            try:
-                query = bakery_name + " " + address
-                business_name = bakery_name
-                website_url, email, facebook_link, instagram_link, linkedin_link, most_relevant_website = infoScrapper(query, business_name)
-            except Exception as e:
-                print(f"Failed to scrape info for {query}: {e}")
-                continue
-            
-            row_data = [bakery_name, subregion, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
-            df.loc[len(df)] = row_data
+    for thread in threads:
+        thread.join()
 
-    return df
+    return output_df
 
 @app.route('/fetch_bakeries', methods=['POST'])
 def fetch_bakeries_api():
