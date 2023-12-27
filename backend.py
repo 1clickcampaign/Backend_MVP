@@ -17,6 +17,7 @@ GEONAMES_USERNAME = "pranav1801"
 free_trial_bakeries = 20
 df_lock = Lock()
 unique_bakeries_lock = Lock()
+
 # unique_bakeries_set = set()
 
 def infoScrapper(query, bakery_name):
@@ -124,6 +125,8 @@ def fetch_bakeries(business_type, business_location):
 def get_geoname_id_from_location(location_name):
     base_url = f"http://api.geonames.org/search?name={location_name}&maxRows=1&username={GEONAMES_USERNAME}"
     response = requests.get(base_url)
+    if (not response.ok):
+        return "error"
     soup = BeautifulSoup(response.text, "xml")
     geoname_id = soup.find('geonameId')
     return geoname_id.text
@@ -235,6 +238,8 @@ def main(business_type, business_location, num_lines, fetch_all=True):
     unique_bakeries_set = set()
     output_df = pd.DataFrame(columns=['businessName', 'subRegion', 'address', 'type', 'phoneNumber', 'email', 'instagram', 'facebook', 'linkedIn', 'websiteBusiness', 'websiteRelevant'])
     geoname_id = get_geoname_id_from_location(business_location)
+    if geoname_id == "error":
+        return output_df
     subregions = get_subregions_of_location(geoname_id)
     if business_location not in subregions:
         subregions.insert(0, business_location)
@@ -265,9 +270,17 @@ def fetch_bakeries_api():
     print(business_type)
     print(lines_requested)
     output = io.BytesIO()
+    num_locations = len(business_locations)
+    start_lines = lines_requested / num_locations
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for business_location in business_locations:
-            df = main(business_type, business_location, lines_requested / len(business_locations))
+            df = main(business_type, business_location, start_lines)
+            if (len(df) == 0):
+                continue
+            num_locations = num_locations - 1
+            if num_locations != 0:
+                lines_requested = lines_requested - len(df)
+                start_lines = lines_requested / num_locations
             df.to_excel(writer, sheet_name=f"{business_location}", index=False)
     
     output.seek(0)
@@ -286,17 +299,21 @@ def free_trial():
     print(business_locations)
     print(business_type)
     lines_requested = request_data['num_lines']
+    lines_found = 0
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for business_location in business_locations:
             df = main(business_type, business_location, lines_requested, fetch_all=False)
+            if (len(df) == 0):
+                continue
+            lines_found = lines_found + len(unique_bakeries_set)
             df.to_excel(writer, sheet_name=f"{business_location}", index=False)
     
     output.seek(0)
     base64_excel = base64.b64encode(output.getvalue()).decode('utf-8')
     response_data = {
         'file': base64_excel,
-        'unique_bakeries_count': len(unique_bakeries_set)
+        'unique_bakeries_count': lines_found
     }
     unique_bakeries_set.clear()
     return jsonify(response_data)
