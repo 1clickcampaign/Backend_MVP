@@ -90,13 +90,14 @@ def is_valid_website_url(url, company_name):
 def fetch_bakeries(business_type, business_location):
     bakery_data = []
     base_url = "https://maps.googleapis.com/maps/api/place/"
-    api_key = "AIzaSyBbLTKTtqXnHtyAHkFbSrmMRF9cXLre__I"
+    api_key = "AIzaSyCb6FZ9JPihatKLxgXdjCk0DQfqhKjJ31A"
     try:
         place_query = urllib.parse.quote_plus(f"{business_type} in {business_location}")
         url = f"{base_url}textsearch/json?query={place_query}&key={api_key}"
         while True:
             response = requests.get(url)
             data = response.json()
+            # print(data)
             results = data['results']
             for bakery in results:
                 bakery_name = bakery['name']
@@ -106,6 +107,8 @@ def fetch_bakeries(business_type, business_location):
                 details_response = requests.get(details_url)
                 details_data = details_response.json()
                 address = details_data['result'].get('formatted_address', 'No address')
+                if business_location not in address:
+                    address = "Not Found"
                 phone_number = details_data['result'].get('formatted_phone_number', 'No phone number')
                 bakery_data.append((bakery_name, address, bakery_type, phone_number))
             if 'next_page_token' in data:
@@ -190,6 +193,8 @@ def process_subregion(business_type, subregion, num_lines, fetch_all, output_df)
             
 
 # def main(business_type, business_location, num_lines, fetch_all = True):
+#     global unique_bakeries_set
+#     unique_bakeries_set = set()
 #     df = pd.DataFrame(columns=['businessName', 'subRegion', 'address', 'type', 'phoneNumber', 'email', 'instagram', 'facebook', 'linkedIn', 'websiteBusiness', 'websiteRelevant'])
 #     geoname_id = get_geoname_id_from_location(business_location)
 #     subregions = get_subregions_of_location(geoname_id)
@@ -208,6 +213,7 @@ def process_subregion(business_type, subregion, num_lines, fetch_all, output_df)
 #             print(len(unique_bakeries_set))
 #             if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
 #                 continue
+            
 #             if fetch_all and len(df) >= int(num_lines):
 #                 print("hello")
 #                 break
@@ -261,7 +267,7 @@ def fetch_bakeries_api():
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for business_location in business_locations:
-            df = main(business_type, business_location, lines_requested)
+            df = main(business_type, business_location, lines_requested / len(business_locations))
             df.to_excel(writer, sheet_name=f"{business_location}", index=False)
     
     output.seek(0)
