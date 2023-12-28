@@ -18,7 +18,6 @@ free_trial_bakeries = 20
 df_lock = Lock()
 unique_bakeries_lock = Lock()
 
-# unique_bakeries_set = set()
 
 def infoScrapper(query, bakery_name):
     url = f"https://www.google.com/search?q={urllib.parse.quote_plus(query)}"
@@ -127,9 +126,14 @@ def get_geoname_id_from_location(location_name):
     response = requests.get(base_url)
     if (not response.ok):
         return "error"
-    soup = BeautifulSoup(response.text, "xml")
-    geoname_id = soup.find('geonameId')
-    return geoname_id.text
+    
+    try:
+        soup = BeautifulSoup(response.text, "xml")
+        geoname_id = soup.find('geonameId')
+        return_val = geoname_id.text
+        return return_val
+    except:
+        return "error"
 
 
 def get_population_from_osm(place_name):
@@ -146,28 +150,42 @@ def get_population_from_osm(place_name):
     out body;
     """
     response = requests.get(overpass_url, params={'data': overpass_query})
-    data = response.json()
+    if (not response.ok):
+        return 0
     
-    for element in data['elements']:
-        if 'tags' in element and 'population' in element['tags']:
-            return int(element['tags']['population'])
+    try:
+
+        data = response.json()
+        
+        for element in data['elements']:
+            if 'tags' in element and 'population' in element['tags']:
+                return float(element['tags']['population'])
+        
+        return 0 
     
-    return 0 
+    except:
+        return 0
 
 def get_subregions_of_location(location_id):
     base_url = f"http://api.geonames.org/children?geonameId={location_id}&username={GEONAMES_USERNAME}"
-    response = requests.get(base_url)
-    soup = BeautifulSoup(response.text, "xml")
     subregions = []
+    response = requests.get(base_url)
+    if (not response.ok):
+        return subregions
     
-    for city in soup.find_all('geoname'):
-        city_name = city.find('name').text
-        population = get_population_from_osm(city_name)
-        subregions.append((city_name, population))
+    try:
+        soup = BeautifulSoup(response.text, "xml")
+        for city in soup.find_all('geoname'):
+            city_name = city.find('name').text
+            population = get_population_from_osm(city_name)
+            subregions.append((city_name, population))
 
-    print(subregions)
-    sorted_subregions = [name for name, population in sorted(subregions, key=lambda x: x[1], reverse=True)]
-    return sorted_subregions
+        # print(subregions)
+        sorted_subregions = [name for name, population in sorted(subregions, key=lambda x: x[1], reverse=True)]
+        return sorted_subregions
+    
+    except:
+        return subregions
 
 
 def process_subregion(business_type, subregion, num_lines, fetch_all, output_df):
@@ -177,70 +195,33 @@ def process_subregion(business_type, subregion, num_lines, fetch_all, output_df)
             if bakery_name in unique_bakeries_set:
                 continue
             unique_bakeries_set.add(bakery_name)
-        print(len(unique_bakeries_set))
+        # print(len(unique_bakeries_set))
         if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
             continue
         if fetch_all and len(output_df) >= int(num_lines):
-            print("hello")
+            # print("hello")
             break
         try:
             query = bakery_name + " " + address
             business_name = bakery_name
             website_url, email, facebook_link, instagram_link, linkedin_link, most_relevant_website = infoScrapper(query, business_name)
         except Exception as e:
-            print(f"Failed to scrape info for {query}: {e}")
+            # print(f"Failed to scrape info for {query}: {e}")
             continue
         row_data = [bakery_name, subregion, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
         with df_lock:
             output_df.loc[len(output_df)] = row_data
             
 
-# def main(business_type, business_location, num_lines, fetch_all = True):
-#     global unique_bakeries_set
-#     unique_bakeries_set = set()
-#     df = pd.DataFrame(columns=['businessName', 'subRegion', 'address', 'type', 'phoneNumber', 'email', 'instagram', 'facebook', 'linkedIn', 'websiteBusiness', 'websiteRelevant'])
-#     geoname_id = get_geoname_id_from_location(business_location)
-#     subregions = get_subregions_of_location(geoname_id)
-#     if business_location not in subregions:
-#         subregions.insert(0, business_location)
-    
-#     for subregion in subregions:
-#         if fetch_all and len(df) >= int(num_lines):
-#             break
-        
-#         bakery_data = fetch_bakeries(business_type, subregion)
-#         for bakery_name, address, bakery_type, phone_number in bakery_data:
-#             if bakery_name in unique_bakeries_set:
-#                 continue
-#             unique_bakeries_set.add(bakery_name)
-#             print(len(unique_bakeries_set))
-#             if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
-#                 continue
-            
-#             if fetch_all and len(df) >= int(num_lines):
-#                 print("hello")
-#                 break
-#             try:
-#                 query = bakery_name + " " + address
-#                 business_name = bakery_name
-#                 website_url, email, facebook_link, instagram_link, linkedin_link, most_relevant_website = infoScrapper(query, business_name)
-#             except Exception as e:
-#                 print(f"Failed to scrape info for {query}: {e}")
-#                 continue
-            
-#             row_data = [bakery_name, subregion, address, bakery_type, phone_number, email, facebook_link, instagram_link, linkedin_link, website_url, most_relevant_website]
-#             df.loc[len(df)] = row_data
-
-#     return df
-
 def main(business_type, business_location, num_lines, fetch_all=True):
     global unique_bakeries_set
     unique_bakeries_set = set()
     output_df = pd.DataFrame(columns=['businessName', 'subRegion', 'address', 'type', 'phoneNumber', 'email', 'instagram', 'facebook', 'linkedIn', 'websiteBusiness', 'websiteRelevant'])
     geoname_id = get_geoname_id_from_location(business_location)
-    if geoname_id == "error":
-        return output_df
-    subregions = get_subregions_of_location(geoname_id)
+    subregions = []
+    if geoname_id != "error":
+        subregions = get_subregions_of_location(geoname_id)
+        
     if business_location not in subregions:
         subregions.insert(0, business_location)
 
@@ -264,11 +245,7 @@ def fetch_bakeries_api():
     business_type = request_data['business_type']
     business_locations = request_data['business_locations']
     lines_requested = request_data['num_lines']
-    print(business_locations)
     business_locations = [city.split(',')[0].strip() for city in business_locations]
-    print(business_locations)
-    print(business_type)
-    print(lines_requested)
     output = io.BytesIO()
     num_locations = len(business_locations)
     start_lines = lines_requested / num_locations
@@ -294,10 +271,7 @@ def free_trial():
     request_data = request.get_json()
     business_type = request_data['business_type']
     business_locations = request_data['business_locations']
-    print(business_locations)
     business_locations = [city.split(',')[0].strip() for city in business_locations]
-    print(business_locations)
-    print(business_type)
     lines_requested = request_data['num_lines']
     lines_found = 0
     output = io.BytesIO()
@@ -317,13 +291,6 @@ def free_trial():
     }
     unique_bakeries_set.clear()
     return jsonify(response_data)
-    # response = make_response(output.getvalue())
-    # response.headers['Content-Disposition'] = 'attachment; filename=output.xlsx'
-    # response.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    # response.headers['Unique-Bakeries-Count'] = str(len(unique_bakeries_set))
-    # unique_bakeries_set.clear()
-    # return response
-
 
 if __name__ == '__main__':
     app.run(debug=True)
