@@ -195,7 +195,7 @@ def process_subregion(business_type, subregion, num_lines, fetch_all, output_df)
             if bakery_name in unique_bakeries_set:
                 continue
             unique_bakeries_set.add(bakery_name)
-        # print(len(unique_bakeries_set))
+        print(len(unique_bakeries_set))
         if not fetch_all and len(unique_bakeries_set) > free_trial_bakeries:
             continue
         if fetch_all and len(output_df) >= int(num_lines):
@@ -226,7 +226,7 @@ def main(business_type, business_location, num_lines, fetch_all=True):
         subregions.insert(0, business_location)
 
     threads = []
-    
+    print(subregions)
     for subregion in subregions:
         if fetch_all and len(output_df) >= int(num_lines):
             break
@@ -275,6 +275,7 @@ def free_trial():
     lines_requested = request_data['num_lines']
     lines_found = 0
     output = io.BytesIO()
+    print(business_locations)
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for business_location in business_locations:
             df = main(business_type, business_location, lines_requested, fetch_all=False)
