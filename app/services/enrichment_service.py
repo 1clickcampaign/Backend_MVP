@@ -1,5 +1,5 @@
 from app.utils.supabase_client import supabase
-from app.models.lead import LeadEnriched
+from app.models.lead import LeadCreate
 import requests
 from app.utils.config import GOOGLE_MAPS_API_KEY
 
@@ -9,12 +9,12 @@ def enrich_lead(lead):
     lead = enrich_decision_maker(lead)
     
     # Create a LeadEnriched instance
-    enriched_lead = LeadEnriched(**lead)
+    enriched_lead = LeadCreate(**lead)
     
     # Save enriched lead to Supabase
     save_enriched_lead(enriched_lead)
     
-    return enriched_lead.model_dump()
+    return enriched_lead.dict()
 
 def enrich_business_contact(lead):
     if lead['source'] == 'google_maps':
