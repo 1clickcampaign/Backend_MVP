@@ -2,6 +2,7 @@ from supabase import create_client
 import os
 from app.models.lead import LeadCreate
 import json
+import asyncio
 
 class SupabaseClientSingleton:
     _instance = None
@@ -30,24 +31,30 @@ def read_leads_from_json(file_path):
     
     raise ValueError("Unable to read the JSON file with any of the attempted encodings.")
 
-def upload_leads_to_supabase(leads: list[dict]):
+async def upload_leads_to_supabase(leads: list[dict], max_retries=3, retry_delay=5):
     supabase = SupabaseClientSingleton.get_instance()
-    for lead_data in leads:
-        # Create a LeadCreate instance from the dictionary
+    
+    async def upload_lead_with_retry(lead_data):
         lead = LeadCreate(**lead_data)
-        
-        # Convert the LeadCreate instance to a dictionary
         lead_dict = lead.dict()
         
-        # Check if the lead already exists
-        existing_lead = supabase.table('leads').select('*').eq('name', lead_dict['name']).eq('external_id', lead_dict['external_id']).execute()
-        
-        if not existing_lead.data:
-            # If the lead doesn't exist, insert it
-            supabase.table('leads').insert(lead_dict).execute()
-        else:
-            # If the lead exists, update it
-            lead_id = existing_lead.data[0]['id']
-            supabase.table('leads').update(lead_dict).eq('id', lead_id).execute()
+        for attempt in range(max_retries):
+            try:
+                existing_lead = supabase.table('leads').select('*').eq('name', lead_dict['name']).eq('external_id', lead_dict['external_id']).execute()
+                
+                if not existing_lead.data:
+                    supabase.table('leads').insert(lead_dict).execute()
+                else:
+                    lead_id = existing_lead.data[0]['id']
+                    supabase.table('leads').update(lead_dict).eq('id', lead_id).execute()
+                return
+            except Exception as e:
+                if attempt == max_retries - 1:
+                    print(f"Failed to upload lead after {max_retries} attempts: {str(e)}")
+                else:
+                    await asyncio.sleep(retry_delay)
 
+    upload_tasks = [upload_lead_with_retry(lead) for lead in leads]
+    await asyncio.gather(*upload_tasks)
+    
     print(f"Uploaded/Updated {len(leads)} leads to Supabase")
