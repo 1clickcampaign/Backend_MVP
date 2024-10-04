@@ -34,6 +34,7 @@ async def get_google_maps_leads(request: GoogleMapsLeadRequest):
             detail="Could not extract business type and location from query."
         )
     
+    # replace below pipeline with the google maps scraper if set matches aren't found
     matched_business_types = find_best_matches(business_type)
     if not matched_business_types:
         raise HTTPException(
@@ -45,6 +46,8 @@ async def get_google_maps_leads(request: GoogleMapsLeadRequest):
     print(f"Fetching leads from Google Maps for {matched_business_types} in {location}")
     leads = fetch_leads_from_google_maps(matched_business_types, location, max_leads)
     print(f"Number of leads fetched: {len(leads)}")
+    
+    # replace above pipeline with the google maps scraper if set matches aren't found
 
     print("Attempting to upload leads to Supabase")
     await upload_leads_to_supabase(leads)

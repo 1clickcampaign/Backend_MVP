@@ -1,0 +1,1019 @@
+[
+    {
+        "name": "name",
+        "address": "address",
+        "type": "business_type",
+        "website": "website",
+        "rating": "rating",
+        "num_reviews": "num_reviews",
+        "phone": "phone"
+    },
+    {
+        "name": "Aisin Manufacturing Illinois, LLC",
+        "address": "11000 Redco Dr, Marion, IL 62959",
+        "business_type": "Manufacturer",
+        "website": "aisinillinois.com",
+        "rating": "4.1",
+        "num_reviews": "184",
+        "phone": "(618) 998-8333"
+    },
+    {
+        "name": "H3 Manufacturing Group, LLC",
+        "address": "2110 Round Barn Rd, Champaign, IL 61821",
+        "business_type": "Machine shop",
+        "website": "h3mfggroup.com",
+        "rating": "5.0",
+        "num_reviews": "5",
+        "phone": "(217) 398-6881"
+    },
+    {
+        "name": "Barton Manufacturing",
+        "address": "3030 E Parkway Dr, Decatur, IL 62526",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "4.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 330-6174"
+    },
+    {
+        "name": "Wrigley Manufacturing Co LLC",
+        "address": "2800 IL-47, Yorkville, IL 60560",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "4.2",
+        "num_reviews": "21",
+        "phone": "(630) 553-4800"
+    },
+    {
+        "name": "Wingfield Manufacturing, LLC",
+        "address": "5811 N High Cross Rd, Urbana, IL 61802",
+        "business_type": "Agricultural machinery manufacturer",
+        "website": "americanharrow.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 643-7847"
+    },
+    {
+        "name": "Vesuvius USA",
+        "address": "1404 Newton Dr, Champaign, IL 61822",
+        "business_type": "Manufacturer",
+        "website": "vesuvius.com",
+        "rating": "5.0",
+        "num_reviews": "3",
+        "phone": "(217) 351-5000"
+    },
+    {
+        "name": "H3 Manufacturing Group, LLC",
+        "address": "302 W Division St, Fisher, IL 61843",
+        "business_type": "Machine shop",
+        "website": "hlprecisionmfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 398-6881"
+    },
+    {
+        "name": "AG Manufacturing - Illinois",
+        "address": "200 East Avenue G, Rochelle, IL 61068",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "3.0",
+        "num_reviews": "No reviews",
+        "phone": "(815) 562-2107"
+    },
+    {
+        "name": "Littelfuse, Inc.",
+        "address": "2110 S Oak St, Champaign, IL 61820",
+        "business_type": "Manufacturer",
+        "website": "littelfuse.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(800) 832-3873"
+    },
+    {
+        "name": "Morton Industries, LLC",
+        "address": "231 Detroit Ave, Morton, IL 61550",
+        "business_type": "Manufacturer",
+        "website": "mortonind.com",
+        "rating": "4.0",
+        "num_reviews": "12",
+        "phone": "(309) 263-2590"
+    },
+    {
+        "name": "CKS Packaging",
+        "address": "2508 N Oak St, Urbana, IL 61802",
+        "business_type": "Plastic fabrication company",
+        "website": "ckspackaging.com",
+        "rating": "2.7",
+        "num_reviews": "7",
+        "phone": "(217) 352-2722"
+    },
+    {
+        "name": "Vactor Manufacturing",
+        "address": "1621 S Illinois St, Streator, IL 61364",
+        "business_type": "Manufacturer",
+        "website": "vactor.com",
+        "rating": "4.3",
+        "num_reviews": "22",
+        "phone": "(815) 672-3171"
+    },
+    {
+        "name": "Toyo USA Manufacturing Inc",
+        "address": "818 Avalon Way, Bloomington, IL 61705",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "3.7",
+        "num_reviews": "6",
+        "phone": "(309) 827-8836"
+    },
+    {
+        "name": "Deco Manufacturing Co",
+        "address": "5054 Cundiff Rd, Decatur, IL 62526",
+        "business_type": "Manufacturer",
+        "website": "decomfg.com",
+        "rating": "4.0",
+        "num_reviews": "3",
+        "phone": "(217) 872-6450"
+    },
+    {
+        "name": "Green Valley Manufacturing, Inc.",
+        "address": "3550 E Mound Rd, Decatur, IL 62521",
+        "business_type": "Manufacturer",
+        "website": "greenvalleyinc.com",
+        "rating": "4.3",
+        "num_reviews": "6",
+        "phone": "(217) 864-4125"
+    },
+    {
+        "name": "Central Manufacturing Co.",
+        "address": "4258 Springfield Rd, East Peoria, IL 61611",
+        "business_type": "Manufacturer",
+        "website": "centralmhs.com",
+        "rating": "3.0",
+        "num_reviews": "2",
+        "phone": "(309) 387-6591"
+    },
+    {
+        "name": "AJ Manufacturing Co",
+        "address": "437 W Wrightwood Ave, Elmhurst, IL 60126",
+        "business_type": "Manufacturer",
+        "website": "ajmanufacturing.com",
+        "rating": "5.0",
+        "num_reviews": "3",
+        "phone": "(630) 832-2828"
+    },
+    {
+        "name": "ShapeMaster",
+        "address": "108 E Main St, Ogden, IL 61859",
+        "business_type": "Plastic fabrication company",
+        "website": "shape-master.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 582-2638"
+    },
+    {
+        "name": "Justrite Manufacturing Co Llc",
+        "address": "3921 Dewitt Ave, Mattoon, IL 61938",
+        "business_type": "Manufacturer",
+        "website": "justritemfg.com",
+        "rating": "3.3",
+        "num_reviews": "15",
+        "phone": "(847) 298-9250"
+    },
+    {
+        "name": "Illinois Manufacturing Solutions",
+        "address": "4329 W Shawnda Ct, Peoria, IL 61615",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(309) 253-6369"
+    },
+    {
+        "name": "Dickey Manufacturing Company",
+        "address": "3632 Stern Ave, St. Charles, IL 60174",
+        "business_type": "Manufacturer",
+        "website": "securityseals.com",
+        "rating": "3.7",
+        "num_reviews": "3",
+        "phone": "(630) 584-2918"
+    },
+    {
+        "name": "USA Manufacturing Inc",
+        "address": "2050 Parkes Dr, Broadview, IL 60155",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(708) 344-9305"
+    },
+    {
+        "name": "Central Manufacturing Co.",
+        "address": "4258 Springfield Rd, East Peoria, IL 61611",
+        "business_type": "Manufacturer",
+        "website": "centralmhs.com",
+        "rating": "3.0",
+        "num_reviews": "2",
+        "phone": "(309) 387-6591"
+    },
+    {
+        "name": "AJ Manufacturing Co",
+        "address": "437 W Wrightwood Ave, Elmhurst, IL 60126",
+        "business_type": "Manufacturer",
+        "website": "ajmanufacturing.com",
+        "rating": "5.0",
+        "num_reviews": "3",
+        "phone": "(630) 832-2828"
+    },
+    {
+        "name": "Toyo USA Manufacturing Inc",
+        "address": "818 Avalon Way, Bloomington, IL 61705",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "3.7",
+        "num_reviews": "6",
+        "phone": "(309) 827-8836"
+    },
+    {
+        "name": "Mason Manufacturing, LLC",
+        "address": "1645 N RR Ave, Decatur, IL 62526",
+        "business_type": "Manufacturer",
+        "website": "masonmfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(217) 422-2770"
+    },
+    {
+        "name": "Eastman Chemical Co",
+        "address": "60 Hazelwood Dr, Champaign, IL 61820",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(217) 333-0610"
+    },
+    {
+        "name": "Flight Manufacturing",
+        "address": "2750 Tradition Ave, Princeton, IL 61356",
+        "business_type": "Manufacturer",
+        "website": "flightmfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(815) 876-1616"
+    },
+    {
+        "name": "Boss Manufacturing Co",
+        "address": "1221 Page St, Kewanee, IL 61443",
+        "business_type": "Manufacturer",
+        "website": "bossgloves.com",
+        "rating": "3.4",
+        "num_reviews": "5",
+        "phone": "(309) 852-2131"
+    },
+    {
+        "name": "Morton Industries, LLC",
+        "address": "231 Detroit Ave, Morton, IL 61550",
+        "business_type": "Manufacturer",
+        "website": "mortonind.com",
+        "rating": "4.0",
+        "num_reviews": "12",
+        "phone": "(309) 263-2590"
+    },
+    {
+        "name": "Jessup Manufacturing Company",
+        "address": "2815 W. Route 120, McHenry, IL 60051",
+        "business_type": "Manufacturer",
+        "website": "jessupmfg.com",
+        "rating": "5.0",
+        "num_reviews": "4",
+        "phone": "(815) 385-6650"
+    },
+    {
+        "name": "Kier Manufacturing Co",
+        "address": "1450 Jeffrey Dr, Addison, IL 60101",
+        "business_type": "Manufacturer",
+        "website": "kiermfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(630) 953-9500"
+    },
+    {
+        "name": "Green Valley Manufacturing, Inc.",
+        "address": "3550 E Mound Rd, Decatur, IL 62521",
+        "business_type": "Manufacturer",
+        "website": "greenvalleyinc.com",
+        "rating": "4.3",
+        "num_reviews": "6",
+        "phone": "(217) 864-4125"
+    },
+    {
+        "name": "Charles Industries",
+        "address": "201 Shelhouse Dr, Rantoul, IL 61866",
+        "business_type": "Electronic parts supplier",
+        "website": "Website not found",
+        "rating": "2.5",
+        "num_reviews": "13",
+        "phone": "(217) 893-8335"
+    },
+    {
+        "name": "Prestige Manufacturing Inc.",
+        "address": "917 National Ave, Addison, IL 60101",
+        "business_type": "Manufacturer",
+        "website": "prestige-manufacturing.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(630) 785-0694"
+    },
+    {
+        "name": "Kemp Manufacturing Co",
+        "address": "4310 N Voss St, Peoria Heights, IL 61616",
+        "business_type": "Machine shop",
+        "website": "kempmfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(309) 682-7292"
+    },
+    {
+        "name": "H3 Manufacturing Group, LLC",
+        "address": "302 W Division St, Fisher, IL 61843",
+        "business_type": "Machine shop",
+        "website": "hlprecisionmfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 398-6881"
+    },
+    {
+        "name": "Principal Manufacturing Corporation",
+        "address": "2800 S 19th Ave, Broadview, IL 60155",
+        "business_type": "Manufacturer",
+        "website": "principalmfg.com",
+        "rating": "4.3",
+        "num_reviews": "10",
+        "phone": "(708) 865-7500"
+    },
+    {
+        "name": "Triton Manufacturing Co. Inc",
+        "address": "5700 W Triton Way, Monee, IL 60449",
+        "business_type": "Manufacturer",
+        "website": "triton-mfg.com",
+        "rating": "3.0",
+        "num_reviews": "2",
+        "phone": "(708) 587-4000"
+    },
+    {
+        "name": "General Assembly & Manufacturing Corporation",
+        "address": "750 Industrial Dr B, Cary, IL 60013",
+        "business_type": "Manufacturer",
+        "website": "generalassembly.com",
+        "rating": "5.0",
+        "num_reviews": "8",
+        "phone": "(847) 639-8380"
+    },
+    {
+        "name": "Mason Manufacturing",
+        "address": "1674 N Clinton St, Decatur, IL 62526",
+        "business_type": "Steel fabricator",
+        "website": "masonmfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(217) 422-2770"
+    },
+    {
+        "name": "Mac Fee Manufacturing Co",
+        "address": "323 E Galena Blvd, Aurora, IL 60505",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(630) 897-1106"
+    },
+    {
+        "name": "The Fresh Factory Manufacturing - West",
+        "address": "245 W Roosevelt Rd Ste 14-143, West Chicago, IL 60185",
+        "business_type": "Food manufacturer",
+        "website": "thefreshfactory.co",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(877) 743-8289"
+    },
+    {
+        "name": "US Conveyor Technologies Manufacturing",
+        "address": "30000 IL-9, Mackinaw, IL 61755",
+        "business_type": "Manufacturer",
+        "website": "usconveyor.net",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(309) 359-4088"
+    },
+    {
+        "name": "Chic Manufacturing Co.",
+        "address": "1001 SW Adams St, Peoria, IL 61602",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "Dyno Manufacturing",
+        "address": "2 Fox Industrial Dr, Madison, IL 62060",
+        "business_type": "Manufacturer",
+        "website": "dynomfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(877) 396-6634"
+    },
+    {
+        "name": "Morton Industries LLC",
+        "address": "70 Commerce Dr, Morton, IL 61550",
+        "business_type": "Manufacturer",
+        "website": "mortonind.com",
+        "rating": "3.9",
+        "num_reviews": "33",
+        "phone": "(309) 263-2590"
+    },
+    {
+        "name": "H3 Manufacturing Group, LLC",
+        "address": "2110 Round Barn Rd, Champaign, IL 61821",
+        "business_type": "Machine shop",
+        "website": "h3mfggroup.com",
+        "rating": "5.0",
+        "num_reviews": "5",
+        "phone": "(217) 398-6881"
+    },
+    {
+        "name": "Mc Lean Manufacturing Co",
+        "address": "28040 W Industrial Ave, Lake Barrington, IL 60010",
+        "business_type": "Manufacturer",
+        "website": "mcleanmfg.com",
+        "rating": "1.0",
+        "num_reviews": "No reviews",
+        "phone": "(847) 277-9912"
+    },
+    {
+        "name": "Kraft Heinz-Champaign",
+        "address": "1701 W Bradley Ave, Champaign, IL 61821",
+        "business_type": "Food manufacturer",
+        "website": "kraftheinzcompany.com",
+        "rating": "2.6",
+        "num_reviews": "498",
+        "phone": "(217) 378-1900"
+    },
+    {
+        "name": "Hume Manufacturing Co.",
+        "address": "225 Center St, Hume, IL 61932",
+        "business_type": "Research and product development",
+        "website": "humemanco.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "Fuyao Glass Illinois",
+        "address": "2768 E Elwin Rd, Decatur, IL 62521",
+        "business_type": "Glass manufacturer",
+        "website": "fuyaousa.com",
+        "rating": "2.7",
+        "num_reviews": "155",
+        "phone": "(217) 864-2392"
+    },
+    {
+        "name": "Synergy Manufacturing",
+        "address": "761 N 17th St # 22, St. Charles, IL 60174",
+        "business_type": "Manufacturer",
+        "website": "synergymanufacturinginc.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(630) 377-2723"
+    },
+    {
+        "name": "TCCI Manufacturing",
+        "address": "2120 N 22nd St, Decatur, IL 62526",
+        "business_type": "Manufacturer",
+        "website": "tccimfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 422-0055"
+    },
+    {
+        "name": "Schold Manufacturing",
+        "address": "7201 W 64th Pl, Chicago, IL 60638",
+        "business_type": "Equipment supplier",
+        "website": "schold.com",
+        "rating": "4.8",
+        "num_reviews": "4",
+        "phone": "(708) 458-3788"
+    },
+    {
+        "name": "Viakable Manufacturing LLC",
+        "address": "Chartres St, La Salle, IL 61301",
+        "business_type": "Manufacturer",
+        "website": "viakable.com",
+        "rating": "3.3",
+        "num_reviews": "14",
+        "phone": "(815) 224-3422"
+    },
+    {
+        "name": "Bel-Air Manufacturing, Inc.",
+        "address": "3525 W Potomac Ave, Chicago, IL 60651",
+        "business_type": "Manufacturer",
+        "website": "belairmfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(773) 276-7550"
+    },
+    {
+        "name": "Slagel Manufacturing",
+        "address": "2911 N 2700 East Rd, Forrest, IL 61741",
+        "business_type": "Manufacturer",
+        "website": "slagelmanufacturing.com",
+        "rating": "5.0",
+        "num_reviews": "4",
+        "phone": "(815) 688-3318"
+    },
+    {
+        "name": "Cardinal Manufacturing LLC",
+        "address": "426 N Battleford Rd, Carrier Mills, IL 62917",
+        "business_type": "Manufacturer",
+        "website": "cardinalmanufacturing.com",
+        "rating": "4.9",
+        "num_reviews": "15",
+        "phone": "(888) 323-8737"
+    },
+    {
+        "name": "Marion Manufacturing",
+        "address": "701 Flint Ave, Morton, IL 61550",
+        "business_type": "Manufacturer",
+        "website": "mariontool.com",
+        "rating": "2.3",
+        "num_reviews": "3",
+        "phone": "(812) 533-9800"
+    },
+    {
+        "name": "Mason Manufacturing",
+        "address": "1674 N Clinton St, Decatur, IL 62526",
+        "business_type": "Steel fabricator",
+        "website": "masonmfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(217) 422-2770"
+    },
+    {
+        "name": "Mac Fee Manufacturing Co",
+        "address": "323 E Galena Blvd, Aurora, IL 60505",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(630) 897-1106"
+    },
+    {
+        "name": "The Fresh Factory Manufacturing - West",
+        "address": "245 W Roosevelt Rd Ste 14-143, West Chicago, IL 60185",
+        "business_type": "Food manufacturer",
+        "website": "thefreshfactory.co",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(877) 743-8289"
+    },
+    {
+        "name": "US Conveyor Technologies Manufacturing",
+        "address": "30000 IL-9, Mackinaw, IL 61755",
+        "business_type": "Manufacturer",
+        "website": "usconveyor.net",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(309) 359-4088"
+    },
+    {
+        "name": "Chic Manufacturing Co.",
+        "address": "1001 SW Adams St, Peoria, IL 61602",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "Dyno Manufacturing",
+        "address": "2 Fox Industrial Dr, Madison, IL 62060",
+        "business_type": "Manufacturer",
+        "website": "dynomfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(877) 396-6634"
+    },
+    {
+        "name": "Morton Industries LLC",
+        "address": "70 Commerce Dr, Morton, IL 61550",
+        "business_type": "Manufacturer",
+        "website": "mortonind.com",
+        "rating": "3.9",
+        "num_reviews": "33",
+        "phone": "(309) 263-2590"
+    },
+    {
+        "name": "H3 Manufacturing Group, LLC",
+        "address": "2110 Round Barn Rd, Champaign, IL 61821",
+        "business_type": "Machine shop",
+        "website": "h3mfggroup.com",
+        "rating": "5.0",
+        "num_reviews": "5",
+        "phone": "(217) 398-6881"
+    },
+    {
+        "name": "Mc Lean Manufacturing Co",
+        "address": "28040 W Industrial Ave, Lake Barrington, IL 60010",
+        "business_type": "Manufacturer",
+        "website": "mcleanmfg.com",
+        "rating": "1.0",
+        "num_reviews": "No reviews",
+        "phone": "(847) 277-9912"
+    },
+    {
+        "name": "Kraft Heinz-Champaign",
+        "address": "1701 W Bradley Ave, Champaign, IL 61821",
+        "business_type": "Food manufacturer",
+        "website": "kraftheinzcompany.com",
+        "rating": "2.6",
+        "num_reviews": "498",
+        "phone": "(217) 378-1900"
+    },
+    {
+        "name": "Hume Manufacturing Co.",
+        "address": "225 Center St, Hume, IL 61932",
+        "business_type": "Research and product development",
+        "website": "humemanco.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "Fuyao Glass Illinois",
+        "address": "2768 E Elwin Rd, Decatur, IL 62521",
+        "business_type": "Glass manufacturer",
+        "website": "fuyaousa.com",
+        "rating": "2.7",
+        "num_reviews": "155",
+        "phone": "(217) 864-2392"
+    },
+    {
+        "name": "TCCI Manufacturing",
+        "address": "2120 N 22nd St, Decatur, IL 62526",
+        "business_type": "Manufacturer",
+        "website": "tccimfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 422-0055"
+    },
+    {
+        "name": "Schold Manufacturing",
+        "address": "7201 W 64th Pl, Chicago, IL 60638",
+        "business_type": "Equipment supplier",
+        "website": "schold.com",
+        "rating": "4.8",
+        "num_reviews": "4",
+        "phone": "(708) 458-3788"
+    },
+    {
+        "name": "Viakable Manufacturing LLC",
+        "address": "Chartres St, La Salle, IL 61301",
+        "business_type": "Manufacturer",
+        "website": "viakable.com",
+        "rating": "3.3",
+        "num_reviews": "14",
+        "phone": "(815) 224-3422"
+    },
+    {
+        "name": "Slagel Manufacturing",
+        "address": "2911 N 2700 East Rd, Forrest, IL 61741",
+        "business_type": "Manufacturer",
+        "website": "slagelmanufacturing.com",
+        "rating": "5.0",
+        "num_reviews": "4",
+        "phone": "(815) 688-3318"
+    },
+    {
+        "name": "Cardinal Manufacturing LLC",
+        "address": "426 N Battleford Rd, Carrier Mills, IL 62917",
+        "business_type": "Manufacturer",
+        "website": "cardinalmanufacturing.com",
+        "rating": "4.9",
+        "num_reviews": "15",
+        "phone": "(888) 323-8737"
+    },
+    {
+        "name": "Marion Manufacturing",
+        "address": "701 Flint Ave, Morton, IL 61550",
+        "business_type": "Manufacturer",
+        "website": "mariontool.com",
+        "rating": "2.3",
+        "num_reviews": "3",
+        "phone": "(812) 533-9800"
+    },
+    {
+        "name": "Ballco Manufacturing Inc",
+        "address": "2375 Liberty St, Aurora, IL 60502",
+        "business_type": "Manufacturer",
+        "website": "ballcomfg.com",
+        "rating": "3.7",
+        "num_reviews": "6",
+        "phone": "(630) 898-1600"
+    },
+    {
+        "name": "Frontier Manufacturing (Elevating Offal Cart)",
+        "address": "329 E, IL-133, Arthur, IL 61911",
+        "business_type": "Metal fabricator",
+        "website": "justplainbusiness.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 543-2485"
+    },
+    {
+        "name": "Dual Manufacturing Co., Inc.",
+        "address": "3522 Martens St, Franklin Park, IL 60131",
+        "business_type": "Manufacturer",
+        "website": "dualmfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(847) 260-5370"
+    },
+    {
+        "name": "Synergetic Industries",
+        "address": "1060 W Jefferson St, Morton, IL 61550",
+        "business_type": "Manufacturer",
+        "website": "synergeticindustries.com",
+        "rating": "3.0",
+        "num_reviews": "4",
+        "phone": "(309) 321-0080"
+    },
+    {
+        "name": "MATRICS, Inc.",
+        "address": "60 Hazelwood Dr, Champaign, IL 61820",
+        "business_type": "Manufacturer",
+        "website": "matrics-inc.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "Reynolds Manufacturing Co",
+        "address": "630 4th St W, Milan, IL 61264",
+        "business_type": "Machine shop",
+        "website": "reynoldsmfg.com",
+        "rating": "1.8",
+        "num_reviews": "5",
+        "phone": "(309) 787-8600"
+    },
+    {
+        "name": "Rome Industries Inc",
+        "address": "1703 W Detweiller Dr, Peoria, IL 61615",
+        "business_type": "Manufacturer",
+        "website": "pieiron.com",
+        "rating": "5.0",
+        "num_reviews": "5",
+        "phone": "(800) 818-7603"
+    },
+    {
+        "name": "Xtreme Automation LLC 61822",
+        "address": "3302 N Mattis Ave, Champaign, IL 61822",
+        "business_type": "Automation company",
+        "website": "xtremeautomationllc.com",
+        "rating": "4.9",
+        "num_reviews": "15",
+        "phone": "(785) 285-8288"
+    },
+    {
+        "name": "Animated Manufacturing Co",
+        "address": "106 W 154th St, South Holland, IL 60473",
+        "business_type": "Metal stamping service",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(708) 333-6688"
+    },
+    {
+        "name": "Gage Manufacturing, Inc",
+        "address": "820 Touhy Ave, Elk Grove Village, IL 60007",
+        "business_type": "Manufacturer",
+        "website": "gagemanufacturing.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(847) 228-7300"
+    },
+    {
+        "name": "Box Manufacturing Co Inc",
+        "address": "201 Spring St # 2, Peoria, IL 61603",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(309) 637-6228"
+    },
+    {
+        "name": "The Product Manufactory",
+        "address": "722 W Killarney St, Urbana, IL 61801",
+        "business_type": "Engineering consultant",
+        "website": "theproductmanufactory.com",
+        "rating": "5.0",
+        "num_reviews": "3",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "Komatsu America Corporation",
+        "address": "2300 NE Adams St, Peoria, IL 61639",
+        "business_type": "Manufacturer",
+        "website": "komatsuamerica.com",
+        "rating": "3.9",
+        "num_reviews": "29",
+        "phone": "(309) 672-7000"
+    },
+    {
+        "name": "T & L Manufacturing Corporation",
+        "address": "1665 Dearborn Ave, Aurora, IL 60505",
+        "business_type": "Metal fabricator",
+        "website": "tandlmfg.com",
+        "rating": "5.0",
+        "num_reviews": "3",
+        "phone": "(630) 898-7100"
+    },
+    {
+        "name": "Yargus Manufacturing",
+        "address": "12285 E Main St, Marshall, IL 62441",
+        "business_type": "Fertilizer supplier",
+        "website": "aggrowth.com",
+        "rating": "4.6",
+        "num_reviews": "11",
+        "phone": "(217) 826-6352"
+    },
+    {
+        "name": "Hagen Manufacturing Inc.",
+        "address": "180 Messner Dr, Wheeling, IL 60090",
+        "business_type": "Manufacturer",
+        "website": "hagenmfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(224) 735-2099"
+    },
+    {
+        "name": "Reynolds Manufacturing Company",
+        "address": "501 38th St, Rock Island, IL 61201",
+        "business_type": "Manufacturer",
+        "website": "reynoldsmfg.com",
+        "rating": "4.0",
+        "num_reviews": "No reviews",
+        "phone": "(309) 788-7443"
+    },
+    {
+        "name": "ACO Manufacturing Inc.",
+        "address": "1830 Wallace Ave, St. Charles, IL 60174",
+        "business_type": "Machine shop",
+        "website": "Website not found",
+        "rating": "3.0",
+        "num_reviews": "2",
+        "phone": "(630) 745-1936"
+    },
+    {
+        "name": "Illinois Supply Company",
+        "address": "18753 Rosewood Ln, Mokena, IL 60448",
+        "business_type": "Medical equipment manufacturer",
+        "website": "illinoissupply.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(773) 932-7483"
+    },
+    {
+        "name": "Imperial Manufacturing Group",
+        "address": "Address not found",
+        "business_type": "Manufacturer",
+        "website": "imperialgroup.ca",
+        "rating": "3.3",
+        "num_reviews": "22",
+        "phone": "(618) 465-3133"
+    },
+    {
+        "name": "Helm Manufacturing",
+        "address": "1292 Humbracht Cir STE A, Bartlett, IL 60103",
+        "business_type": "Machining manufacturer",
+        "website": "helmmfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(630) 483-0100"
+    },
+    {
+        "name": "Double R Manufacturing",
+        "address": "310 Walnut St, Leonore, IL 61332",
+        "business_type": "Machine shop",
+        "website": "Website not found",
+        "rating": "4.7",
+        "num_reviews": "3",
+        "phone": "(815) 856-2271"
+    },
+    {
+        "name": "J-tec Industries, Inc.",
+        "address": "201 Carver Ln, East Peoria, IL 61611",
+        "business_type": "Manufacturer",
+        "website": "jtecindustries.com",
+        "rating": "4.3",
+        "num_reviews": "14",
+        "phone": "(309) 518-1800"
+    },
+    {
+        "name": "Hardin Industries, LLC",
+        "address": "400 Commercial St, Lacon, IL 61540",
+        "business_type": "Manufacturer",
+        "website": "hardinindustries.com",
+        "rating": "3.7",
+        "num_reviews": "6",
+        "phone": "(309) 246-8456"
+    },
+    {
+        "name": "Goble Manufacturing Inc.",
+        "address": "704 W Main St, Casey, IL 62420",
+        "business_type": "Machine shop",
+        "website": "Website not found",
+        "rating": "1.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 932-5615"
+    },
+    {
+        "name": "AAM Powertrain | Naperville Manufacturing Facility",
+        "address": "1152 Frontenac Rd, Naperville, IL 60563",
+        "business_type": "Manufacturer",
+        "website": "aam.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(630) 420-0900"
+    },
+    {
+        "name": "ShapeMaster",
+        "address": "108 E Main St, Ogden, IL 61859",
+        "business_type": "Plastic fabrication company",
+        "website": "shape-master.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 582-2638"
+    },
+    {
+        "name": "Riggers Manufacturing Company",
+        "address": "1555 IL-26, Dixon, IL 61021",
+        "business_type": "Manufacturer",
+        "website": "riggers.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(815) 288-7626"
+    },
+    {
+        "name": "Evans Manufacturing Co",
+        "address": "4608 78th Ave W, Rock Island, IL 61201",
+        "business_type": "Machine shop",
+        "website": "evanspremiumparts.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(309) 787-3882"
+    },
+    {
+        "name": "Ascent Manufacturing Company - Metal Fabrication",
+        "address": "123 Scott St, Elk Grove Village, IL 60007",
+        "business_type": "Metal fabricator",
+        "website": "ascentmfgco.com",
+        "rating": "3.9",
+        "num_reviews": "7",
+        "phone": "(847) 806-6600"
+    },
+    {
+        "name": "Hyundai Transys",
+        "address": "1101 Newton Dr, Champaign, IL 61822",
+        "business_type": "Manufacturer",
+        "website": "hyundai-transys.com",
+        "rating": "3.6",
+        "num_reviews": "25",
+        "phone": "(217) 253-8884"
+    },
+    {
+        "name": "Siemens Manufacturing",
+        "address": "500 N Johnson St, New Athens, IL 62264",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(618) 539-3000"
+    },
+    {
+        "name": "Keys Manufacturing Co Inc",
+        "address": "13338 N 1900th St, Paris, IL 61944",
+        "business_type": "Pet supply store",
+        "website": "keysmanufacturing.com",
+        "rating": "4.8",
+        "num_reviews": "20",
+        "phone": "(217) 465-4001"
+    },
+    {
+        "name": "APL Engineered Materials, Inc.",
+        "address": "2401 N Willow Rd, Urbana, IL 61802",
+        "business_type": "Chemical manufacturer",
+        "website": "aplmaterials.com",
+        "rating": "3.5",
+        "num_reviews": "2",
+        "phone": "(844) 254-8508"
+    }
+]

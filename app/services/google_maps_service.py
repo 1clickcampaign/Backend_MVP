@@ -10,6 +10,10 @@ from app.utils.location_utils import (
     get_bounding_box,
     haversine_distance,
 )
+from app.utils.string_matching import find_best_matches
+from app.services.google_maps_service import search_area, make_api_request
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 
 BASE_URL = "https://places.googleapis.com/v1/places:searchNearby"
 MAX_RESULTS_PER_QUERY = 20
@@ -77,14 +81,15 @@ def make_api_request(business_types: List[str], lat: float, lon: float, radius: 
 
 def search_area(business_types: List[str], lon: float, lat: float, radius: float, all_leads: List[Dict[str, Any]], depth: int = 0, max_depth: int = 3, max_leads: Optional[int] = None):
     if depth > max_depth or (max_leads and len(all_leads) >= max_leads):
-        return
+        return True
 
     result = make_api_request(business_types, lat, lon, radius)
     places = result.get("places", [])
     
+    fully_matched = True
     for place in places:
         if max_leads and len(all_leads) >= max_leads:
-            return
+            return fully_matched
         lead = {
             "name": place.get("displayName", {}).get("text", ""),
             "source": "Google Maps",
@@ -101,16 +106,24 @@ def search_area(business_types: List[str], lon: float, lat: float, radius: float
         }
         if lead["external_id"] not in [l["external_id"] for l in all_leads]:
             all_leads.append(lead)
+        
+        # Check if the place types match the business types
+        place_types = set(place.get("types", []))
+        if not any(bt.lower() in place_types for bt in business_types):
+            fully_matched = False
 
     if len(places) >= MAX_RESULTS_PER_QUERY and radius > MIN_RADIUS and (not max_leads or len(all_leads) < max_leads):
         subcircles = three_circle_tiling(lon, lat, radius)
         with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
             futures = [executor.submit(search_area, business_types, sub_lon, sub_lat, sub_radius, all_leads, depth + 1, max_depth, max_leads) 
                        for sub_lon, sub_lat, sub_radius in subcircles]
-            concurrent.futures.wait(futures)
+            results = concurrent.futures.wait(futures)
+            fully_matched = all(f.result() for f in futures)
     elif radius > MIN_RADIUS and (not max_leads or len(all_leads) < max_leads):
         new_radius = max(radius / 2, MIN_RADIUS)
-        search_area(business_types, lon, lat, new_radius, all_leads, depth + 1, max_depth, max_leads)
+        fully_matched = search_area(business_types, lon, lat, new_radius, all_leads, depth + 1, max_depth, max_leads)
+
+    return fully_matched
 
 def fetch_leads_from_google_maps(business_types: List[str], location: str, max_leads: Optional[int] = None) -> List[Dict[str, Any]]:
     print(f"Fetching leads for {business_types} in {location}")
