@@ -10,7 +10,7 @@ from app.utils.database import upload_leads_to_supabase
 from app.utils.config import VALID_BUSINESS_TYPES
 from app.utils.string_matching import find_best_matches
 import asyncio
-from app.utils.database import upload_leads_to_supabase
+from app.services.gmaps_scraping_service import scrape_google_maps, setup_selenium, generate_search_url
 
 router = APIRouter()
 
@@ -34,26 +34,43 @@ async def get_google_maps_leads(request: GoogleMapsLeadRequest):
             detail="Could not extract business type and location from query."
         )
     
-    # replace below pipeline with the google maps scraper if set matches aren't found
     matched_business_types = find_best_matches(business_type)
-    if not matched_business_types:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Could not match '{business_type}' with any valid business type."
-        )
     
-    print(f"Matched business types: {matched_business_types}")
-    print(f"Fetching leads from Google Maps for {matched_business_types} in {location}")
-    leads = fetch_leads_from_google_maps(matched_business_types, location, max_leads)
+    if matched_business_types:
+        print(f"Matched business types: {matched_business_types}")
+        print(f"Fetching leads from Google Maps API for {matched_business_types} in {location}")
+        leads = fetch_leads_from_google_maps(matched_business_types, location, max_leads)
+    else:
+        print(f"No matched business types found. Using Google Maps scraper for query: {query}")
+        driver = setup_selenium(headless=True)
+        try:
+            url = generate_search_url(query)
+            leads = scrape_google_maps(driver, url)
+            if max_leads:
+                leads = leads[:max_leads]
+        finally:
+            driver.quit()
+    
     print(f"Number of leads fetched: {len(leads)}")
-    
-    # replace above pipeline with the google maps scraper if set matches aren't found
+
+    # Convert scraped results to LeadCreate format if necessary
+    if leads and isinstance(leads[0], dict):
+        leads = [LeadCreate(
+            name=lead['name'],
+            source="Google Maps",
+            external_id=lead.get('external_id', ''),
+            business_phone=lead.get('phone', ''),
+            source_attributes={
+                'formatted_address': lead.get('address', ''),
+                'website': lead.get('website', ''),
+                'rating': lead.get('rating', ''),
+                'user_ratings_total': lead.get('num_reviews', '')
+            }
+        ) for lead in leads]
 
     print("Attempting to upload leads to Supabase")
     await upload_leads_to_supabase(leads)
     print(f"Finished uploading {len(leads)} leads to Supabase")
-
-    # TODO: Use additional_keywords for further filtering or API queries in the future
 
     # Enrich leads asynchronously
     print("Enqueueing lead enrichment task")

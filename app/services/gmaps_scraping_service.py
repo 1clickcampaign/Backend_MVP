@@ -79,36 +79,41 @@ def handle_popups(driver):
 
     # Handle other potential popups here if needed
 
-def wait_for_panel_update(driver, old_name, max_retries=3, timeout=15):
+def wait_for_panel_update(driver, old_name, max_retries=5, timeout=10):
     for attempt in range(max_retries):
         try:
+            # Wait for the name element to be present
             WebDriverWait(driver, timeout).until(
                 EC.presence_of_element_located((By.XPATH, "//h1[contains(@class, 'DUwDvf')]"))
             )
+            
+            # Get the new name
             new_name = driver.find_element(By.XPATH, "//h1[contains(@class, 'DUwDvf')]").text.strip()
+            
+            # Check if the name has changed
             if new_name != old_name:
                 logging.info(f"Panel updated successfully: {old_name} -> {new_name}")
-                return True
+                return True, new_name
             else:
                 logging.warning(f"Panel name unchanged: {old_name}")
-        except TimeoutException:
-            logging.warning(f"Timeout waiting for panel to update. Attempt {attempt + 1}/{max_retries}")
+        except (TimeoutException, StaleElementReferenceException):
+            logging.warning(f"Timeout or stale element. Attempt {attempt + 1}/{max_retries}")
         
         if attempt < max_retries - 1:
-            time.sleep(2)  # Wait a bit before retrying
+            time.sleep(0.2)  # Short wait before retrying
 
     logging.error(f"Failed to update panel after {max_retries} attempts")
-    return False
+    return False, old_name
 
 def extract_info_from_panel(driver):
     result = {
-        "name": "Name not found",
-        "address": "Address not found",
-        "business_type": "Type not found",
-        "website": "Website not found",
-        "rating": "No rating",
-        "num_reviews": "No reviews",
-        "phone": "Phone not found"
+        "name": None,
+        "address": None,
+        "business_type": None,
+        "website": None,
+        "rating": None,
+        "num_reviews": None,
+        "phone": None
     }
 
     try:
@@ -215,13 +220,15 @@ def scrape_google_maps(driver, url):
             logging.info(f"Successfully scraped entry {index}: {result['name']}")
 
             index += 1
-            time.sleep(2)  # Short delay between entries
+            
+            # Wait for the next entry to be clickable
+            next_entry_xpath = f"(//div[contains(@class, 'Nv2PK')])[{index}]"
+            wait_for_element(driver, By.XPATH, next_entry_xpath, timeout=10)
 
         except Exception as e:
             logging.error(f"Error processing entry {index}: {str(e)}")
             # Even if an error occurs, we move to the next entry
             index += 1
-            time.sleep(2)
 
     logging.info(f"Scraping completed. Found {len(results)} entries.")
     return results
@@ -263,12 +270,12 @@ def save_results_to_json(results, json_path):
 
 def main():
     # User inputs
-    search_query = "manufacturing in illinois"  # Example search query
+    search_query = "factories in bangalore"  # Example search query
     json_path = 'GoogleMapsData.json'
 
     # Setup WebDriver
     # Set headless=False for debugging to see the browser
-    driver = setup_selenium(headless=False)
+    driver = setup_selenium(headless=True)
 
     try:
         # Generate the search URL

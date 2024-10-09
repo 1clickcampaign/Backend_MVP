@@ -1015,5 +1015,3038 @@
         "rating": "3.5",
         "num_reviews": "2",
         "phone": "(844) 254-8508"
+    },
+    {
+        "name": "DENSO Manufacturing Michigan (DMMI)",
+        "address": "1 Denso Rd Suite 1, Battle Creek, MI 49037",
+        "business_type": "Manufacturer",
+        "website": "denso.com",
+        "rating": "2.9",
+        "num_reviews": "69",
+        "phone": "(269) 965-3322"
+    },
+    {
+        "name": "Legends Manufacturing",
+        "address": "5000 W Michigan Ave, Jackson, MI 49201",
+        "business_type": "Manufacturer",
+        "website": "thorrez.com",
+        "rating": "4.3",
+        "num_reviews": "6",
+        "phone": "(517) 750-4915"
+    },
+    {
+        "name": "Challenge Manufacturing",
+        "address": "1401 S Washington Ave, Holland, MI 49423",
+        "business_type": "Manufacturer",
+        "website": "challenge-mfg.com",
+        "rating": "4.0",
+        "num_reviews": "316",
+        "phone": "(616) 396-2079"
+    },
+    {
+        "name": "Concord Manufacturing",
+        "address": "405 Michigan St, Concord, MI 49237",
+        "business_type": "Machine shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(517) 524-8970"
+    },
+    {
+        "name": "Challenge Manufacturing",
+        "address": "3079 3 Mile Rd NW, Walker, MI 49534",
+        "business_type": "Manufacturer",
+        "website": "challenge-mfg.com",
+        "rating": "4.2",
+        "num_reviews": "88",
+        "phone": "(616) 735-6500"
+    },
+    {
+        "name": "Michigan Manufacturing International",
+        "address": "1625 Sonny Schulz Blvd, Stevensville, MD 21666",
+        "business_type": "Manufacturer",
+        "website": "michmfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(410) 604-1400"
+    },
+    {
+        "name": "Michigan Manufacturing Technology Center",
+        "address": "45501 Helm St, Plymouth, MI 48170",
+        "business_type": "Business management consultant",
+        "website": "the-center.org",
+        "rating": "4.9",
+        "num_reviews": "51",
+        "phone": "(734) 451-4200"
+    },
+    {
+        "name": "Kent Manufacturing Company",
+        "address": "2200 Oak Industrial Dr NE, Grand Rapids, MI 49505",
+        "business_type": "Manufacturer",
+        "website": "kent-mfg.com",
+        "rating": "3.8",
+        "num_reviews": "6",
+        "phone": "(616) 454-9495"
+    },
+    {
+        "name": "Harloff Manufacturing Company",
+        "address": "828 Duo Tang Rd, Paw Paw, MI 49079",
+        "business_type": "Manufacturer",
+        "website": "hmcmi.com",
+        "rating": "4.1",
+        "num_reviews": "14",
+        "phone": "(269) 655-1097"
+    },
+    {
+        "name": "Marrone Michigan Manufacturing",
+        "address": "700 Industrial Park Dr, Bangor, MI 49013",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "3.7",
+        "num_reviews": "3",
+        "phone": "(269) 427-0804"
+    },
+    {
+        "name": "Milton Manufacturing Inc",
+        "address": "301 E Grixdale, Detroit, MI 48203",
+        "business_type": "Manufacturer",
+        "website": "miltonmfg.com",
+        "rating": "5.0",
+        "num_reviews": "14",
+        "phone": "(313) 366-2450"
+    },
+    {
+        "name": "Detroit Manufacturing Systems",
+        "address": "12701 Southfield Rd, Detroit, MI 48223",
+        "business_type": "Manufacturer",
+        "website": "dmsna.com",
+        "rating": "2.9",
+        "num_reviews": "98",
+        "phone": "(313) 243-0700"
+    },
+    {
+        "name": "SMW Manufacturing, Inc.",
+        "address": "25575 Brest, Taylor, MI 48180",
+        "business_type": "Manufacturer",
+        "website": "smw-mfg.com",
+        "rating": "3.7",
+        "num_reviews": "18",
+        "phone": "(517) 596-3300"
+    },
+    {
+        "name": "Challenge Manufacturing",
+        "address": "2501 Centerpoint Pkwy, Pontiac, MI 48341",
+        "business_type": "Manufacturer",
+        "website": "challenge-mfg.com",
+        "rating": "3.6",
+        "num_reviews": "42",
+        "phone": "(616) 735-6500"
+    },
+    {
+        "name": "Eagle Manufacturing Corporation",
+        "address": "52113 Shelby Pkwy, Shelby Township, MI 48315",
+        "business_type": "Manufacturer",
+        "website": "eaglematic.com",
+        "rating": "5.0",
+        "num_reviews": "4",
+        "phone": "(586) 323-0303"
+    },
+    {
+        "name": "Peak Manufacturing Inc",
+        "address": "11855 Bunkerhill Rd, Pleasant Lake, MI 49272",
+        "business_type": "Machine shop",
+        "website": "peakmfgpro.com",
+        "rating": "5.0",
+        "num_reviews": "9",
+        "phone": "(517) 769-6900"
+    },
+    {
+        "name": "Novi Manufacturing Co",
+        "address": "25701 Seeley Rd, Novi, MI 48375",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "4.1",
+        "num_reviews": "12",
+        "phone": "(248) 476-4350"
+    },
+    {
+        "name": "CS Manufacturing Inc.",
+        "address": "299 W Cherry St NE, Cedar Springs, MI 49319",
+        "business_type": "Plastic injection molding service",
+        "website": "csmanufacturing.us",
+        "rating": "3.0",
+        "num_reviews": "29",
+        "phone": "(616) 696-2772"
+    },
+    {
+        "name": "Admiral Tool & Manufacturing Co-Michigan",
+        "address": "38010 Amrhein Rd, Livonia, MI 48150",
+        "business_type": "Manufacturer",
+        "website": "admiraltool.com",
+        "rating": "4.4",
+        "num_reviews": "11",
+        "phone": "(734) 462-0222"
+    },
+    {
+        "name": "Novi Manufacturing Co",
+        "address": "25701 Seeley Rd, Novi, MI 48375",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "4.1",
+        "num_reviews": "12",
+        "phone": "(248) 476-4350"
+    },
+    {
+        "name": "Magnum Manufacturing",
+        "address": "39140 Webb Dr, Westland, MI 48185",
+        "business_type": "Manufacturer",
+        "website": "magnum-mfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(734) 727-0560"
+    },
+    {
+        "name": "Challenge Manufacturing",
+        "address": "3200 Fruit Ridge Ave NW, Walker, MI 49544",
+        "business_type": "Manufacturer",
+        "website": "challenge-mfg.com",
+        "rating": "3.4",
+        "num_reviews": "44",
+        "phone": "(616) 735-6500"
+    },
+    {
+        "name": "Rima Manufacturing Company",
+        "address": "3850 Munson Hwy, Hudson, MI 49247",
+        "business_type": "Manufacturer",
+        "website": "rimamfg.com",
+        "rating": "3.9",
+        "num_reviews": "7",
+        "phone": "(517) 448-8921"
+    },
+    {
+        "name": "Grand River Aseptic Manufacturing",
+        "address": "140 Front Ave SW, Grand Rapids, MI 49504",
+        "business_type": "Manufacturer",
+        "website": "grandriverasepticmfg.com",
+        "rating": "3.8",
+        "num_reviews": "16",
+        "phone": "(616) 678-2400"
+    },
+    {
+        "name": "Detroit Manufacturing Systems",
+        "address": "12701 Southfield Rd, Detroit, MI 48223",
+        "business_type": "Manufacturer",
+        "website": "dmsna.com",
+        "rating": "2.9",
+        "num_reviews": "98",
+        "phone": "(313) 243-0700"
+    },
+    {
+        "name": "Hinkle Manufacturing Llc",
+        "address": "6340 Miller Rd, Dearborn, MI 48126",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(313) 584-0400"
+    },
+    {
+        "name": "MS Manufacturing",
+        "address": "44431 Reynolds Dr, Clinton Twp, MI 48036",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(586) 463-2788"
+    },
+    {
+        "name": "Eagle Manufacturing Corporation",
+        "address": "52113 Shelby Pkwy, Shelby Township, MI 48315",
+        "business_type": "Manufacturer",
+        "website": "eaglematic.com",
+        "rating": "5.0",
+        "num_reviews": "4",
+        "phone": "(586) 323-0303"
+    },
+    {
+        "name": "Michigan Manufactured Products",
+        "address": "3605 32nd St, Port Huron, MI 48060",
+        "business_type": "Manufacturer",
+        "website": "themmpteam.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(586) 770-2584"
+    },
+    {
+        "name": "Active Manufacturing Co",
+        "address": "17127 Hickory St, Spring Lake, MI 49456",
+        "business_type": "Manufacturer",
+        "website": "activemfg.net",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(616) 842-0800"
+    },
+    {
+        "name": "Gil-Mar Manufacturing Co",
+        "address": "7925 Ronda Dr, Canton, MI 48187",
+        "business_type": "Manufacturer",
+        "website": "gil-mar.com",
+        "rating": "3.8",
+        "num_reviews": "12",
+        "phone": "(734) 459-4803"
+    },
+    {
+        "name": "Keihin Michigan Manufacturing LLC",
+        "address": "14898 Koehn Rd, Capac, MI 48014",
+        "business_type": "Manufacturer",
+        "website": "keihin-na.com",
+        "rating": "3.4",
+        "num_reviews": "8",
+        "phone": "(810) 395-3900"
+    },
+    {
+        "name": "Precise Manufacturing, Inc.",
+        "address": "188 N Main St, Casnovia, MI 49318",
+        "business_type": "Manufacturer",
+        "website": "precisemanufacturing.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(616) 887-7000"
+    },
+    {
+        "name": "Knape & Vogt Manufacturing Co",
+        "address": "2700 Oak Industrial Dr NE, Grand Rapids, MI 49505",
+        "business_type": "Manufacturer",
+        "website": "knapeandvogt.com",
+        "rating": "3.0",
+        "num_reviews": "26",
+        "phone": "(800) 253-1561"
+    },
+    {
+        "name": "Superior Manufacturing",
+        "address": "32390 Howard Ave, Madison Heights, MI 48071",
+        "business_type": "Manufacturer",
+        "website": "ordersuperior.com",
+        "rating": "1.0",
+        "num_reviews": "No reviews",
+        "phone": "(866) 523-5677"
+    },
+    {
+        "name": "Barnett Manufacturing Co.",
+        "address": "11441 E Lakewood Blvd, Holland, MI 49424",
+        "business_type": "Machining manufacturer",
+        "website": "barnettmfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(616) 546-8225"
+    },
+    {
+        "name": "Cook Manufacturing",
+        "address": "21831 9 Mile Rd, Reed City, MI 49677",
+        "business_type": "Manufacturer",
+        "website": "cookmfg.com",
+        "rating": "4.7",
+        "num_reviews": "15",
+        "phone": "(231) 832-3551"
+    },
+    {
+        "name": "International Manufacturing & Assembly",
+        "address": "2521 Torquay Ave, Royal Oak, MI 48073",
+        "business_type": "Auto parts manufacturer",
+        "website": "intmnfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(248) 549-4700"
+    },
+    {
+        "name": "Michigan Bolt Manufacturing",
+        "address": "15085 32 Mile Rd, Romeo, MI 48065",
+        "business_type": "Manufacturer",
+        "website": "michiganbolt.com",
+        "rating": "2.1",
+        "num_reviews": "7",
+        "phone": "(586) 200-1017"
+    },
+    {
+        "name": "Denso Manufacturing DMNC",
+        "address": "500 Fritz Keiper Blvd, Battle Creek, MI 49037",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "4.5",
+        "num_reviews": "2",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "Trident Manufacturing",
+        "address": "Ithaca, MI 48847",
+        "business_type": "Manufacturer",
+        "website": "tridentmlf.com",
+        "rating": "4.1",
+        "num_reviews": "9",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "Michigan Production Machining",
+        "address": "16700 23 Mile Rd, Macomb, MI 48044",
+        "business_type": "Machining manufacturer",
+        "website": "michpro.com",
+        "rating": "4.4",
+        "num_reviews": "29",
+        "phone": "(586) 228-9700"
+    },
+    {
+        "name": "Asama Coldwater Manufacturing Inc",
+        "address": "99 Concept Dr, Coldwater, MI 49036",
+        "business_type": "Manufacturer",
+        "website": "asamacm.com",
+        "rating": "3.3",
+        "num_reviews": "13",
+        "phone": "(517) 279-1090"
+    },
+    {
+        "name": "Kodiak Manufacturing Co., Inc.",
+        "address": "318 Irwin Ave, Pontiac, MI 48341",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(248) 335-5552"
+    },
+    {
+        "name": "Specialty Manufacturing, Inc.",
+        "address": "2210 Midland Rd, Saginaw, MI 48603",
+        "business_type": "Manufacturer",
+        "website": "smimfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(989) 790-9011"
+    },
+    {
+        "name": "E & E Manufacturing Co Inc",
+        "address": "400 Industrial Dr Suite 300, Plymouth, MI 48170",
+        "business_type": "Metal stamping service",
+        "website": "eemfg.com",
+        "rating": "3.4",
+        "num_reviews": "22",
+        "phone": "(734) 451-7600"
+    },
+    {
+        "name": "Pace Industries, LLC",
+        "address": "2121 Latimer Dr, Muskegon, MI 49442",
+        "business_type": "Auto parts manufacturer",
+        "website": "paceind.com",
+        "rating": "3.8",
+        "num_reviews": "30",
+        "phone": "(231) 777-3941"
+    },
+    {
+        "name": "Montague Manufacturing",
+        "address": "11533 Liberty St, Clio, MI 48420",
+        "business_type": "Machine shop",
+        "website": "montaguemanufacturing.com",
+        "rating": "4.7",
+        "num_reviews": "3",
+        "phone": "(810) 686-0000"
+    },
+    {
+        "name": "Dolphin Manufacturing Inc",
+        "address": "12650 Universal Dr, Taylor, MI 48180",
+        "business_type": "Machine shop",
+        "website": "dolphinmanufacturing.com",
+        "rating": "1.0",
+        "num_reviews": "No reviews",
+        "phone": "(734) 946-6322"
+    },
+    {
+        "name": "Ithaca Manufacturing Corp",
+        "address": "1210 Ave A, Ithaca, MI 48847",
+        "business_type": "Metal fabricator",
+        "website": "ithacamfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(989) 875-4949"
+    },
+    {
+        "name": "Micron Manufacturing Company",
+        "address": "1722 Kloet St NW, Grand Rapids, MI 49504",
+        "business_type": "Machine shop",
+        "website": "systemicron.com",
+        "rating": "5.0",
+        "num_reviews": "4",
+        "phone": "(616) 453-5486"
+    },
+    {
+        "name": "Next Level Manufacturing Llc",
+        "address": "6778 18th Ave, Jenison, MI 49428",
+        "business_type": "Manufacturer",
+        "website": "nextlevelmfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(269) 397-1220"
+    },
+    {
+        "name": "F J Manufacturing Co",
+        "address": "32329 Milton Ave, Madison Heights, MI 48071",
+        "business_type": "Machine shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(248) 583-4777"
+    },
+    {
+        "name": "Synchronous Manufacturing Inc",
+        "address": "4050 Page Ave, Michigan Center, MI 49254",
+        "business_type": "Machine shop",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(517) 764-6930"
+    },
+    {
+        "name": "Ventura Manufacturing",
+        "address": "471 E Roosevelt Ave, Zeeland, MI 49464",
+        "business_type": "Manufacturer",
+        "website": "venturamfg.com",
+        "rating": "3.6",
+        "num_reviews": "9",
+        "phone": "(616) 772-7405"
+    },
+    {
+        "name": "Meritt Manufacturing, LLC",
+        "address": "203 W 3rd St, Vermontville, MI 49096",
+        "business_type": "Manufacturer",
+        "website": "merittmanufacturing.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(517) 726-1452"
+    },
+    {
+        "name": "Epic Manufacturing",
+        "address": "91 S Jebavy Dr, Ludington, MI 49431",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(231) 425-3138"
+    },
+    {
+        "name": "GHSP - Grand Haven Manufacturing",
+        "address": "1250 S Beechtree St, Grand Haven, MI 49417",
+        "business_type": "Manufacturer",
+        "website": "ghsp.com",
+        "rating": "3.9",
+        "num_reviews": "15",
+        "phone": "(616) 842-5500"
+    },
+    {
+        "name": "Vanguard Manufacturing, Inc.",
+        "address": "1975 Waldorf St NW b, Walker, MI 49544",
+        "business_type": "Manufacturer",
+        "website": "wiring-harness-manufacturer.com",
+        "rating": "1.0",
+        "num_reviews": "No reviews",
+        "phone": "(616) 241-5940"
+    },
+    {
+        "name": "Bos Manufacturing",
+        "address": "237 Renaissance Dr, Manistee, MI 49660",
+        "business_type": "Manufacturer",
+        "website": "bosmfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(231) 398-3328"
+    },
+    {
+        "name": "M&W Manufacturing",
+        "address": "46409 Continental Dr, New Baltimore, MI 48047",
+        "business_type": "Manufacturer",
+        "website": "mwmfg.co",
+        "rating": "4.0",
+        "num_reviews": "2",
+        "phone": "(586) 741-8897"
+    },
+    {
+        "name": "Michigan Manufacturing Technology Center",
+        "address": "45501 Helm St, Plymouth, MI 48170",
+        "business_type": "Business management consultant",
+        "website": "the-center.org",
+        "rating": "4.9",
+        "num_reviews": "51",
+        "phone": "(734) 451-4200"
+    },
+    {
+        "name": "CS Manufacturing Inc.",
+        "address": "141 W Cherry St NE, Cedar Springs, MI 49319",
+        "business_type": "Manufacturer",
+        "website": "csmanufacturing.us",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(616) 696-2772"
+    },
+    {
+        "name": "North Shore Manufacturing Corporation",
+        "address": "4706 M-63, Coloma, MI 49038",
+        "business_type": "Foundry",
+        "website": "nshoremfg.com",
+        "rating": "5.0",
+        "num_reviews": "4",
+        "phone": "(269) 849-2551"
+    },
+    {
+        "name": "Mensch Manufacturing",
+        "address": "2333 M-37, Hastings, MI 49058",
+        "business_type": "Manufacturer",
+        "website": "menschmfg.com",
+        "rating": "4.2",
+        "num_reviews": "5",
+        "phone": "(800) 945-6678"
+    },
+    {
+        "name": "Gil-Mar Manufacturing",
+        "address": "12841 Stark Rd, Livonia, MI 48150",
+        "business_type": "Manufacturer",
+        "website": "gil-mar.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(734) 459-4803"
+    },
+    {
+        "name": "Michigan Industrial Products Company",
+        "address": "2301 16th St, Port Huron, MI 48060",
+        "business_type": "Metal industry suppliers",
+        "website": "miproductsco.com",
+        "rating": "4.2",
+        "num_reviews": "5",
+        "phone": "(810) 985-4545"
+    },
+    {
+        "name": "Kay Manufacturing Co.",
+        "address": "3491 Lakeshore Dr, St Joseph, MI 49085",
+        "business_type": "Manufacturer",
+        "website": "kaymfg.com",
+        "rating": "4.1",
+        "num_reviews": "17",
+        "phone": "(269) 408-8344"
+    },
+    {
+        "name": "Lapeer Manufacturing Co",
+        "address": "18101 Malyn Blvd, Fraser, MI 48026",
+        "business_type": "Manufacturer",
+        "website": "lapeermanufacturing.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(586) 296-0802"
+    },
+    {
+        "name": "Saline Manufacturing Inc",
+        "address": "15890 Sturgeon Ct, Roseville, MI 48066",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "3.1",
+        "num_reviews": "7",
+        "phone": "(586) 294-4700"
+    },
+    {
+        "name": "Portenga Manufacturing Co",
+        "address": "220 5th St, Ferrysburg, MI 49409",
+        "business_type": "Manufacturer",
+        "website": "portenga.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(616) 846-2691"
+    },
+    {
+        "name": "Bowers Manufacturing Co",
+        "address": "6565 S Sprinkle Rd, Portage, MI 49002",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "3.0",
+        "num_reviews": "2",
+        "phone": "Phone not found"
+    },
+    {
+        "name": "K & K Manufacturing Inc.",
+        "address": "951 9 Mile Rd NW, Sparta, MI 49345",
+        "business_type": "Auto parts store",
+        "website": "kkmfg.com",
+        "rating": "5.0",
+        "num_reviews": "9",
+        "phone": "(616) 784-4286"
+    },
+    {
+        "name": "ELEMENTS of Manufacturing LLC",
+        "address": "3056 Dixie Ave SW, Grandville, MI 49418",
+        "business_type": "Manufacturer",
+        "website": "eomfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(616) 834-4460"
+    },
+    {
+        "name": "Vista Manufacturing",
+        "address": "3110 Wilson Dr NW, Grand Rapids, MI 49534",
+        "business_type": "Manufacturer",
+        "website": "vistamfg-inc.com",
+        "rating": "3.9",
+        "num_reviews": "14",
+        "phone": "(616) 719-5520"
+    },
+    {
+        "name": "Michigan Industrial Technologies LLC",
+        "address": "5721 Division Ave S, Grand Rapids, MI 49548",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(616) 755-8447"
+    },
+    {
+        "name": "Micro Manufacturing Inc",
+        "address": "6900 Dutton Industrial Dr, Caledonia, MI 49316",
+        "business_type": "Machine shop",
+        "website": "micromfg.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(616) 554-9200"
+    },
+    {
+        "name": "Alexis Manufacturing Co",
+        "address": "5765 Clay Ave SW, Grand Rapids, MI 49548",
+        "business_type": "Manufacturer",
+        "website": "alexismanufacturing.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(616) 735-3905"
+    },
+    {
+        "name": "Omega Manufacturing Inc",
+        "address": "6771 S Astor Rd, Baldwin, MI 49304",
+        "business_type": "Machine shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(231) 745-7728"
+    },
+    {
+        "name": "Chicago Manufacturing Co",
+        "address": "6592 Lincoln St, Gagetown, MI 48735",
+        "business_type": "Manufacturer",
+        "website": "cmdlubeoil.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(800) 537-2956"
+    },
+    {
+        "name": "Sensor Manufacturing Co",
+        "address": "40750 Grand River Ave, Novi, MI 48375",
+        "business_type": "Machine shop",
+        "website": "sensormfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(248) 474-7300"
+    },
+    {
+        "name": "Munn Manufacturing",
+        "address": "312 County Line Rd, Freeport, MI 49325",
+        "business_type": "Machine shop",
+        "website": "munnman.com",
+        "rating": "4.3",
+        "num_reviews": "4",
+        "phone": "(616) 765-3067"
+    },
+    {
+        "name": "Cobra Manufacturing Co",
+        "address": "1147 Rankin St, Troy, MI 48083",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(248) 585-1606"
+    },
+    {
+        "name": "Trelan Manufacturing",
+        "address": "498 8 Mile Rd, Remus, MI 49340",
+        "business_type": "Manufacturer",
+        "website": "trelan.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(989) 561-2280"
+    },
+    {
+        "name": "Wild Manufacturing LLC",
+        "address": "22832 Macomb Industrial Dr, Clinton Twp, MI 48036",
+        "business_type": "Machine shop",
+        "website": "greatlakessupermoto.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(586) 719-2028"
+    },
+    {
+        "name": "Power Manufacturing",
+        "address": "1886 Russell Ct, Holland, MI 49423",
+        "business_type": "Manufacturer",
+        "website": "powermanufacturing.net",
+        "rating": "4.3",
+        "num_reviews": "9",
+        "phone": "(616) 494-9370"
+    },
+    {
+        "name": "McNees Manufacturing",
+        "address": "750 N Canada Rd, Bailey, MI 49303",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(616) 675-7480"
+    },
+    {
+        "name": "United Manufacturing Inc",
+        "address": "4150 Sunnyside Dr, Holland, MI 49424",
+        "business_type": "Machine shop",
+        "website": "unitedmfginc.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(616) 738-8888"
+    },
+    {
+        "name": "Sweet Manufacturing Inc.",
+        "address": "3421 S Burdick St, Kalamazoo, MI 49001",
+        "business_type": "Racing car parts store",
+        "website": "sweetmanufacturing.com",
+        "rating": "4.8",
+        "num_reviews": "12",
+        "phone": "(800) 441-8619"
+    },
+    {
+        "name": "Quality Edge Manufacturing & Shipping",
+        "address": "2712 Walkent Dr NW, Walker, MI 49544",
+        "business_type": "Manufacturer",
+        "website": "qualityedge.com",
+        "rating": "5.0",
+        "num_reviews": "3",
+        "phone": "(888) 784-0878"
+    },
+    {
+        "name": "Precision Manufacturing Group, Inc.",
+        "address": "2176 E Laketon Ave, Muskegon, MI 49442",
+        "business_type": "Manufacturer",
+        "website": "pem-inc.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(616) 837-6764"
+    },
+    {
+        "name": "Steelcase Kentwood Manufacturing Plant",
+        "address": "4370, 4380 52nd St SE, Kentwood, MI 49512",
+        "business_type": "Furniture maker",
+        "website": "Website not found",
+        "rating": "3.6",
+        "num_reviews": "30",
+        "phone": "(888) 783-3522"
+    },
+    {
+        "name": "UACJ - Whitehall Industries 6th St Plant",
+        "address": "5175 W 6th St, Ludington, MI 49431",
+        "business_type": "Manufacturer",
+        "website": "whitehallindustries.com",
+        "rating": "3.8",
+        "num_reviews": "25",
+        "phone": "(231) 845-5101"
+    },
+    {
+        "name": "Sweet Manufacturing Inc.",
+        "address": "3421 S Burdick St, Kalamazoo, MI 49001",
+        "business_type": "Racing car parts store",
+        "website": "sweetmanufacturing.com",
+        "rating": "4.8",
+        "num_reviews": "12",
+        "phone": "(800) 441-8619"
+    },
+    {
+        "name": "Interstate Manufacturing Inc",
+        "address": "68935 Union St, Mottville, MI 49099",
+        "business_type": "Trailer manufacturer",
+        "website": "interstatemanufacturinginc.com",
+        "rating": "2.8",
+        "num_reviews": "21",
+        "phone": "(269) 483-7641"
+    },
+    {
+        "name": "Quality Edge Manufacturing & Shipping",
+        "address": "2712 Walkent Dr NW, Walker, MI 49544",
+        "business_type": "Manufacturer",
+        "website": "qualityedge.com",
+        "rating": "5.0",
+        "num_reviews": "3",
+        "phone": "(888) 784-0878"
+    },
+    {
+        "name": "Precision Manufacturing Group, Inc.",
+        "address": "2176 E Laketon Ave, Muskegon, MI 49442",
+        "business_type": "Manufacturer",
+        "website": "pem-inc.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(616) 837-6764"
+    },
+    {
+        "name": "Associate Manufacturing Inc",
+        "address": "3977 M-30, West Branch, MI 48661",
+        "business_type": "Machine shop",
+        "website": "ultcast.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(989) 345-0025"
+    },
+    {
+        "name": "Michigan Brush Mfg./DordenSqueegee Mfg",
+        "address": "7446 Central St, Detroit, MI 48210",
+        "business_type": "Manufacturer",
+        "website": "mi-brush.com",
+        "rating": "3.0",
+        "num_reviews": "2",
+        "phone": "(313) 834-1070"
+    },
+    {
+        "name": "Kyle's Manufacturing Co",
+        "address": "1281 Commerce Dr, Farwell, MI 48622",
+        "business_type": "Manufacturer",
+        "website": "kylesmfg.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(989) 588-8051"
+    },
+    {
+        "name": "ASG Manufacturing",
+        "address": "20100 Sherwood St, Detroit, MI 48234",
+        "business_type": "Manufacturer",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(313) 369-1627"
+    },
+    {
+        "name": "Perigee Manufacturing Company, Inc.",
+        "address": "7519 Intervale St, Detroit, MI 48238",
+        "business_type": "Manufacturer",
+        "website": "perigeemfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(313) 933-4420"
+    },
+    {
+        "name": "Michigan Laser Manufacturing",
+        "address": "718 Advance St, Brighton, MI 48116",
+        "business_type": "Laser cutting service",
+        "website": "milaserman.com",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(810) 522-6147"
+    },
+    {
+        "name": "MLP Manufacturing Inc.",
+        "address": "18630 Trimble Ct, Spring Lake, MI 49456",
+        "business_type": "Steel fabricator",
+        "website": "mlpmfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(616) 842-8767"
+    },
+    {
+        "name": "Amsted Industries Inc.",
+        "address": "3715 E Washington Rd, Saginaw, MI 48601",
+        "business_type": "Auto parts manufacturer",
+        "website": "meansindustries.com",
+        "rating": "4.6",
+        "num_reviews": "18",
+        "phone": "(989) 754-1433"
+    },
+    {
+        "name": "Fox Manufacturing Co",
+        "address": "32535 S River Rd, Harrison Twp, MI 48045",
+        "business_type": "Machine shop",
+        "website": "foxmfg.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(586) 468-1421"
+    },
+    {
+        "name": "Sabre Manufacturing",
+        "address": "2324 M-37, Hastings, MI 49058",
+        "business_type": "Machine shop",
+        "website": "facebook.com",
+        "rating": "No rating",
+        "num_reviews": "No reviews",
+        "phone": "(269) 945-4120"
+    },
+    {
+        "name": "Peacock Industries",
+        "address": "254 S M 37, Baldwin, MI 49304",
+        "business_type": "Manufacturer",
+        "website": "peacockinds.com",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(231) 745-4609"
+    },
+    {
+        "name": "Lee Manufacturing Inc",
+        "address": "6406 Airline Rd, Fruitport, MI 49415",
+        "business_type": "Machine shop",
+        "website": "Website not found",
+        "rating": "4.0",
+        "num_reviews": "No reviews",
+        "phone": "(231) 865-3359"
+    },
+    {
+        "name": "Metric Manufacturing Co",
+        "address": "1001 Foreman St SE, Lowell, MI 49331",
+        "business_type": "Machine shop",
+        "website": "metricmfg.com",
+        "rating": "3.0",
+        "num_reviews": "4",
+        "phone": "(616) 897-5959"
+    },
+    {
+        "name": "Raymond's Auto & Fleet",
+        "address": "2699 E Main St, Plainfield, IN 46168",
+        "business_type": "Auto repair shop",
+        "website": "greatwater360autocare.com",
+        "rating": "4.8",
+        "num_reviews": "403",
+        "phone": "(317) 838-7112"
+    },
+    {
+        "name": "Professional Automotive Inc",
+        "address": "7013 E 86th St, Indianapolis, IN 46250",
+        "business_type": "Auto repair shop",
+        "website": "professionalautomotiveinc.com",
+        "rating": "4.8",
+        "num_reviews": "526",
+        "phone": "(317) 596-0898"
+    },
+    {
+        "name": "West Side Auto Care",
+        "address": "7501 W 10th St, Indianapolis, IN 46214",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.5",
+        "num_reviews": "144",
+        "phone": "(317) 273-9111"
+    },
+    {
+        "name": "Eagle Auto",
+        "address": "4642 Northwestern Dr, Zionsville, IN 46077",
+        "business_type": "Auto repair shop",
+        "website": "greatwater360autocare.com",
+        "rating": "4.8",
+        "num_reviews": "463",
+        "phone": "(317) 755-6818"
+    },
+    {
+        "name": "Integrity Automotive",
+        "address": "40 S Rangeline Rd, Carmel, IN 46032",
+        "business_type": "Auto repair shop",
+        "website": "integrityautomotive.net",
+        "rating": "4.8",
+        "num_reviews": "261",
+        "phone": "(317) 573-0107"
+    },
+    {
+        "name": "Tyler Automotive",
+        "address": "2801 E 62nd St, Indianapolis, IN 46220",
+        "business_type": "Auto repair shop",
+        "website": "tylerautoindy.com",
+        "rating": "4.8",
+        "num_reviews": "542",
+        "phone": "(317) 255-6759"
+    },
+    {
+        "name": "Mike's Auto Service",
+        "address": "640 S Madison Ave # D, Greenwood, IN 46142",
+        "business_type": "Auto repair shop",
+        "website": "mikesautosvc.com",
+        "rating": "4.4",
+        "num_reviews": "70",
+        "phone": "(317) 889-7722"
+    },
+    {
+        "name": "Keep Swingin Garage",
+        "address": "8510 Pendleton Pike, Indianapolis, IN 46226",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "168",
+        "phone": "(317) 437-0586"
+    },
+    {
+        "name": "American Auto Repair",
+        "address": "5860 Brookville Rd, Indianapolis, IN 46219",
+        "business_type": "Mechanic",
+        "website": "americanautorepairs.com",
+        "rating": "5.0",
+        "num_reviews": "113",
+        "phone": "(317) 493-1492"
+    },
+    {
+        "name": "The Noble Mechanic",
+        "address": "1372 S 10th St, Noblesville, IN 46060",
+        "business_type": "Auto repair shop",
+        "website": "thenoblemechanic.com",
+        "rating": "4.8",
+        "num_reviews": "485",
+        "phone": "(317) 597-6650"
+    },
+    {
+        "name": "Auto Air & Heating, Inc",
+        "address": "14 S Westside Dr, New Palestine, IN 46163",
+        "business_type": "Auto repair shop",
+        "website": "autoairandheatingrepair.com",
+        "rating": "4.7",
+        "num_reviews": "66",
+        "phone": "(317) 861-4898"
+    },
+    {
+        "name": "A & A Tire and Auto Service",
+        "address": "2603 Lafayette Rd, Indianapolis, IN 46222",
+        "business_type": "Auto repair shop",
+        "website": "aatireautoservice.com",
+        "rating": "4.5",
+        "num_reviews": "195",
+        "phone": "(317) 925-5330"
+    },
+    {
+        "name": "Kevin's Auto Repair",
+        "address": "3125 E Thompson Rd, Indianapolis, IN 46227",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.7",
+        "num_reviews": "153",
+        "phone": "(317) 788-9740"
+    },
+    {
+        "name": "My Car Doc Car Care Clinic",
+        "address": "8246 Allisonville Rd, Indianapolis, IN 46250",
+        "business_type": "Auto repair shop",
+        "website": "mycardoc.com",
+        "rating": "4.3",
+        "num_reviews": "264",
+        "phone": "(317) 345-4528"
+    },
+    {
+        "name": "Downtown Car Care Center",
+        "address": "725 N Capitol Ave, Indianapolis, IN 46204",
+        "business_type": "Auto repair shop",
+        "website": "downtowncarcarecenter.com",
+        "rating": "4.8",
+        "num_reviews": "295",
+        "phone": "(317) 637-2419"
+    },
+    {
+        "name": "Autohaus Merkle",
+        "address": "3663 W Michigan St, Indianapolis, IN 46222",
+        "business_type": "Car repair and maintenance service",
+        "website": "autohausmerkle.com",
+        "rating": "4.7",
+        "num_reviews": "216",
+        "phone": "(317) 632-7000"
+    },
+    {
+        "name": "Quality First Motors Sales & Repair",
+        "address": "1581 N Cline Ave, Griffith, IN 46319",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.4",
+        "num_reviews": "136",
+        "phone": "(219) 923-5200"
+    },
+    {
+        "name": "Ty's Automotive",
+        "address": "5050 N Keystone Ave, Indianapolis, IN 46205",
+        "business_type": "Auto repair shop",
+        "website": "tysauto.com",
+        "rating": "4.7",
+        "num_reviews": "230",
+        "phone": "(317) 283-7400"
+    },
+    {
+        "name": "American Complete Auto Repair",
+        "address": "9275 W Taft St, Merrillville, IN 46410",
+        "business_type": "Auto repair shop",
+        "website": "americancompleteauto.com",
+        "rating": "4.7",
+        "num_reviews": "231",
+        "phone": "(219) 756-3000"
+    },
+    {
+        "name": "Bandys Auto Services",
+        "address": "8102 E Washington St, Indianapolis, IN 46219",
+        "business_type": "Auto repair shop",
+        "website": "bandysauto.godaddysites.com",
+        "rating": "4.3",
+        "num_reviews": "83",
+        "phone": "(317) 898-3336"
+    },
+    {
+        "name": "Midwest Auto Care",
+        "address": "1122 Marquette Rd, Lake Station, IN 46405",
+        "business_type": "Auto repair shop",
+        "website": "mwautocare.com",
+        "rating": "4.6",
+        "num_reviews": "522",
+        "phone": "(219) 388-6807"
+    },
+    {
+        "name": "Reggie's Motorworks",
+        "address": "1362 S 10th St, Noblesville, IN 46060",
+        "business_type": "Auto repair shop",
+        "website": "reggiesmotorworks.com",
+        "rating": "4.9",
+        "num_reviews": "959",
+        "phone": "(317) 662-2267"
+    },
+    {
+        "name": "Tony's Auto Repair",
+        "address": "4747 Hohman Ave, Hammond, IN 46327",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.6",
+        "num_reviews": "101",
+        "phone": "(219) 932-6000"
+    },
+    {
+        "name": "Quality First Motors Sales & Repair",
+        "address": "1581 N Cline Ave, Griffith, IN 46319",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.4",
+        "num_reviews": "136",
+        "phone": "(219) 923-5200"
+    },
+    {
+        "name": "Affordable Auto Service",
+        "address": "419 Lafayette Ave, Crawfordsville, IN 47933",
+        "business_type": "Auto repair shop",
+        "website": "affordableautocville.com",
+        "rating": "4.5",
+        "num_reviews": "81",
+        "phone": "(765) 307-2255"
+    },
+    {
+        "name": "Auto Air & Heating, Inc",
+        "address": "14 S Westside Dr, New Palestine, IN 46163",
+        "business_type": "Auto repair shop",
+        "website": "autoairandheatingrepair.com",
+        "rating": "4.7",
+        "num_reviews": "66",
+        "phone": "(317) 861-4898"
+    },
+    {
+        "name": "Dynamic Automotive Repair",
+        "address": "2302 E 38th St Suite D, Indianapolis, IN 46219",
+        "business_type": "Auto repair shop",
+        "website": "facebook.com",
+        "rating": "4.4",
+        "num_reviews": "25",
+        "phone": "(317) 792-2178"
+    },
+    {
+        "name": "Accent Auto Repair",
+        "address": "2300 S 30th St SUITE B, Lafayette, IN 47909",
+        "business_type": "Auto repair shop",
+        "website": "accentauto17.wixsite.com",
+        "rating": "4.9",
+        "num_reviews": "164",
+        "phone": "(765) 357-5071"
+    },
+    {
+        "name": "Indy Muffler And Auto Repair LLC",
+        "address": "2603 Teal Rd, Lafayette, IN 47905",
+        "business_type": "Muffler shop",
+        "website": "indymufflerauto.com",
+        "rating": "4.8",
+        "num_reviews": "175",
+        "phone": "(765) 477-6232"
+    },
+    {
+        "name": "Professional Automotive Inc",
+        "address": "7013 E 86th St, Indianapolis, IN 46250",
+        "business_type": "Auto repair shop",
+        "website": "professionalautomotiveinc.com",
+        "rating": "4.8",
+        "num_reviews": "526",
+        "phone": "(317) 596-0898"
+    },
+    {
+        "name": "South Indy Auto Repair",
+        "address": "8301 Lake Rd, Indianapolis, IN 46217",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.9",
+        "num_reviews": "46",
+        "phone": "(317) 418-0709"
+    },
+    {
+        "name": "Hoosier Auto Repair",
+        "address": "3940 IN-3, New Castle, IN 47362",
+        "business_type": "Auto repair shop",
+        "website": "hoosierauto.group",
+        "rating": "4.8",
+        "num_reviews": "109",
+        "phone": "(765) 521-9766"
+    },
+    {
+        "name": "Tyler Automotive",
+        "address": "2801 E 62nd St, Indianapolis, IN 46220",
+        "business_type": "Auto repair shop",
+        "website": "tylerautoindy.com",
+        "rating": "4.8",
+        "num_reviews": "542",
+        "phone": "(317) 255-6759"
+    },
+    {
+        "name": "317 Auto Service LLC",
+        "address": "499 Wall St, Greenwood, IN 46143",
+        "business_type": "Engine rebuilding service",
+        "website": "instagram.com",
+        "rating": "4.6",
+        "num_reviews": "94",
+        "phone": "(317) 453-9111"
+    },
+    {
+        "name": "Mike's_Mobi_Mech LLC",
+        "address": "2919 Eastern Ave, Indianapolis, IN 46218",
+        "business_type": "Mechanic",
+        "website": "Website not found",
+        "rating": "4.2",
+        "num_reviews": "90",
+        "phone": "(317) 983-8803"
+    },
+    {
+        "name": "Ressler Repair Services",
+        "address": "5903 S Western Ave, Marion, IN 46953",
+        "business_type": "Truck repair shop",
+        "website": "Website not found",
+        "rating": "4.6",
+        "num_reviews": "72",
+        "phone": "(765) 674-6296"
+    },
+    {
+        "name": "West Side Auto Care",
+        "address": "7501 W 10th St, Indianapolis, IN 46214",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.5",
+        "num_reviews": "144",
+        "phone": "(317) 273-9111"
+    },
+    {
+        "name": "Reeder’s Auto Service Center",
+        "address": "6436 Central Ave, Portage, IN 46368",
+        "business_type": "Auto repair shop",
+        "website": "reedersauto.com",
+        "rating": "4.9",
+        "num_reviews": "1,657",
+        "phone": "(219) 763-1782"
+    },
+    {
+        "name": "Tyler's Auto Repair LLC",
+        "address": "409 S Eisenhower Dr, Edinburgh, IN 46124",
+        "business_type": "Car repair and maintenance service",
+        "website": "godaddysites.com",
+        "rating": "5.0",
+        "num_reviews": "96",
+        "phone": "(317) 525-4882"
+    },
+    {
+        "name": "VG AUTO CARE",
+        "address": "5301 Commerce Cir a, Indianapolis, IN 46237",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.7",
+        "num_reviews": "76",
+        "phone": "(317) 886-7868"
+    },
+    {
+        "name": "Auto Works",
+        "address": "919 N McKinley Ave, Rensselaer, IN 47978",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.8",
+        "num_reviews": "49",
+        "phone": "(219) 866-4131"
+    },
+    {
+        "name": "Hoosier Auto Repair",
+        "address": "104 3rd St, Aurora, IN 47001",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.5",
+        "num_reviews": "91",
+        "phone": "(812) 926-6032"
+    },
+    {
+        "name": "Alexander Auto Repair",
+        "address": "174 Vista Pkwy, Avon, IN 46123",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.9",
+        "num_reviews": "69",
+        "phone": "(317) 272-9780"
+    },
+    {
+        "name": "A & A Tire and Auto Service",
+        "address": "2603 Lafayette Rd, Indianapolis, IN 46222",
+        "business_type": "Auto repair shop",
+        "website": "aatireautoservice.com",
+        "rating": "4.5",
+        "num_reviews": "195",
+        "phone": "(317) 925-5330"
+    },
+    {
+        "name": "Rick's Automotive Service Inc.",
+        "address": "54 E Springfield Ave, Champaign, IL 61820",
+        "business_type": "Auto repair shop",
+        "website": "ricksautocu.com",
+        "rating": "4.2",
+        "num_reviews": "157",
+        "phone": "(217) 351-2662"
+    },
+    {
+        "name": "New Paris Auto Service",
+        "address": "19110 Co Rd 46, New Paris, IN 46553",
+        "business_type": "Auto repair shop",
+        "website": "newparisauto.com",
+        "rating": "4.8",
+        "num_reviews": "12",
+        "phone": "(574) 831-4411"
+    },
+    {
+        "name": "Adams Automotive",
+        "address": "431 Winston Ct Ste. D, Schererville, IN 46375",
+        "business_type": "Auto repair shop",
+        "website": "adamsautomotivenwi.com",
+        "rating": "5.0",
+        "num_reviews": "76",
+        "phone": "(219) 865-9840"
+    },
+    {
+        "name": "Rule Auto Care",
+        "address": "105 E Washington St, Rensselaer, IN 47978",
+        "business_type": "Auto repair shop",
+        "website": "ruleautocare.com",
+        "rating": "4.8",
+        "num_reviews": "44",
+        "phone": "(219) 866-7188"
+    },
+    {
+        "name": "Shidler's Auto Repair & Custom Exhaust",
+        "address": "8514 W Washington St, Indianapolis, IN 46231",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "70",
+        "phone": "(317) 248-8110"
+    },
+    {
+        "name": "Todo Auto Repair",
+        "address": "7142-46 Indianapolis Blvd, Hammond, IN 46323",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.3",
+        "num_reviews": "165",
+        "phone": "(219) 802-8122"
+    },
+    {
+        "name": "Miller Auto Care",
+        "address": "985 N Rangeline Rd, Carmel, IN 46032",
+        "business_type": "Auto repair shop",
+        "website": "millerautocarecarmel.com",
+        "rating": "4.3",
+        "num_reviews": "121",
+        "phone": "(317) 844-7566"
+    },
+    {
+        "name": "Fatmans Auto Repair, LLC",
+        "address": "7445 Pendleton Pike, Indianapolis, IN 46226",
+        "business_type": "Auto repair shop",
+        "website": "fatmansautoservices.com",
+        "rating": "3.3",
+        "num_reviews": "18",
+        "phone": "(317) 438-6207"
+    },
+    {
+        "name": "Jaquie's Brake Plus",
+        "address": "404 S Chestnut St, Champaign, IL 61820",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.8",
+        "num_reviews": "35",
+        "phone": "(217) 552-0879"
+    },
+    {
+        "name": "A & Z Auto Repair & Tires",
+        "address": "1930 Lafayette Rd, Indianapolis, IN 46222",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.7",
+        "num_reviews": "113",
+        "phone": "(317) 979-2773"
+    },
+    {
+        "name": "Peters Automotive",
+        "address": "7516 US-36, Bainbridge, IN 46105",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "4",
+        "phone": "(317) 539-5589"
+    },
+    {
+        "name": "AutoChoice Service Center",
+        "address": "2009 S Yost Ave, Bloomington, IN 47403",
+        "business_type": "Auto repair shop",
+        "website": "autochoiceservice.com",
+        "rating": "4.7",
+        "num_reviews": "216",
+        "phone": "(812) 339-9898"
+    },
+    {
+        "name": "TMS Auto Care",
+        "address": "1605 W Springfield Ave, Champaign, IL 61821",
+        "business_type": "Auto repair shop",
+        "website": "autorepairchampaignil.com",
+        "rating": "4.6",
+        "num_reviews": "137",
+        "phone": "(217) 398-4070"
+    },
+    {
+        "name": "1 Stop Auto",
+        "address": "2006 W 2nd St, Marion, IN 46952",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.5",
+        "num_reviews": "6",
+        "phone": "(765) 664-2935"
+    },
+    {
+        "name": "Eccles Auto Repair",
+        "address": "2729 300 N, Marion, IN 46952",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "39",
+        "phone": "(765) 603-1267"
+    },
+    {
+        "name": "Kevin's Auto Repair",
+        "address": "3125 E Thompson Rd, Indianapolis, IN 46227",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.7",
+        "num_reviews": "153",
+        "phone": "(317) 788-9740"
+    },
+    {
+        "name": "plainfield's trusted auto mechanic",
+        "address": "2750 E Main St, Plainfield, IN 46168",
+        "business_type": "Auto repair shop",
+        "website": "plainfieldmechanic.com",
+        "rating": "5.0",
+        "num_reviews": "3",
+        "phone": "(317) 839-5667"
+    },
+    {
+        "name": "In-N-Out Automotive Repair",
+        "address": "1123 E 38th St, Marion, IN 46953",
+        "business_type": "Auto repair shop",
+        "website": "inoutautorepair.com",
+        "rating": "4.2",
+        "num_reviews": "225",
+        "phone": "(765) 674-2277"
+    },
+    {
+        "name": "Gary's Auto Repair",
+        "address": "1515 W Indiana Ave, Chesterton, IN 46304",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.2",
+        "num_reviews": "9",
+        "phone": "(219) 929-4279"
+    },
+    {
+        "name": "Perfect Touch Auto Repair",
+        "address": "2602 N Mattis Ave, Champaign, IL 61822",
+        "business_type": "Auto repair shop",
+        "website": "perfecttouchautoil.com",
+        "rating": "4.9",
+        "num_reviews": "160",
+        "phone": "(217) 419-2998"
+    },
+    {
+        "name": "Dyno-Tune",
+        "address": "104 S Vine St, Urbana, IL 61802",
+        "business_type": "Auto repair shop",
+        "website": "dynotune.biz",
+        "rating": "4.7",
+        "num_reviews": "58",
+        "phone": "(217) 328-0007"
+    },
+    {
+        "name": "Michigan Road Auto Center",
+        "address": "5835 N Michigan Rd, Indianapolis, IN 46228",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.7",
+        "num_reviews": "93",
+        "phone": "(317) 257-6377"
+    },
+    {
+        "name": "Matthews Auto Repair",
+        "address": "725 E 106th St, Indianapolis, IN 46280",
+        "business_type": "Auto repair shop",
+        "website": "matthewsautorepairinc.com",
+        "rating": "4.8",
+        "num_reviews": "84",
+        "phone": "(317) 846-5569"
+    },
+    {
+        "name": "Big John's Auto Repair, L.L.C.",
+        "address": "162 Taylor St, Mooresville, IN 46158",
+        "business_type": "Auto repair shop",
+        "website": "bigjohnsautomooresville.com",
+        "rating": "4.4",
+        "num_reviews": "83",
+        "phone": "(317) 831-2100"
+    },
+    {
+        "name": "Zionsville Auto Service",
+        "address": "95 Brendon Way, Zionsville, IN 46077",
+        "business_type": "Auto repair shop",
+        "website": "zionsvilleauto.com",
+        "rating": "4.7",
+        "num_reviews": "64",
+        "phone": "(317) 873-5440"
+    },
+    {
+        "name": "Downtown Car Care Center",
+        "address": "725 N Capitol Ave, Indianapolis, IN 46204",
+        "business_type": "Auto repair shop",
+        "website": "downtowncarcarecenter.com",
+        "rating": "4.8",
+        "num_reviews": "295",
+        "phone": "(317) 637-2419"
+    },
+    {
+        "name": "Beaumont Tire and Auto Service",
+        "address": "1202 W Bloomington Rd, Champaign, IL 61821",
+        "business_type": "Auto repair shop",
+        "website": "beaumontalignment.com",
+        "rating": "4.6",
+        "num_reviews": "91",
+        "phone": "(217) 239-3939"
+    },
+    {
+        "name": "Brian's B & D Auto Repair Shop",
+        "address": "3098 E 37th Ave Suite B, Lake Station, IN 46405",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.3",
+        "num_reviews": "51",
+        "phone": "(219) 805-8095"
+    },
+    {
+        "name": "Bandys Auto Services",
+        "address": "8102 E Washington St, Indianapolis, IN 46219",
+        "business_type": "Auto repair shop",
+        "website": "bandysauto.godaddysites.com",
+        "rating": "4.3",
+        "num_reviews": "83",
+        "phone": "(317) 898-3336"
+    },
+    {
+        "name": "B Sanchez Auto Repair Inc",
+        "address": "101 Edgebrook Dr, Champaign, IL 61820",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "3.7",
+        "num_reviews": "3",
+        "phone": "(217) 355-4789"
+    },
+    {
+        "name": "Dentons Auto Repair Llc",
+        "address": "8070 E Washington St, Indianapolis, IN 46219",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.6",
+        "num_reviews": "164",
+        "phone": "(317) 757-2558"
+    },
+    {
+        "name": "Gill's Auto Valparaiso, IN",
+        "address": "2602 Beech St, Valparaiso, IN 46383",
+        "business_type": "Auto repair shop",
+        "website": "gillsautorepairinc.net",
+        "rating": "4.7",
+        "num_reviews": "99",
+        "phone": "(219) 600-4697"
+    },
+    {
+        "name": "Strohm Automotive LLC",
+        "address": "5824 S Harding St, Indianapolis, IN 46217",
+        "business_type": "Auto repair shop",
+        "website": "strohmautomotive.com",
+        "rating": "4.8",
+        "num_reviews": "66",
+        "phone": "(317) 787-0822"
+    },
+    {
+        "name": "Discount Auto Repair Inc.",
+        "address": "12114 E Washington St, Indianapolis, IN 46229",
+        "business_type": "Auto repair shop",
+        "website": "discountautorepairin.com",
+        "rating": "4.7",
+        "num_reviews": "111",
+        "phone": "(317) 894-4000"
+    },
+    {
+        "name": "Central Auto",
+        "address": "1452 W US Hwy 30, Valparaiso, IN 46385",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.6",
+        "num_reviews": "74",
+        "phone": "(219) 242-8213"
+    },
+    {
+        "name": "Dave's Garage",
+        "address": "2900 S Main St, South Bend, IN 46614",
+        "business_type": "Auto repair shop",
+        "website": "davesgaragesouthbend.com",
+        "rating": "4.8",
+        "num_reviews": "387",
+        "phone": "(574) 291-4561"
+    },
+    {
+        "name": "Green's Auto Repair",
+        "address": "9999 N Smokey Row Rd, Mooresville, IN 46158",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.8",
+        "num_reviews": "26",
+        "phone": "(317) 345-3852"
+    },
+    {
+        "name": "Malless Auto Services",
+        "address": "4525 W 71st St, Indianapolis, IN 46268",
+        "business_type": "Auto repair shop",
+        "website": "mallessauto.com",
+        "rating": "4.7",
+        "num_reviews": "568",
+        "phone": "(317) 329-8039"
+    },
+    {
+        "name": "Price Auto Repair",
+        "address": "11517 IN-15, Milford, IN 46542",
+        "business_type": "Auto repair shop",
+        "website": "priceautorepair.net",
+        "rating": "4.8",
+        "num_reviews": "60",
+        "phone": "(574) 658-9556"
+    },
+    {
+        "name": "Collins Auto Repair LLC",
+        "address": "11293 IN-15, Milford, IN 46542",
+        "business_type": "Auto repair shop",
+        "website": "collins-auto-repair.com",
+        "rating": "4.9",
+        "num_reviews": "22",
+        "phone": "(603) 738-7638"
+    },
+    {
+        "name": "Auto Clinic & Muffler Shop",
+        "address": "4048 Hohman Ave, Hammond, IN 46327",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.3",
+        "num_reviews": "64",
+        "phone": "(219) 933-4440"
+    },
+    {
+        "name": "Anderson Automotive",
+        "address": "6840 S 100 E, North Judson, IN 46366",
+        "business_type": "Mechanic",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "46",
+        "phone": "(574) 896-4048"
+    },
+    {
+        "name": "Vega Auto Service",
+        "address": "4459 Old Allisonville Rd, Indianapolis, IN 46205",
+        "business_type": "Auto repair shop",
+        "website": "facebook.com",
+        "rating": "4.6",
+        "num_reviews": "193",
+        "phone": "(317) 377-4730"
+    },
+    {
+        "name": "Keep Swingin Garage",
+        "address": "8510 Pendleton Pike, Indianapolis, IN 46226",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "168",
+        "phone": "(317) 437-0586"
+    },
+    {
+        "name": "Corey's Automotive Repair & Service (C.A.R.S)",
+        "address": "224 S Baldwin Ave, Pennsylvania St 142 S, Marion, IN 46952",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.6",
+        "num_reviews": "34",
+        "phone": "(765) 674-4444"
+    },
+    {
+        "name": "Northeast Auto Service",
+        "address": "5155 E 65th St, Indianapolis, IN 46220",
+        "business_type": "Auto repair shop",
+        "website": "autorepairindy.com",
+        "rating": "4.6",
+        "num_reviews": "194",
+        "phone": "(317) 475-1846"
+    },
+    {
+        "name": "Coleman Auto Repair Service, L.L.C.",
+        "address": "10591 N College Ave, Indianapolis, IN 46280",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.9",
+        "num_reviews": "52",
+        "phone": "(317) 846-8916"
+    },
+    {
+        "name": "Brooks Auto Repair",
+        "address": "15047 5th St, Blanford, IN 47831",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "2",
+        "phone": "(765) 828-9830"
+    },
+    {
+        "name": "Ty's Automotive",
+        "address": "5050 N Keystone Ave, Indianapolis, IN 46205",
+        "business_type": "Auto repair shop",
+        "website": "tysauto.com",
+        "rating": "4.7",
+        "num_reviews": "230",
+        "phone": "(317) 283-7400"
+    },
+    {
+        "name": "Affordable Auto Repair",
+        "address": "767 N U.S. 41, Rockville, IN 47872",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "3.9",
+        "num_reviews": "26",
+        "phone": "(765) 569-6911"
+    },
+    {
+        "name": "Auto Diagnostic & Repair Center",
+        "address": "70 Creasy Ct, Lafayette, IN 47905",
+        "business_type": "Auto repair shop",
+        "website": "autodrepair.com",
+        "rating": "4.1",
+        "num_reviews": "81",
+        "phone": "(765) 446-1977"
+    },
+    {
+        "name": "Fine Tune Auto Service",
+        "address": "681 IN-130, Hobart, IN 46342",
+        "business_type": "Auto repair shop",
+        "website": "finetuneauto.com",
+        "rating": "4.6",
+        "num_reviews": "94",
+        "phone": "(219) 244-4152"
+    },
+    {
+        "name": "ASG Automotive",
+        "address": "5841 Thunderbird Rd Ste.3, Indianapolis, IN 46236",
+        "business_type": "Auto repair shop",
+        "website": "asgindy.com",
+        "rating": "4.6",
+        "num_reviews": "396",
+        "phone": "(317) 826-2906"
+    },
+    {
+        "name": "TNT Auto Services",
+        "address": "3215 S Poplar St, Marion, IN 46953",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.3",
+        "num_reviews": "100",
+        "phone": "(765) 662-0843"
+    },
+    {
+        "name": "Todo Auto Repair 2",
+        "address": "2303 Central Ave, Lake Station, IN 46405",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.3",
+        "num_reviews": "132",
+        "phone": "(219) 654-4579"
+    },
+    {
+        "name": "Nash Auto Repair",
+        "address": "239 W South H St, Gas City, IN 46933",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "22",
+        "phone": "(765) 674-1247"
+    },
+    {
+        "name": "Old Town Automotive",
+        "address": "1725 Church St, Clayton, IN 46118",
+        "business_type": "Auto repair shop",
+        "website": "facebook.com",
+        "rating": "4.6",
+        "num_reviews": "16",
+        "phone": "(317) 539-6300"
+    },
+    {
+        "name": "F & F Automotive",
+        "address": "102 Mercury Dr, Champaign, IL 61822",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "5.0",
+        "num_reviews": "No reviews",
+        "phone": "(217) 355-3519"
+    },
+    {
+        "name": "Right-Tech Automotive",
+        "address": "1407 Kerr Ave, Urbana, IL 61802",
+        "business_type": "Mechanic",
+        "website": "Website not found",
+        "rating": "4.0",
+        "num_reviews": "5",
+        "phone": "(217) 552-9937"
+    },
+    {
+        "name": "Average Joe Auto Repair",
+        "address": "1001 W Bradley Ave, Champaign, IL 61821",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.7",
+        "num_reviews": "26",
+        "phone": "(217) 356-5900"
+    },
+    {
+        "name": "Automotive Technical Services",
+        "address": "200 N 3rd St, New Market, IN 47965",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.5",
+        "num_reviews": "29",
+        "phone": "(765) 866-7103"
+    },
+    {
+        "name": "Midnight Auto Repair",
+        "address": "4200 Bluff Rd, Indianapolis, IN 46217",
+        "business_type": "Auto repair shop",
+        "website": "Website not found",
+        "rating": "4.5",
+        "num_reviews": "57",
+        "phone": "(317) 331-5052"
+    },
+    {
+        "name": "Venice Auto And Truck Repair",
+        "address": "10087 Allisonville Rd # D, Fishers, IN 46038",
+        "business_type": "Car repair and maintenance service",
+        "website": "Website not found",
+        "rating": "4.4",
+        "num_reviews": "88",
+        "phone": "(317) 595-5677"
+    },
+    {
+        "name": "Peter B's Automotive",
+        "address": "509 N Lierman Ave, Urbana, IL 61802",
+        "business_type": "Auto repair shop",
+        "website": "peterb.com",
+        "rating": "4.7",
+        "num_reviews": "65",
+        "phone": "(217) 367-3821"
+    },
+    {
+        "name": "INDY AUTO REPAIR",
+        "address": "TURN ON, 421 Ransdell Rd ITS EASIER, Ping Dr, Lebanon, IN 46052",
+        "business_type": "Mechanic",
+        "website": "Website not found",
+        "rating": "4.9",
+        "num_reviews": "8",
+        "phone": "(765) 481-2094"
+    },
+    {
+        "name": null,
+        "address": null,
+        "business_type": null,
+        "website": null,
+        "rating": null,
+        "num_reviews": null,
+        "phone": null
+    },
+    {
+        "name": "Zip Zap Auto",
+        "address": "3220 N Durango Dr, Las Vegas, NV 89129",
+        "business_type": "Auto repair shop",
+        "website": "zipzapauto.com",
+        "rating": "4.8",
+        "num_reviews": "1,756",
+        "phone": "(702) 644-1400"
+    },
+    {
+        "name": "Nevada Auto Repair",
+        "address": "2951 N Deer Run Rd #3, Carson City, NV 89701",
+        "business_type": "Auto repair shop",
+        "website": "nvautorepair.com",
+        "rating": "4.9",
+        "num_reviews": "34",
+        "phone": "(775) 841-2828"
+    },
+    {
+        "name": "Anytime Auto Repair",
+        "address": "3715 W Twain Ave, Las Vegas, NV 89103",
+        "business_type": "Mechanic",
+        "website": null,
+        "rating": "4.4",
+        "num_reviews": "131",
+        "phone": null
+    },
+    {
+        "name": "Doc Auto Repair",
+        "address": "4380 E Lake Mead Blvd # F, Las Vegas, NV 89115",
+        "business_type": "Auto repair shop",
+        "website": "docautorepairs.com",
+        "rating": "4.8",
+        "num_reviews": "319",
+        "phone": "(702) 643-3880"
+    },
+    {
+        "name": "Las vegas Auto Repair",
+        "address": "3070 W Sirius Ave Suite#109, Las Vegas, NV 89102",
+        "business_type": "Auto repair shop",
+        "website": "facebook.com",
+        "rating": "4.2",
+        "num_reviews": "72",
+        "phone": "(702) 416-4195"
+    },
+    {
+        "name": "Let's go! Auto Repair",
+        "address": "7010 W Russell Rd Ste B, Las Vegas, NV 89113",
+        "business_type": "Auto repair shop",
+        "website": "letsgoautorepair.com",
+        "rating": "4.9",
+        "num_reviews": "204",
+        "phone": "(702) 209-2333"
+    },
+    {
+        "name": "Nevada Auto Diagnostics",
+        "address": "5425 Louie Ln, Reno, NV 89511",
+        "business_type": "Auto repair shop",
+        "website": "nevada-auto-diagnostics.com",
+        "rating": "4.6",
+        "num_reviews": "410",
+        "phone": "(775) 825-7664"
+    },
+    {
+        "name": "Johnny D's Auto",
+        "address": "2065 Pabco Rd, Henderson, NV 89011",
+        "business_type": "Auto repair shop",
+        "website": "johnnydsauto.com",
+        "rating": "4.9",
+        "num_reviews": "346",
+        "phone": "(702) 248-9046"
+    },
+    {
+        "name": "Master Tech Automotive & Cycle Repair",
+        "address": "1300 N Boulder Hwy Suite B, Henderson, NV 89011",
+        "business_type": "Auto repair shop",
+        "website": "hendersonautomobilerepairshop.com",
+        "rating": "4.7",
+        "num_reviews": "272",
+        "phone": "(702) 641-9389"
+    },
+    {
+        "name": "Sun Auto Service",
+        "address": "3027 St Rose Pkwy, Henderson, NV 89052",
+        "business_type": "Auto repair shop",
+        "website": "sunautoservice.com",
+        "rating": "4.5",
+        "num_reviews": "967",
+        "phone": "(702) 558-0150"
+    },
+    {
+        "name": "All European I Auto Repair Las Vegas",
+        "address": "7010 W Russell Rd #A, Las Vegas, NV 89113",
+        "business_type": "Auto repair shop",
+        "website": "alleuropeanautorepair.com",
+        "rating": "4.5",
+        "num_reviews": "339",
+        "phone": "(702) 363-9191"
+    },
+    {
+        "name": "Nevada Auto Center #2",
+        "address": "2975 Sunrise Ave, Las Vegas, NV 89101",
+        "business_type": "Auto repair shop",
+        "website": "facebook.com",
+        "rating": "4.6",
+        "num_reviews": "137",
+        "phone": "(725) 204-1888"
+    },
+    {
+        "name": "Silver State Complete Auto Repair",
+        "address": "Unit A-9, 1010 N Stephanie St, Henderson, NV 89014",
+        "business_type": "Auto repair shop",
+        "website": "silverstateautorepair.com",
+        "rating": "4.7",
+        "num_reviews": "103",
+        "phone": "(702) 558-9853"
+    },
+    {
+        "name": "Jose Auto Repair Shop",
+        "address": "3996 Las Vegas Blvd N, Las Vegas, NV 89115",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.9",
+        "num_reviews": "112",
+        "phone": "(702) 808-1930"
+    },
+    {
+        "name": "Safe Auto Care",
+        "address": "3385 E Russell Rd, Las Vegas, NV 89120",
+        "business_type": "Auto repair shop",
+        "website": "safeautocare.com",
+        "rating": "4.3",
+        "num_reviews": "252",
+        "phone": "(702) 903-4750"
+    },
+    {
+        "name": "H-TECH",
+        "address": "2069 S Rainbow Blvd, Las Vegas, NV 89146",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.9",
+        "num_reviews": "132",
+        "phone": "(702) 685-1400"
+    },
+    {
+        "name": "AAA Henderson Boulder Auto Repair",
+        "address": "1300 N Boulder Hwy Suite E, Henderson, NV 89011",
+        "business_type": "Auto repair shop",
+        "website": "mwg.aaa.com",
+        "rating": "4.8",
+        "num_reviews": "305",
+        "phone": "(702) 568-5353"
+    },
+    {
+        "name": "Stop n Go Auto Center",
+        "address": "2013 S Decatur Blvd, Las Vegas, NV 89102",
+        "business_type": "Auto repair shop",
+        "website": "stopngoautocenter.com",
+        "rating": "4.8",
+        "num_reviews": "346",
+        "phone": "(702) 665-4094"
+    },
+    {
+        "name": "RS Nevada - Car Repair & Auto Shop",
+        "address": "3421 S Decatur Blvd #3, Las Vegas, NV 89102",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.3",
+        "num_reviews": "24",
+        "phone": "(602) 432-2948"
+    },
+    {
+        "name": "Silver State Complete Auto Repair",
+        "address": "Unit A-9, 1010 N Stephanie St, Henderson, NV 89014",
+        "business_type": "Auto repair shop",
+        "website": "silverstateautorepair.com",
+        "rating": "4.7",
+        "num_reviews": "103",
+        "phone": "(702) 558-9853"
+    },
+    {
+        "name": "Owens Auto Repair",
+        "address": "211 N Mojave Rd, Las Vegas, NV 89101",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.7",
+        "num_reviews": "31",
+        "phone": "(702) 598-3773"
+    },
+    {
+        "name": "JCJ Auto Repair & Sales",
+        "address": "5115 Dean Martin Dr #301, Las Vegas, NV 89118",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.5",
+        "num_reviews": "53",
+        "phone": "(702) 736-6477"
+    },
+    {
+        "name": "Southern Nevada Automotive Repair",
+        "address": "5240 Spring Mountain Rd a, Las Vegas, NV 89146",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.7",
+        "num_reviews": "10",
+        "phone": null
+    },
+    {
+        "name": "A Master Mechanic",
+        "address": "95 E Glendale Ave, Sparks, NV 89431",
+        "business_type": "Auto repair shop",
+        "website": "amastermechanic.com",
+        "rating": "4.7",
+        "num_reviews": "429",
+        "phone": "(775) 358-6777"
+    },
+    {
+        "name": "Executive Auto Service | Unmatched In Convenience Integrity and Skill | Exotic, Luxury, & Euro Car Repair",
+        "address": "4355 W Reno Ave suite 9, Las Vegas, NV 89118",
+        "business_type": "Auto repair shop",
+        "website": "myeaslv.com",
+        "rating": "5.0",
+        "num_reviews": "89",
+        "phone": "(702) 600-8378"
+    },
+    {
+        "name": "Precision Auto Repair",
+        "address": "800 E Aultman St, Ely, NV 89301",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.4",
+        "num_reviews": "87",
+        "phone": "(775) 289-5210"
+    },
+    {
+        "name": "Dave's Auto Repair",
+        "address": "747 Zion St, Nevada City, CA 95959",
+        "business_type": "Auto repair shop",
+        "website": "autonevadacity.com",
+        "rating": "4.8",
+        "num_reviews": "66",
+        "phone": "(530) 265-6706"
+    },
+    {
+        "name": "Hi Tech Automotive",
+        "address": "100 Gentry Wy C8, Reno, NV 89502",
+        "business_type": "Auto repair shop",
+        "website": "hitechcarrepair.com",
+        "rating": "4.4",
+        "num_reviews": "118",
+        "phone": "(775) 828-1953"
+    },
+    {
+        "name": "Jose Auto Repair Shop",
+        "address": "3996 Las Vegas Blvd N, Las Vegas, NV 89115",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.9",
+        "num_reviews": "112",
+        "phone": "(702) 808-1930"
+    },
+    {
+        "name": "Northern Nevada Diesel",
+        "address": "515 Tranquil Dr, Sparks, NV 89441",
+        "business_type": "Auto repair shop",
+        "website": "northernnevadadiesel.com",
+        "rating": "5.0",
+        "num_reviews": null,
+        "phone": "(619) 909-7811"
+    },
+    {
+        "name": "High Desert Auto and Diesel Repair, LLC",
+        "address": "405 S Center St, Fernley, NV 89408",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.2",
+        "num_reviews": "96",
+        "phone": "(775) 575-2466"
+    },
+    {
+        "name": "Done Right Auto Repairs",
+        "address": "5770 S Valley View Blvd ste A, Las Vegas, NV 89118",
+        "business_type": "Auto repair shop",
+        "website": "donerightautomotivelv.com",
+        "rating": "4.3",
+        "num_reviews": "59",
+        "phone": "(702) 891-8911"
+    },
+    {
+        "name": "Auto Specialists",
+        "address": "705 Juniper Way, Boulder City, NV 89005",
+        "business_type": "Auto repair shop",
+        "website": "bcautospecialists.com",
+        "rating": "4.3",
+        "num_reviews": "204",
+        "phone": "(702) 293-4776"
+    },
+    {
+        "name": "MC Auto Mobile Repair Shop",
+        "address": "4655 Boulder Hwy suite a1, Las Vegas, NV 89121",
+        "business_type": "Car repair and maintenance service",
+        "website": "mcautomobilerepairshops.com",
+        "rating": "4.2",
+        "num_reviews": "49",
+        "phone": "(702) 666-5717"
+    },
+    {
+        "name": "Ace Auto Repair",
+        "address": "590 West St, Pahrump, NV 89048",
+        "business_type": "Auto repair shop",
+        "website": "ace.auto.repair",
+        "rating": "4.8",
+        "num_reviews": "47",
+        "phone": "(775) 727-1196"
+    },
+    {
+        "name": "LT Automotive",
+        "address": "669 Linden St, Reno, NV 89502",
+        "business_type": "Auto repair shop",
+        "website": "ltreno.com",
+        "rating": "4.7",
+        "num_reviews": "488",
+        "phone": "(775) 828-7373"
+    },
+    {
+        "name": "GTM Auto Repair",
+        "address": "86 Linehan Rd, Carson City, NV 89706",
+        "business_type": "Auto repair shop",
+        "website": "gtmobileautorepair.com",
+        "rating": "4.8",
+        "num_reviews": "25",
+        "phone": "(775) 600-3406"
+    },
+    {
+        "name": "NV Autopro Services",
+        "address": "5115 Dean Martin Dr Suite 206, Las Vegas, NV 89118",
+        "business_type": "Auto repair shop",
+        "website": "nvautopro.com",
+        "rating": "4.9",
+        "num_reviews": "80",
+        "phone": "(702) 405-9048"
+    },
+    {
+        "name": "H-TECH",
+        "address": "2069 S Rainbow Blvd, Las Vegas, NV 89146",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.9",
+        "num_reviews": "132",
+        "phone": "(702) 685-1400"
+    },
+    {
+        "name": "Premier Auto Repair",
+        "address": "1010 N Stephanie St a12, Henderson, NV 89014",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.7",
+        "num_reviews": "52",
+        "phone": "(702) 385-2639"
+    },
+    {
+        "name": "Sun Auto Service",
+        "address": "3027 St Rose Pkwy, Henderson, NV 89052",
+        "business_type": "Auto repair shop",
+        "website": "sunautoservice.com",
+        "rating": "4.5",
+        "num_reviews": "967",
+        "phone": "(702) 558-0150"
+    },
+    {
+        "name": "The Shop",
+        "address": "720 Preston Way #A, Mesquite, NV 89027",
+        "business_type": "Auto repair shop",
+        "website": "theshopmesquite.com",
+        "rating": "4.5",
+        "num_reviews": "70",
+        "phone": "(702) 346-6358"
+    },
+    {
+        "name": "Northern Nevada Mobil Repair",
+        "address": "3575 Gypsum Rd, Reno, NV 89503",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "2.8",
+        "num_reviews": "5",
+        "phone": "(530) 927-8800"
+    },
+    {
+        "name": "Precision Auto Center",
+        "address": "41 S Wells Ave, Reno, NV 89502",
+        "business_type": "Auto repair shop",
+        "website": "precisionautocenterreno.com",
+        "rating": "4.7",
+        "num_reviews": "59",
+        "phone": "(775) 322-1217"
+    },
+    {
+        "name": "Last Stop Auto Repair",
+        "address": "3855 S Valley View Blvd # 18, Las Vegas, NV 89103",
+        "business_type": "Auto repair shop",
+        "website": "poi.place",
+        "rating": "4.8",
+        "num_reviews": "65",
+        "phone": "(702) 433-2883"
+    },
+    {
+        "name": "Diego Auto Repair",
+        "address": "4245 E Sahara Ave 6 & 7, Las Vegas, NV 89104",
+        "business_type": "Auto repair shop",
+        "website": "diegoautomotiverepair.com",
+        "rating": "4.7",
+        "num_reviews": "58",
+        "phone": "(702) 778-3779"
+    },
+    {
+        "name": "Rebel Automotive",
+        "address": "975 American Pacific Dr #105, Henderson, NV 89014",
+        "business_type": "Auto repair shop",
+        "website": "rebel-auto.com",
+        "rating": "4.5",
+        "num_reviews": "250",
+        "phone": "(702) 834-8134"
+    },
+    {
+        "name": "R & R Auto Repair Shop",
+        "address": "5735 S Rainbow Blvd, Las Vegas, NV 89118",
+        "business_type": "Auto repair shop",
+        "website": "rnrautoshop.com",
+        "rating": "4.8",
+        "num_reviews": "204",
+        "phone": "(702) 257-9477"
+    },
+    {
+        "name": "Tyler express Complete auto repair",
+        "address": "3855 S Valley View Blvd suite # 27-29, Las Vegas, NV 89103",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.6",
+        "num_reviews": "72",
+        "phone": "(702) 969-4596"
+    },
+    {
+        "name": "Roy Foster's Automotive",
+        "address": "490 Keystone Ave, Reno, NV 89503",
+        "business_type": "Auto repair shop",
+        "website": "royfoster.com",
+        "rating": "4.5",
+        "num_reviews": "738",
+        "phone": "(775) 786-1055"
+    },
+    {
+        "name": "Greg's Garage",
+        "address": "410 E 6th St, Reno, NV 89512",
+        "business_type": "Auto repair shop",
+        "website": "gregsgarageinc.com",
+        "rating": "4.4",
+        "num_reviews": "497",
+        "phone": "(775) 324-0911"
+    },
+    {
+        "name": "Quantum Mechanics Auto Repair",
+        "address": "3230 N Durango Dr, Las Vegas, NV 89129",
+        "business_type": "Auto repair shop",
+        "website": "quantummechanicslasvegas.com",
+        "rating": "4.9",
+        "num_reviews": "337",
+        "phone": "(702) 757-9000"
+    },
+    {
+        "name": "All European I Auto Repair Las Vegas",
+        "address": "7010 W Russell Rd #A, Las Vegas, NV 89113",
+        "business_type": "Auto repair shop",
+        "website": "alleuropeanautorepair.com",
+        "rating": "4.5",
+        "num_reviews": "339",
+        "phone": "(702) 363-9191"
+    },
+    {
+        "name": "Sierra Nevada Hybrid",
+        "address": "86 Linehan Rd, Carson City, NV 89706",
+        "business_type": "Auto repair shop",
+        "website": "sierranevadahybrid.com",
+        "rating": "4.9",
+        "num_reviews": "39",
+        "phone": "(775) 600-3406"
+    },
+    {
+        "name": "My Auto Service (Ann Road)",
+        "address": "7870 W Ann Rd #170, Las Vegas, NV 89149",
+        "business_type": "Auto repair shop",
+        "website": "myautolv.com",
+        "rating": "4.1",
+        "num_reviews": "221",
+        "phone": "(702) 242-5432"
+    },
+    {
+        "name": "AAA Henderson Boulder Auto Repair",
+        "address": "1300 N Boulder Hwy Suite E, Henderson, NV 89011",
+        "business_type": "Auto repair shop",
+        "website": "mwg.aaa.com",
+        "rating": "4.8",
+        "num_reviews": "305",
+        "phone": "(702) 568-5353"
+    },
+    {
+        "name": "Gonzalez Auto Repair",
+        "address": "3421 S Decatur Blvd # 4, Las Vegas, NV 89102",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.4",
+        "num_reviews": "88",
+        "phone": "(702) 876-7454"
+    },
+    {
+        "name": "Nick's Automotive",
+        "address": "121 Linden St, Reno, NV 89502",
+        "business_type": "Auto repair shop",
+        "website": "nicksautomotiverepair.com",
+        "rating": "4.2",
+        "num_reviews": "119",
+        "phone": "(775) 322-3335"
+    },
+    {
+        "name": "CoAuto",
+        "address": "2155 Dickerson Rd, Reno, NV 89503",
+        "business_type": "Auto repair shop",
+        "website": "coautonv.com",
+        "rating": "4.7",
+        "num_reviews": "361",
+        "phone": "(775) 360-5361"
+    },
+    {
+        "name": "Professional Auto Care - Auto Repair, Auto Service, Mobile Mechanic, Radiator Repair in Reno NV",
+        "address": null,
+        "business_type": "Car repair and maintenance service",
+        "website": null,
+        "rating": "4.8",
+        "num_reviews": "5",
+        "phone": "(775) 870-7403"
+    },
+    {
+        "name": "Dustin's Auto Repair",
+        "address": "1530 Glendale Ave, Sparks, NV 89431",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.7",
+        "num_reviews": "86",
+        "phone": "(775) 355-6822"
+    },
+    {
+        "name": "KRM Auto Repair",
+        "address": "295 E Aultman St, Ely, NV 89301",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.6",
+        "num_reviews": "67",
+        "phone": "(775) 289-3545"
+    },
+    {
+        "name": "MVR Auto Repair",
+        "address": "6000 W Windmill Ln, Las Vegas, NV 89139",
+        "business_type": "Auto repair shop",
+        "website": "mvrautorepair.com",
+        "rating": "4.5",
+        "num_reviews": "280",
+        "phone": "(702) 255-2996"
+    },
+    {
+        "name": "JS Car Clinic",
+        "address": "4695 Nevso Dr #17, Las Vegas, NV 89103",
+        "business_type": "Auto repair shop",
+        "website": "facebook.com",
+        "rating": "4.8",
+        "num_reviews": "25",
+        "phone": "(702) 577-7475"
+    },
+    {
+        "name": "S&R Auto Medics",
+        "address": "851 Highland Dr, Elko, NV 89801",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.8",
+        "num_reviews": "21",
+        "phone": "(775) 738-5411"
+    },
+    {
+        "name": "Vinnys Auto Repair LLC",
+        "address": "50 W Colorado Ave, Las Vegas, NV 89102",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.1",
+        "num_reviews": "18",
+        "phone": "(702) 329-0094"
+    },
+    {
+        "name": "Sun Auto Service",
+        "address": "106 S Stephanie St, Henderson, NV 89012",
+        "business_type": "Auto repair shop",
+        "website": "sunautoservice.com",
+        "rating": "4.4",
+        "num_reviews": "827",
+        "phone": "(702) 558-7799"
+    },
+    {
+        "name": "Douglas Automotive",
+        "address": "420 Gold Flat Rd, Nevada City, CA 95959",
+        "business_type": "Auto repair shop",
+        "website": "douglasautomotive.pro",
+        "rating": "4.7",
+        "num_reviews": "85",
+        "phone": "(530) 265-5120"
+    },
+    {
+        "name": "Ted's Auto Repair",
+        "address": "1711 N Decatur Blvd, Las Vegas, NV 89108",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.8",
+        "num_reviews": "74",
+        "phone": "(702) 631-2886"
+    },
+    {
+        "name": "Everything Auto Service",
+        "address": "4885 E Flamingo Rd, Las Vegas, NV 89121",
+        "business_type": "Auto repair shop",
+        "website": "everythingautoservice.net",
+        "rating": "4.7",
+        "num_reviews": "363",
+        "phone": "(702) 766-6244"
+    },
+    {
+        "name": "Ray Auto Services",
+        "address": "5087 S Arville St suite# J, Las Vegas, NV 89118",
+        "business_type": "Auto repair shop",
+        "website": "rayautogo.com",
+        "rating": "4.8",
+        "num_reviews": "111",
+        "phone": "(725) 724-0131"
+    },
+    {
+        "name": "Rice's Auto Repair Mobile Mechanic",
+        "address": "Henderson, NV 89015",
+        "business_type": "Auto repair shop",
+        "website": "riceautorepair.com",
+        "rating": "4.8",
+        "num_reviews": "60",
+        "phone": "(702) 704-0093"
+    },
+    {
+        "name": "Don's D.I. Auto and Truck Service",
+        "address": "4263 Boulder Hwy, Las Vegas, NV 89121",
+        "business_type": "Auto repair shop",
+        "website": "diautorepair.com",
+        "rating": "4.4",
+        "num_reviews": "622",
+        "phone": "(702) 734-6144"
+    },
+    {
+        "name": "CJ AUTO REPAIR",
+        "address": "4871 E Flamingo Rd, Las Vegas, NV 89121",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.1",
+        "num_reviews": "283",
+        "phone": "(702) 547-1065"
+    },
+    {
+        "name": "Newby's Automotive Center",
+        "address": "1201 American Pacific Dr, Henderson, NV 89074",
+        "business_type": "Auto repair shop",
+        "website": "newbysautomotive.com",
+        "rating": "4.6",
+        "num_reviews": "143",
+        "phone": "(702) 897-9667"
+    },
+    {
+        "name": "Wayne's Automotive Center",
+        "address": "55 Coney Island Dr, Sparks, NV 89431",
+        "business_type": "Auto repair shop",
+        "website": "waynesautocenter.com",
+        "rating": "4.6",
+        "num_reviews": "217",
+        "phone": "(775) 356-6996"
+    },
+    {
+        "name": "Busy Bots Auto Repair",
+        "address": "6940 W Patrick Ln, Las Vegas, NV 89113",
+        "business_type": "Auto repair shop",
+        "website": "busybotsauto.com",
+        "rating": "4.4",
+        "num_reviews": "119",
+        "phone": "(702) 399-7007"
+    },
+    {
+        "name": "Edzo’s Automotive",
+        "address": "1580 Manse Rd, Pahrump, NV 89048",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.2",
+        "num_reviews": "130",
+        "phone": "(775) 751-2607"
+    },
+    {
+        "name": "Lester's Automotive Repair",
+        "address": "71 N East St, Fallon, NV 89406",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.6",
+        "num_reviews": "50",
+        "phone": "(775) 867-2727"
+    },
+    {
+        "name": "Armando Auto Services",
+        "address": "3219 N Mary Dee Ave suite e, North Las Vegas, NV 89030",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "3.8",
+        "num_reviews": "31",
+        "phone": "(702) 900-0984"
+    },
+    {
+        "name": "Masses Repair LLC",
+        "address": "1 Green Acres Ln, Yerington, NV 89447",
+        "business_type": "Auto repair shop",
+        "website": "masserepairllc.com",
+        "rating": "4.4",
+        "num_reviews": "37",
+        "phone": "(775) 463-5299"
+    },
+    {
+        "name": "Courtesy Auto Repair & Service",
+        "address": "7035 W Sahara Ave # 500, Las Vegas, NV 89117",
+        "business_type": "Auto repair shop",
+        "website": "carserviceoflasvegas.com",
+        "rating": "4.9",
+        "num_reviews": "251",
+        "phone": "(702) 565-9059"
+    },
+    {
+        "name": "Mario's Auto Repair",
+        "address": "1800 N Carson St, Carson City, NV 89701",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.6",
+        "num_reviews": "146",
+        "phone": "(775) 883-3591"
+    },
+    {
+        "name": "Wally's Precision Auto Care",
+        "address": "3290 Pinks Pl, Las Vegas, NV 89102",
+        "business_type": "Auto repair shop",
+        "website": "wallysprecisionauto.com",
+        "rating": "4.9",
+        "num_reviews": "495",
+        "phone": "(702) 871-7310"
+    },
+    {
+        "name": "Royal Auto",
+        "address": "4460 W Reno Ave # E, Las Vegas, NV 89118",
+        "business_type": "Auto repair shop",
+        "website": "rylauto.com",
+        "rating": "4.5",
+        "num_reviews": "91",
+        "phone": "(702) 722-0202"
+    },
+    {
+        "name": "Oscar's Auto Repair LLC",
+        "address": "3240 W Sirius Ave Suite C, Las Vegas, NV 89102",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "5.0",
+        "num_reviews": "105",
+        "phone": "(702) 735-3335"
+    },
+    {
+        "name": "Benham's Diesel and Auto Repair",
+        "address": "4259 Reno Hwy, Fallon, NV 89406",
+        "business_type": "Auto repair shop",
+        "website": "benhamsdieselautorepair.com",
+        "rating": "4.9",
+        "num_reviews": "34",
+        "phone": "(775) 423-4700"
+    },
+    {
+        "name": "Wrench It Auto Repair",
+        "address": "5690 N Simmons St #102, North Las Vegas, NV 89031",
+        "business_type": "Auto repair shop",
+        "website": "wrenchitautorepair.com",
+        "rating": "4.8",
+        "num_reviews": "309",
+        "phone": "(702) 331-7561"
+    },
+    {
+        "name": "Certified Brake & Auto Repair",
+        "address": "411 Gentry Wy, Reno, NV 89502",
+        "business_type": "Auto repair shop",
+        "website": "certifiedbrakeandauto.com",
+        "rating": "4.8",
+        "num_reviews": "58",
+        "phone": "(775) 825-6262"
+    },
+    {
+        "name": "A1 Mobile Auto Repair Shop Paradise - Mobile Auto Mechanic Las Vegas NV, Mobile Car Battery Replacement, Mobile Auto Service",
+        "address": "4655 Boulder Hwy, Las Vegas, NV 89121",
+        "business_type": "Auto repair shop",
+        "website": "autorepairmobilemechanics.com",
+        "rating": "4.0",
+        "num_reviews": "44",
+        "phone": "(702) 333-7770"
+    },
+    {
+        "name": "Southern Nevada Diesel Engine Boring and 24/7 Roadside",
+        "address": "7580 S Las Vegas Blvd Suite 640, Las Vegas, NV 89123",
+        "business_type": "Truck repair shop",
+        "website": "southernnevadadiesel.com",
+        "rating": "4.9",
+        "num_reviews": "53",
+        "phone": "(702) 302-1897"
+    },
+    {
+        "name": "Pro Auto Service",
+        "address": "1215 Kleppe Ln #11, Sparks, NV 89431",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "5.0",
+        "num_reviews": "16",
+        "phone": "(775) 786-1655"
+    },
+    {
+        "name": "Dave's Auto Repair",
+        "address": "6316 S Pecos Rd, Las Vegas, NV 89120",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.9",
+        "num_reviews": "133",
+        "phone": "(702) 489-4481"
+    },
+    {
+        "name": "Cal's Repair Center",
+        "address": "475 N Moapa Valley, Moapa Valley, NV 89040",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.4",
+        "num_reviews": "95",
+        "phone": "(702) 397-8997"
+    },
+    {
+        "name": "The Auto Shop",
+        "address": "106 Cal Ln a, Sparks, NV 89431",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.9",
+        "num_reviews": "68",
+        "phone": "(775) 358-2114"
+    },
+    {
+        "name": "LV Auto Maintenance",
+        "address": "4350 Spring Mountain Rd, Las Vegas, NV 89102",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "3.7",
+        "num_reviews": "80",
+        "phone": "(702) 873-5225"
+    },
+    {
+        "name": "CARSNV",
+        "address": "4676 S Wynn Rd., Las Vegas, NV 89103",
+        "business_type": "Auto repair shop",
+        "website": "carsnv.com",
+        "rating": "4.8",
+        "num_reviews": "238",
+        "phone": "(702) 823-2277"
+    },
+    {
+        "name": "Quality Auto Repair",
+        "address": "2340 E Postal Dr, Pahrump, NV 89048",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.8",
+        "num_reviews": "29",
+        "phone": "(775) 537-6000"
+    },
+    {
+        "name": "Nevada Auto Center",
+        "address": "3220 E Fremont St Unit 7, Las Vegas, NV 89104",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.5",
+        "num_reviews": "263",
+        "phone": "(702) 605-1717"
+    },
+    {
+        "name": "The Car Guys, Summerlin, Las Vegas",
+        "address": "10177 W Charleston Blvd, Las Vegas, NV 89135",
+        "business_type": "Auto repair shop",
+        "website": "thecarguys.us",
+        "rating": "4.8",
+        "num_reviews": "486",
+        "phone": "(702) 259-2600"
+    },
+    {
+        "name": "The Auto Hospital",
+        "address": "840 Greg St, Sparks, NV 89431",
+        "business_type": "Auto repair shop",
+        "website": "autohospitalsparks.com",
+        "rating": "4.4",
+        "num_reviews": "112",
+        "phone": "(775) 827-2444"
+    },
+    {
+        "name": "702 Auto Care LLC",
+        "address": "5750 E Sahara Ave #100, Las Vegas, NV 89142",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.8",
+        "num_reviews": "98",
+        "phone": "(702) 778-7711"
+    },
+    {
+        "name": "Nevada Auto Center #3",
+        "address": "7300 W Azure Dr #150, Las Vegas, NV 89130",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.3",
+        "num_reviews": "19",
+        "phone": "(702) 844-8991"
+    },
+    {
+        "name": "The Car Guys, Summerlin, Las Vegas",
+        "address": "10177 W Charleston Blvd, Las Vegas, NV 89135",
+        "business_type": "Auto repair shop",
+        "website": "thecarguys.us",
+        "rating": "4.8",
+        "num_reviews": "486",
+        "phone": "(702) 259-2600"
+    },
+    {
+        "name": "Garcia Auto Repair",
+        "address": "3535 N Nellis Blvd #3, Las Vegas, NV 89115",
+        "business_type": "Auto repair shop",
+        "website": "garciaautorepair.com",
+        "rating": "4.3",
+        "num_reviews": "76",
+        "phone": "(702) 403-5101"
+    },
+    {
+        "name": "Capitol Automotive",
+        "address": "1000 N Plaza St, Carson City, NV 89701",
+        "business_type": "Auto repair shop",
+        "website": "capautonv.com",
+        "rating": "4.8",
+        "num_reviews": "436",
+        "phone": "(775) 227-5752"
+    },
+    {
+        "name": "Genuine Automotive Services",
+        "address": "1001 E Ogden Ave, Las Vegas, NV 89101",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.8",
+        "num_reviews": "85",
+        "phone": "(702) 654-3774"
+    },
+    {
+        "name": "AJ's Auto Service",
+        "address": "920 Wigwam Pkwy, Henderson, NV 89014",
+        "business_type": "Auto repair shop",
+        "website": "ajsautoservice.com",
+        "rating": "4.7",
+        "num_reviews": "109",
+        "phone": "(702) 567-6767"
+    },
+    {
+        "name": "Tilley’s Auto Repair",
+        "address": "253 Elliott Rd Ste 1, Henderson, NV 89011",
+        "business_type": "Auto repair shop",
+        "website": "tilleysautorepair.com",
+        "rating": "4.7",
+        "num_reviews": "27",
+        "phone": "(702) 293-4146"
+    },
+    {
+        "name": "Sin City Auto Repair",
+        "address": "5315 Sun Meadow Ct, North Las Vegas, NV 89031",
+        "business_type": "Mechanic",
+        "website": "sincityautorepairlv.com",
+        "rating": "5.0",
+        "num_reviews": null,
+        "phone": "(702) 371-4213"
+    },
+    {
+        "name": "CJ'S Auto Repair",
+        "address": "2401 W Bonanza Rd # C, Las Vegas, NV 89106",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.2",
+        "num_reviews": "54",
+        "phone": "(702) 405-7720"
+    },
+    {
+        "name": "Pete's Auto Clinic",
+        "address": "190 Humahuaca St, Pahrump, NV 89048",
+        "business_type": "Auto repair shop",
+        "website": "peteautoclinic.com",
+        "rating": "4.3",
+        "num_reviews": "183",
+        "phone": "(775) 727-5362"
+    },
+    {
+        "name": "Comstock Auto Repair",
+        "address": "Carson City, NV 89706",
+        "business_type": "Auto machine shop",
+        "website": null,
+        "rating": "5.0",
+        "num_reviews": "12",
+        "phone": "(775) 230-9325"
+    },
+    {
+        "name": "His & Hers Automotive LLC",
+        "address": "1391 Idaho St, Elko, NV 89801",
+        "business_type": "Auto repair shop",
+        "website": "hisandhersauto.com",
+        "rating": "4.3",
+        "num_reviews": "111",
+        "phone": "(775) 753-8878"
+    },
+    {
+        "name": "Wrench It Auto Repair II LLC",
+        "address": "321 S Decatur Blvd, Las Vegas, NV 89107",
+        "business_type": "Auto repair shop",
+        "website": "wrenchitautorepair.com",
+        "rating": "4.6",
+        "num_reviews": "29",
+        "phone": "(702) 463-6337"
+    },
+    {
+        "name": "C & M Auto",
+        "address": "3432 N Bruce St Suite 13, North Las Vegas, NV 89030",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.6",
+        "num_reviews": "32",
+        "phone": "(702) 266-1762"
+    },
+    {
+        "name": "Affordable Automotive Repair",
+        "address": "949 E 4th St, Reno, NV 89512",
+        "business_type": "Auto repair shop",
+        "website": null,
+        "rating": "4.2",
+        "num_reviews": "71",
+        "phone": "(775) 686-6977"
     }
 ]
