@@ -68,16 +68,27 @@ def wait_for_element(driver, by, value, timeout=10):
         return None
 
 def handle_popups(driver):
-    # Handle potential cookie consent popup
-    try:
-        consent_button = wait_for_element(driver, By.XPATH, "//button[contains(@aria-label, 'Accept')]", timeout=5)
-        if consent_button:
-            consent_button.click()
-            logging.info("Clicked on cookie consent button")
-    except:
-        logging.info("No cookie consent popup found or unable to click")
+    popup_buttons = [
+        (By.XPATH, "//button[contains(@aria-label, 'Accept')]"),
+        (By.XPATH, "//button[contains(text(), 'Accept')]"),
+        (By.XPATH, "//button[contains(@aria-label, 'Agree')]"),
+        (By.XPATH, "//button[contains(text(), 'Agree')]"),
+        (By.XPATH, "//button[contains(@aria-label, 'OK')]"),
+        (By.XPATH, "//button[contains(text(), 'OK')]"),
+        (By.ID, "L2AGLb")  # Google's "I agree" button ID
+    ]
 
-    # Handle other potential popups here if needed
+    for by, selector in popup_buttons:
+        try:
+            button = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((by, selector)))
+            button.click()
+            logging.info(f"Clicked popup button: {selector}")
+            time.sleep(1)  # Wait a bit for the popup to disappear
+            return
+        except TimeoutException:
+            continue
+
+    logging.info("No clickable popup buttons found")
 
 def wait_for_panel_update(driver, old_name, max_retries=5, timeout=10):
     for attempt in range(max_retries):
@@ -121,9 +132,8 @@ def extract_info_from_panel(driver):
         try:
             name_element = driver.find_element(By.XPATH, "//h1[contains(@class, 'DUwDvf')]")
             result["name"] = name_element.text.strip()
-            logging.info(f"Extracted name: {result['name']}")
         except NoSuchElementException:
-            logging.warning("Name element not found")
+            pass
 
         # Extract rating and number of reviews
         try:
@@ -131,42 +141,36 @@ def extract_info_from_panel(driver):
             result["rating"] = rating_element.find_element(By.XPATH, ".//span[@aria-hidden='true']").text.strip()
             reviews_element = rating_element.find_element(By.XPATH, ".//span[contains(@aria-label, 'reviews')]")
             result["num_reviews"] = reviews_element.text.strip().replace('(', '').replace(')', '')
-            logging.info(f"Extracted rating: {result['rating']}, reviews: {result['num_reviews']}")
         except NoSuchElementException:
-            logging.warning("Rating/reviews elements not found")
+            pass
 
         # Extract business type
         try:
             business_type_element = driver.find_element(By.XPATH, "//button[contains(@class, 'DkEaL')]")
             result["business_type"] = business_type_element.text.strip()
-            logging.info(f"Extracted business type: {result['business_type']}")
         except NoSuchElementException:
-            logging.warning("Business type element not found")
+            pass
 
         # Extract address
         try:
             address_element = driver.find_element(By.XPATH, "//button[@data-item-id='address']//div[contains(@class, 'Io6YTe')]")
             result["address"] = address_element.text.strip()
-            logging.info(f"Extracted address: {result['address']}")
         except NoSuchElementException:
-            logging.warning("Address element not found")
+            pass
 
         # Extract website
         try:
             website_element = driver.find_element(By.XPATH, "//a[@data-item-id='authority']//div[contains(@class, 'Io6YTe')]")
             result["website"] = website_element.text.strip()
-            logging.info(f"Extracted website: {result['website']}")
         except NoSuchElementException:
-            logging.warning("Website element not found")
+            pass
 
         # Extract phone number
         try:
             phone_element = driver.find_element(By.XPATH, "//button[contains(@data-item-id, 'phone:tel:')]//div[contains(@class, 'Io6YTe')]")
             result["phone"] = phone_element.text.strip()
-            logging.info(f"Extracted phone: {result['phone']}")
         except NoSuchElementException:
-            logging.warning("Phone element not found")
-
+            pass
     except Exception as e:
         logging.error(f"Error in extract_info_from_panel: {str(e)}")
 
@@ -268,29 +272,226 @@ def save_results_to_json(results, json_path):
     except Exception as e:
         print(f"Error saving to JSON file: {e}")
 
+def wait_for_element_to_be_stale(driver, element, timeout=10):
+    try:
+        WebDriverWait(driver, timeout).until(EC.staleness_of(element))
+    except TimeoutException:
+        logging.warning("Timeout waiting for element to become stale")
+
+def wait_for_element(driver, locator, timeout=10):
+    return WebDriverWait(driver, timeout).until(EC.presence_of_element_located(locator))
+
+def wait_for_elements(driver, locator, timeout=10):
+    return WebDriverWait(driver, timeout).until(EC.presence_of_all_elements_located(locator))
+
+def clean_address(address, business_type):
+    # Remove business hours
+    address = re.sub(r'\d{1,2}(?::\d{2})?\s*[AaPp][Mm]', '', address)
+    
+    # Remove days of the week
+    address = re.sub(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\b', '', address, flags=re.IGNORECASE)
+    
+    # Remove "Open", "Closed", "Opens", etc.
+    address = re.sub(r'\b(Open|Closed|Opens|Closes)\b', '', address, flags=re.IGNORECASE)
+    
+    # Remove phone numbers
+    address = re.sub(r'\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}', '', address)
+    
+    # Remove "24 hours"
+    address = address.replace('24 hours', '')
+    
+    # Remove business type and its variations
+    if business_type:
+        business_type_variations = [
+            business_type,
+            business_type.lower(),
+            business_type.replace(' ', ''),
+            business_type.replace('/', ' '),
+            business_type.replace('&', 'and'),
+            business_type.replace('and', '&'),
+            'Association',
+            'Organization',
+            'Nonprofit organization',
+            'Non-profit organization'
+        ]
+        for variation in business_type_variations:
+            address = re.sub(r'\b' + re.escape(variation) + r'\b', '', address, flags=re.IGNORECASE)
+    
+    # Remove extra whitespace and punctuation
+    address = re.sub(r'\s+', ' ', address)
+    address = re.sub(r'[^\w\s]', '', address)
+    
+    # Extract the most likely address part
+    address_pattern = r'\d+\s+[A-Za-z0-9\s]+'
+    matches = re.findall(address_pattern, address)
+    if matches:
+        # Return the first match (assuming it's the most complete address)
+        return matches[0].strip()
+    
+    return address.strip()
+
+def scrape_google_maps_fast(driver, url, max_scrolls=100):
+    driver.get(url)
+    logging.info(f"Navigating to {url}")
+    
+    handle_popups(driver)
+
+    results = []
+    processed_items = set()
+    scroll_count = 0
+    last_height = 0
+
+    try:
+        results_container = WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div[role='feed']"))
+        )
+    except TimeoutException:
+        logging.error("Couldn't find results container. Page source:")
+        logging.error(driver.page_source)
+        return results
+
+    while scroll_count < max_scrolls:
+        items = driver.find_elements(By.CSS_SELECTOR, "div.Nv2PK")
+        logging.info(f"Found {len(items)} items")
+
+        for item in items:
+            if item.id not in processed_items:
+                try:
+                    result = {
+                        'name': None,
+                        'href': None,
+                        'rating': None,
+                        'num_reviews': None,
+                        'business_type': None,
+                        'address': None,
+                        'phone': None,
+                        'website': None
+                    }
+                    
+                    # Extract name and href (keep as is)
+                    name_element = item.find_element(By.CSS_SELECTOR, "div.qBF1Pd")
+                    result['name'] = name_element.text.strip()
+
+                    href_element = item.find_element(By.CSS_SELECTOR, "a.hfpxzc")
+                    result['href'] = href_element.get_attribute('href')
+                    
+                    # Extract all W4Efsd elements
+                    w4efsd_elements = item.find_elements(By.CSS_SELECTOR, "div.W4Efsd")
+                    
+                    address_parts = []
+                    for element in w4efsd_elements:
+                        text = element.text.strip()
+                        
+                        # Check if it's the rating element
+                        if '(' in text and ')' in text and text[0].isdigit():
+                            rating_parts = text.split('(')
+                            if len(rating_parts) == 2:
+                                result['rating'] = rating_parts[0].strip()
+                                result['num_reviews'] = rating_parts[1].strip('()')
+                            continue
+                        
+                        # Split by middot character
+                        parts = text.split('·')
+                        
+                        for part in parts:
+                            part = part.strip()
+                            
+                            # Check for phone number
+                            if result['phone'] is None and re.match(r'^\(?[0-9]{3}\)?[-\s]?[0-9]{3}[-\s]?[0-9]{4}$', part):
+                                result['phone'] = part
+                            else:
+                                address_parts.append(part)
+
+                    # Process address parts to extract business type and address
+                    if address_parts:
+                        # Find the part that doesn't contain numbers and is not at the beginning
+                        for i, part in enumerate(address_parts):
+                            if i > 0 and not any(char.isdigit() for char in part):
+                                result['business_type'] = part
+                                address_parts.remove(part)
+                                break
+                        
+                        # Join the remaining parts for the address
+                        full_address = ' '.join(address_parts)
+                        result['address'] = clean_address(full_address, result['business_type'])
+
+                    # Extract website if available
+                    try:
+                        website_button = item.find_element(By.CSS_SELECTOR, "a.lcr4fd[data-value='Website']")
+                        result['website'] = website_button.get_attribute('href')
+                    except NoSuchElementException:
+                        pass
+
+                    # Remove duplicates in address
+                    if result['address']:
+                        address_parts = result['address'].split()
+                        result['address'] = ' '.join(dict.fromkeys(address_parts))
+
+                    # Ensure business_type is not set to "No reviews"
+                    if result['business_type'] == "No reviews":
+                        result['business_type'] = None
+
+                    results.append(result)
+                    processed_items.add(item.id)
+                    logging.info(f"Scraped business: {result['name']}")
+                except (NoSuchElementException, StaleElementReferenceException) as e:
+                    logging.error(f"Error processing entry: {str(e)}")
+
+        driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", results_container)
+        scroll_count += 1
+        
+        try:
+            WebDriverWait(driver, 5).until(
+                lambda d: d.execute_script("return arguments[0].scrollHeight", results_container) > last_height
+            )
+        except TimeoutException:
+            logging.info("No new results loaded after scrolling")
+            break
+
+        last_height = driver.execute_script("return arguments[0].scrollHeight", results_container)
+        
+        logging.info(f"Scrolled {scroll_count} times, found {len(results)} results so far")
+
+        try:
+            end_message = driver.find_element(By.XPATH, "//span[contains(text(), \"You've reached the end of the list\")]")
+            if end_message.is_displayed():
+                logging.info("Reached the end of the list")
+                break
+        except NoSuchElementException:
+            pass
+
+    logging.info(f"Fast scraping completed. Found {len(results)} entries after {scroll_count} scrolls.")
+    return results
+
 def main():
     # User inputs
-    search_query = "factories in bangalore"  # Example search query
-    json_path = 'GoogleMapsData.json'
+    search_query = "businesses in Louisiana"  # Example search query
+    json_path = 'GoogleMapsDataFast.json'
 
     # Setup WebDriver
     # Set headless=False for debugging to see the browser
-    driver = setup_selenium(headless=True)
+    driver = setup_selenium(headless=False)
 
     try:
         # Generate the search URL
         url = generate_search_url(search_query)
         print(f"Generated search URL: {url}")
+        
+        # Add this block to test the fast scraping function
+        print("Starting fast scraping...")
+        fast_results = scrape_google_maps_fast(driver, url)
+        print(f"Fast scraping completed. Found {len(fast_results)} entries.")
 
         # Scrape data
-        results = scrape_google_maps(driver, url)
-        print(f"Scraping completed. Found {len(results)} entries.")
+        #results = scrape_google_maps(driver, url)
+        #print(f"Scraping completed. Found {len(results)} entries.")
 
         # Save results to JSON
-        if results:
-            save_results_to_json(results, json_path)
+        if fast_results:
+            save_results_to_json(fast_results, json_path)
         else:
             print("No results to save.")
+
 
     finally:
         # Close the WebDriver
