@@ -33,7 +33,6 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()],
 )
 
-
 class GoogleMapsScraper:
     def __init__(self, headless: bool = True, max_threads: int = 4):
         self.headless = headless
@@ -684,13 +683,21 @@ class GoogleMapsScraper:
             # Extract latitude and longitude from href
             parsed_url = urlparse(result['href'])
             query_params = parse_qs(parsed_url.query)
-
+            
             if 'data' in query_params:
                 data_param = query_params['data'][0]
                 coords_match = re.search(r'!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)', data_param)
                 if coords_match:
                     result['latitude'] = float(coords_match.group(1))
                     result['longitude'] = float(coords_match.group(2))
+            else:
+                # If 'data' is not in query params, try to extract from the path
+                path_parts = parsed_url.path.split('/')
+                if len(path_parts) > 2 and '@' in path_parts[2]:
+                    coords = path_parts[2].split('@')[1].split(',')
+                    if len(coords) >= 2:
+                        result['latitude'] = float(coords[0])
+                        result['longitude'] = float(coords[1])
 
             # Extract all W4Efsd elements
             w4efsd_elements = item.find_elements(By.CSS_SELECTOR, "div.W4Efsd")

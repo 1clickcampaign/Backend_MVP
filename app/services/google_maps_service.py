@@ -5,15 +5,15 @@ from typing import List, Dict, Any, Set, Optional
 import requests
 import json
 import time
-from app.utils.config import GOOGLE_MAPS_API_KEY
+from app.utils.config import GOOGLE_MAPS_API_KEY, VALID_BUSINESS_TYPES
 from app.utils.location_utils import (
     get_bounding_box,
     haversine_distance,
 )
-from app.utils.string_matching import find_best_matches
-from app.services.google_maps_service import search_area, make_api_request
+from app.utils.string_matching import find_exact_match
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+from app.services.gmaps_scraping_service import GoogleMapsScraper
 
 BASE_URL = "https://places.googleapis.com/v1/places:searchNearby"
 MAX_RESULTS_PER_QUERY = 20
@@ -128,24 +128,19 @@ def search_area(business_types: List[str], lon: float, lat: float, radius: float
 def fetch_leads_from_google_maps(business_types: List[str], location: str, max_leads: Optional[int] = None) -> List[Dict[str, Any]]:
     print(f"Fetching leads for {business_types} in {location}")
     
-    matched_types = find_best_matches(" ".join(business_types))
     all_leads = []
 
-    if matched_types:
-        bounding_box = get_bounding_box(location)
-        if not bounding_box:
-            print(f"Could not find bounding box for location: {location}")
-            return []
+    bounding_box = get_bounding_box(location)
+    if not bounding_box:
+        print(f"Could not find bounding box for location: {location}")
+        return []
 
-        sw_lat, sw_lng, ne_lat, ne_lng = bounding_box
-        center_lat = (sw_lat + ne_lat) / 2
-        center_lng = (sw_lng + ne_lng) / 2
-        radius = min(haversine_distance(sw_lat, sw_lng, ne_lat, ne_lng) / 2, MAX_RADIUS)
+    sw_lat, sw_lng, ne_lat, ne_lng = bounding_box
+    center_lat = (sw_lat + ne_lat) / 2
+    center_lng = (sw_lng + ne_lng) / 2
+    radius = min(haversine_distance(sw_lat, sw_lng, ne_lat, ne_lng) / 2, MAX_RADIUS)
 
-        search_area(matched_types, center_lng, center_lat, radius, all_leads, max_leads=max_leads)
-    else:
-        print(f"No matched business types found. Performing text search.")
-        all_leads = text_search(business_types, location, max_leads)
+    search_area(business_types, center_lng, center_lat, radius, all_leads, max_leads=max_leads)
 
     if max_leads:
         all_leads = all_leads[:max_leads]
@@ -155,9 +150,9 @@ def fetch_leads_from_google_maps(business_types: List[str], location: str, max_l
     calculate_cost(API_REQUEST_COUNT)
     return all_leads
 
-COST_PER_REQUEST = 0.032  # $0.032 per request as of 2023
-
 def calculate_cost(num_requests):
     total_cost = num_requests * COST_PER_REQUEST
     print(f"Total API requests made: {num_requests}")
     print(f"Estimated cost: ${total_cost:.2f}")
+
+COST_PER_REQUEST = 0.032  # $0.032 per request as of 2023

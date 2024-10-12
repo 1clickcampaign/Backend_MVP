@@ -3,6 +3,7 @@ import os
 from app.models.lead import LeadCreate
 import json
 import asyncio
+from typing import List
 
 class SupabaseClientSingleton:
     _instance = None
@@ -31,30 +32,26 @@ def read_leads_from_json(file_path):
     
     raise ValueError("Unable to read the JSON file with any of the attempted encodings.")
 
-async def upload_leads_to_supabase(leads: list[dict], max_retries=3, retry_delay=5):
+async def upload_leads_to_supabase(leads: List[LeadCreate]):
     supabase = SupabaseClientSingleton.get_instance()
     
-    async def upload_lead_with_retry(lead_data):
-        lead = LeadCreate(**lead_data)
-        lead_dict = lead.dict()
-        
-        for attempt in range(max_retries):
-            try:
-                existing_lead = supabase.table('leads').select('*').eq('name', lead_dict['name']).eq('external_id', lead_dict['external_id']).execute()
-                
-                if not existing_lead.data:
-                    supabase.table('leads').insert(lead_dict).execute()
-                else:
-                    lead_id = existing_lead.data[0]['id']
-                    supabase.table('leads').update(lead_dict).eq('id', lead_id).execute()
-                return
-            except Exception as e:
-                if attempt == max_retries - 1:
-                    print(f"Failed to upload lead after {max_retries} attempts: {str(e)}")
-                else:
-                    await asyncio.sleep(retry_delay)
-
-    upload_tasks = [upload_lead_with_retry(lead) for lead in leads]
+    upload_tasks = []
+    for lead in leads:
+        upload_tasks.append(upload_lead_with_retry(lead))
     await asyncio.gather(*upload_tasks)
-    
-    print(f"Uploaded/Updated {len(leads)} leads to Supabase")
+
+async def upload_lead_with_retry(lead: LeadCreate, max_retries=3):
+    supabase = SupabaseClientSingleton.get_instance()
+
+    for attempt in range(max_retries):
+        try:
+            response = await supabase.table("leads").insert(lead.dict()).execute()
+            if response.data:
+                print(f"Successfully uploaded lead: {lead.name}")
+                return
+        except Exception as e:
+            print(f"Error uploading lead {lead.name}: {str(e)}")
+            if attempt == max_retries - 1:
+                print(f"Failed to upload lead {lead.name} after {max_retries} attempts")
+            else:
+                await asyncio.sleep(2 ** attempt)  # Exponential backoff

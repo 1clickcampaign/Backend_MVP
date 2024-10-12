@@ -1,0 +1,38 @@
+{
+    "family": "fastapi-app",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "256",
+    "memory": "512",
+    "containerDefinitions": [
+      {
+        "name": "fastapi-app",
+        "image": "<your-ecr-repo-url>:latest",
+        "portMappings": [
+          {
+            "containerPort": 8000,
+            "hostPort": 8000,
+            "protocol": "tcp"
+          }
+        ],
+        "environment": [
+          {
+            "name": "SUPABASE_URL",
+            "value": "https://hscweqvwidkwldmbqpus.supabase.co"
+          },
+          {
+            "name": "SUPABASE_KEY",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzY3dlcXZ3aWRrd2xkbWJxcHVzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjg0OTU3NSwiZXhwIjoyMDQyNDI1NTc1fQ.6tVjBTDbP0fIuCELAN2TmpsAavUxnfjZKR9l--JBjbU"
+          }
+        ],
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/fastapi-app",
+            "awslogs-region": "<your-aws-region>",
+            "awslogs-stream-prefix": "ecs"
+          }
+        }
+      }
+    ]
+  }
