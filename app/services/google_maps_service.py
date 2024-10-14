@@ -1,34 +1,47 @@
-import math
-import numpy as np
-import concurrent.futures
-from typing import List, Dict, Any, Set, Optional
-import requests
-import json
-import time
-from app.utils.config import GOOGLE_MAPS_API_KEY, VALID_BUSINESS_TYPES
-from app.utils.location_utils import (
-    get_bounding_box,
-    haversine_distance,
-)
-from app.utils.string_matching import find_exact_match
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-from app.services.gmaps_scraping_service import GoogleMapsScraper
+"""
+Google Maps Service
 
+This module provides functionality to fetch business leads from Google Maps API.
+It includes methods for searching areas, making API requests, and handling rate limiting.
+"""
+
+import math
+import time
+from typing import List, Dict, Any, Optional
+from concurrent.futures import ThreadPoolExecutor, wait
+import requests
+import numpy as np
+
+from app.utils.config import GOOGLE_MAPS_API_KEY
+from app.utils.location_utils import get_bounding_box, haversine_distance
+
+# Constants
 BASE_URL = "https://places.googleapis.com/v1/places:searchNearby"
 MAX_RESULTS_PER_QUERY = 20
 MAX_RADIUS = 50000  # Maximum radius allowed by the API
 MIN_RADIUS = 100  # Minimum radius to avoid too many small searches
+MAX_REQUESTS_PER_MINUTE = 590  # Setting it slightly below 600 for safety
+COST_PER_REQUEST = 0.032  # $0.032 per request as of 2023
 
+# Global variables
 API_REQUEST_COUNT = 0
 request_timestamps = []
 
-MAX_REQUESTS_PER_MINUTE = 590  # Setting it slightly below 600 for safety
+def three_circle_tiling(lon: float, lat: float, radius: float) -> List[tuple]:
+    """
+    Generate three subcircles that cover the area of a larger circle.
 
-def three_circle_tiling(lon: float, lat: float, radius: float) -> list:
+    Args:
+        lon (float): Longitude of the center of the main circle.
+        lat (float): Latitude of the center of the main circle.
+        radius (float): Radius of the main circle in meters.
+
+    Returns:
+        List[tuple]: List of tuples containing (longitude, latitude, radius) for each subcircle.
+    """
     subcircles = []
     for rad in np.linspace(0, 2 * np.pi, 3, endpoint=False):
-        km_per_lon = 6374. * 1000 * (2*np.pi/360) * np.cos(lat)
+        km_per_lon = 6374. * 1000 * (2*np.pi/360) * np.cos(np.radians(lat))
         km_per_lat = 6374. * 1000 * (2*np.pi/360)
         radius_subcircle = radius * 0.72791
         lon_subcircle = lon + (radius*0.72791) * np.cos(rad) / km_per_lon
@@ -37,6 +50,18 @@ def three_circle_tiling(lon: float, lat: float, radius: float) -> list:
     return subcircles
 
 def make_api_request(business_types: List[str], lat: float, lon: float, radius: float) -> Dict[str, Any]:
+    """
+    Make a request to the Google Maps API with rate limiting.
+
+    Args:
+        business_types (List[str]): Types of businesses to search for.
+        lat (float): Latitude of the search center.
+        lon (float): Longitude of the search center.
+        radius (float): Search radius in meters.
+
+    Returns:
+        Dict[str, Any]: JSON response from the API or an empty dict if there's an error.
+    """
     global API_REQUEST_COUNT, request_timestamps
     
     current_time = time.time()
@@ -69,8 +94,6 @@ def make_api_request(business_types: List[str], lat: float, lon: float, radius: 
         "maxResultCount": MAX_RESULTS_PER_QUERY
     }
 
-    print(f"API Request Data: {json.dumps(data, indent=2)}")
-
     response = requests.post(BASE_URL, json=data, headers=headers)
     
     if response.status_code != 200:
@@ -79,7 +102,25 @@ def make_api_request(business_types: List[str], lat: float, lon: float, radius: 
 
     return response.json()
 
-def search_area(business_types: List[str], lon: float, lat: float, radius: float, all_leads: List[Dict[str, Any]], depth: int = 0, max_depth: int = 3, max_leads: Optional[int] = None):
+def search_area(business_types: List[str], lon: float, lat: float, radius: float, 
+                all_leads: List[Dict[str, Any]], depth: int = 0, max_depth: int = 3, 
+                max_leads: Optional[int] = None) -> bool:
+    """
+    Recursively search an area for businesses using the Google Maps API.
+
+    Args:
+        business_types (List[str]): Types of businesses to search for.
+        lon (float): Longitude of the search center.
+        lat (float): Latitude of the search center.
+        radius (float): Search radius in meters.
+        all_leads (List[Dict[str, Any]]): List to store all found leads.
+        depth (int): Current depth of recursion.
+        max_depth (int): Maximum depth of recursion.
+        max_leads (Optional[int]): Maximum number of leads to collect.
+
+    Returns:
+        bool: True if all places match the business types, False otherwise.
+    """
     if depth > max_depth or (max_leads and len(all_leads) >= max_leads):
         return True
 
@@ -107,17 +148,16 @@ def search_area(business_types: List[str], lon: float, lat: float, radius: float
         if lead["external_id"] not in [l["external_id"] for l in all_leads]:
             all_leads.append(lead)
         
-        # Check if the place types match the business types
         place_types = set(place.get("types", []))
         if not any(bt.lower() in place_types for bt in business_types):
             fully_matched = False
 
     if len(places) >= MAX_RESULTS_PER_QUERY and radius > MIN_RADIUS and (not max_leads or len(all_leads) < max_leads):
         subcircles = three_circle_tiling(lon, lat, radius)
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        with ThreadPoolExecutor(max_workers=3) as executor:
             futures = [executor.submit(search_area, business_types, sub_lon, sub_lat, sub_radius, all_leads, depth + 1, max_depth, max_leads) 
                        for sub_lon, sub_lat, sub_radius in subcircles]
-            results = concurrent.futures.wait(futures)
+            wait(futures)
             fully_matched = all(f.result() for f in futures)
     elif radius > MIN_RADIUS and (not max_leads or len(all_leads) < max_leads):
         new_radius = max(radius / 2, MIN_RADIUS)
@@ -126,6 +166,17 @@ def search_area(business_types: List[str], lon: float, lat: float, radius: float
     return fully_matched
 
 def fetch_leads_from_google_maps(business_types: List[str], location: str, max_leads: Optional[int] = None) -> List[Dict[str, Any]]:
+    """
+    Fetch business leads from Google Maps for given business types and location.
+
+    Args:
+        business_types (List[str]): Types of businesses to search for.
+        location (str): Location to search in.
+        max_leads (Optional[int]): Maximum number of leads to collect.
+
+    Returns:
+        List[Dict[str, Any]]: List of business leads found.
+    """
     print(f"Fetching leads for {business_types} in {location}")
     
     all_leads = []
@@ -150,9 +201,13 @@ def fetch_leads_from_google_maps(business_types: List[str], location: str, max_l
     calculate_cost(API_REQUEST_COUNT)
     return all_leads
 
-def calculate_cost(num_requests):
-    total_cost = num_requests * COST_PER_REQUEST
+def calculate_cost(num_requests: int) -> None:
+    """
+    Calculate and print the estimated cost of API requests.
+
+    Args:
+        num_requests (int): Number of API requests made.
+    """
+    total_cost = num_requests * COST_PER_REQUEST 
     print(f"Total API requests made: {num_requests}")
     print(f"Estimated cost: ${total_cost:.2f}")
-
-COST_PER_REQUEST = 0.032  # $0.032 per request as of 2023

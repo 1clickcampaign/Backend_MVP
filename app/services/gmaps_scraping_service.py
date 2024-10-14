@@ -1,3 +1,10 @@
+"""
+Google Maps Scraping Service
+
+This module provides a class for scraping business information from Google Maps.
+It uses Selenium WebDriver to navigate and extract data from Google Maps search results.
+"""
+
 import logging
 import re
 import traceback
@@ -7,6 +14,10 @@ from queue import Queue
 from threading import Lock
 from typing import Any, Dict, List, Optional, Set
 import urllib.parse
+import asyncio
+import time
+import json
+
 from selenium import webdriver
 from selenium.common.exceptions import (
     NoSuchElementException,
@@ -21,10 +32,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from urllib.parse import parse_qs, urlparse
-import threading
-import time
-import json
-import asyncio
 
 # Configure logging
 logging.basicConfig(
@@ -34,7 +41,28 @@ logging.basicConfig(
 )
 
 class GoogleMapsScraper:
+    """
+    A class for scraping business information from Google Maps.
+
+    Attributes:
+        headless (bool): Whether to run the browser in headless mode.
+        max_threads (int): Maximum number of threads for concurrent scraping.
+        driver_pool (Queue): A pool of WebDriver instances.
+        lock (Lock): A threading lock for synchronization.
+        results_queue (Queue): A queue to store scraped results.
+        processed_items (Set[str]): A set to keep track of processed items.
+        timing_log_file (str): File path for logging timing information.
+        start_time (float): Start time of the scraping process.
+    """
+
     def __init__(self, headless: bool = True, max_threads: int = 4):
+        """
+        Initialize the GoogleMapsScraper.
+
+        Args:
+            headless (bool): Whether to run the browser in headless mode.
+            max_threads (int): Maximum number of threads for concurrent scraping.
+        """
         self.headless = headless
         self.max_threads = max_threads
         self.driver_pool = Queue(maxsize=max_threads)
@@ -45,12 +73,22 @@ class GoogleMapsScraper:
         self.start_time = time.time()
         self._initialize_driver_pool()
 
-    def _initialize_driver_pool(self):
+    def _initialize_driver_pool(self) -> None:
+        """Initialize the WebDriver pool."""
         for _ in range(self.max_threads):
             driver = self._setup_selenium(headless=self.headless)
             self.driver_pool.put(driver)
 
-    def _setup_selenium(self, headless=True):
+    def _setup_selenium(self, headless: bool = True) -> webdriver.Chrome:
+        """
+        Set up and return a Selenium WebDriver instance.
+
+        Args:
+            headless (bool): Whether to run the browser in headless mode.
+
+        Returns:
+            webdriver.Chrome: A configured Chrome WebDriver instance.
+        """
         chrome_options = ChromeOptions()
         if headless:
             chrome_options.add_argument("--headless")
@@ -63,29 +101,29 @@ class GoogleMapsScraper:
     @staticmethod
     def generate_search_url(search_query: str) -> str:
         """
-        Generates the Google Maps search URL based on a search query.
+        Generate the Google Maps search URL based on a search query.
 
         Args:
             search_query (str): The search query (e.g., "factories in chicago").
 
         Returns:
-            str: Google Maps search URL with plus signs replacing spaces.
+            str: Google Maps search URL with encoded query.
         """
         encoded_query = urllib.parse.quote_plus(search_query)
         return f"https://www.google.com/maps/search/{encoded_query}"
 
-    def _wait_for_element(self, driver, by, selector, timeout=10):
+    def _wait_for_element(self, driver: webdriver.Chrome, by: By, selector: str, timeout: int = 10) -> Optional[Any]:
         """
-        Waits for an element to be present on the page.
+        Wait for an element to be present on the page.
 
         Args:
-            driver (WebDriver): The Selenium WebDriver instance.
+            driver (webdriver.Chrome): The Selenium WebDriver instance.
             by (By): The method used to locate the element.
             selector (str): The selector string.
             timeout (int): Maximum time to wait for the element.
 
         Returns:
-            WebElement: The found element.
+            Optional[Any]: The found element or None if not found.
         """
         try:
             return WebDriverWait(driver, timeout).until(
@@ -95,9 +133,12 @@ class GoogleMapsScraper:
             logging.warning(f"Element not found: {selector}")
             return None
 
-    def _handle_popups(self):
+    def _handle_popups(self, driver: webdriver.Chrome) -> None:
         """
-        Handles common popups by attempting to click on known popup buttons.
+        Handle common popups by attempting to click on known popup buttons.
+
+        Args:
+            driver (webdriver.Chrome): The Selenium WebDriver instance.
         """
         popup_buttons = [
             (By.XPATH, "//button[contains(@aria-label, 'Accept')]"),
@@ -111,12 +152,12 @@ class GoogleMapsScraper:
 
         for by, selector in popup_buttons:
             try:
-                button = WebDriverWait(self.driver, 2).until(
+                button = WebDriverWait(driver, 2).until(
                     EC.element_to_be_clickable((by, selector))
                 )
                 button.click()
                 logging.info(f"Clicked popup button: {selector}")
-                WebDriverWait(self.driver, 2).until(
+                WebDriverWait(driver, 2).until(
                     EC.invisibility_of_element_located((by, selector))
                 )
                 return
@@ -126,9 +167,9 @@ class GoogleMapsScraper:
         logging.info("No clickable popup buttons found")
 
     @staticmethod
-    def save_results_to_json(results: List[Dict[str, Any]], json_path: str):
+    def save_results_to_json(results: List[Dict[str, Any]], json_path: str) -> None:
         """
-        Saves results to a JSON file, avoiding duplicates.
+        Save results to a JSON file, avoiding duplicates.
 
         Args:
             results (List[Dict[str, Any]]): List of new business entries to save.
@@ -158,7 +199,7 @@ class GoogleMapsScraper:
     @staticmethod
     def _clean_address(address: str, business_type: Optional[str]) -> str:
         """
-        Cleans the address string by removing unwanted information.
+        Clean the address string by removing unwanted information.
 
         Args:
             address (str): The raw address string.
@@ -207,10 +248,10 @@ class GoogleMapsScraper:
 
     def scrape_business_details(self, driver: webdriver.Chrome) -> Dict[str, Any]:
         """
-        Scrapes detailed information of a single business.
+        Scrape detailed information of a single business.
 
         Args:
-            driver (WebDriver): The Selenium WebDriver instance.
+            driver (webdriver.Chrome): The Selenium WebDriver instance.
 
         Returns:
             Dict[str, Any]: A dictionary containing business details.
@@ -346,7 +387,7 @@ class GoogleMapsScraper:
 
     def _scrape_about_section(self, driver: webdriver.Firefox) -> Dict[str, List[str]]:
         """
-        Scrapes the About section of a business.
+        Scrape the About section of a business.
 
         Args:
             driver (WebDriver): The Selenium WebDriver instance.
@@ -371,7 +412,7 @@ class GoogleMapsScraper:
 
     def _scrape_similar_businesses(self, driver: webdriver.Firefox) -> List[Dict[str, Any]]:
         """
-        Scrapes similar businesses from the similar businesses section.
+        Scrape similar businesses from the similar businesses section.
 
         Args:
             driver (WebDriver): The Selenium WebDriver instance.
@@ -436,7 +477,7 @@ class GoogleMapsScraper:
 
     def _scrape_reviews(self, driver: webdriver.Firefox, max_reviews: int = 10) -> List[Dict[str, Any]]:
         """
-        Scrapes reviews for a business.
+        Scrape reviews for a business.
 
         Args:
             driver (WebDriver): The Selenium WebDriver instance.
@@ -481,7 +522,7 @@ class GoogleMapsScraper:
 
     def _extract_review_data(self, review: Any) -> Optional[Dict[str, Any]]:
         """
-        Extracts data from a single review element.
+        Extract data from a single review element.
 
         Args:
             review (WebElement): The Selenium WebElement representing a review.
@@ -586,7 +627,7 @@ class GoogleMapsScraper:
     @staticmethod
     def _extract_number(text: str, keyword: str) -> Optional[int]:
         """
-        Extracts a number associated with a keyword from a text string.
+        Extract a number associated with a keyword from a text string.
 
         Args:
             text (str): The text to search within.
@@ -601,7 +642,7 @@ class GoogleMapsScraper:
     @staticmethod
     def _parse_date(date_text: str) -> str:
         """
-        Parses a relative date string into an ISO formatted date.
+        Parse a relative date string into an ISO formatted date.
 
         Args:
             date_text (str): The relative date string (e.g., "2 weeks ago").
@@ -753,7 +794,7 @@ class GoogleMapsScraper:
 
     async def scrape_google_maps_fast(self, url: str, max_scrolls: int = 100) -> List[Dict[str, Any]]:
         """
-        Performs fast scraping of Google Maps search results using async.
+        Perform fast scraping of Google Maps search results using async.
 
         Args:
             url (str): The Google Maps search URL.
@@ -900,7 +941,7 @@ class GoogleMapsScraper:
 
     def close(self):
         """
-        Closes all WebDriver instances in the pool.
+        Close all WebDriver instances in the pool.
         """
         while not self.driver_pool.empty():
             driver = self.driver_pool.get()
@@ -908,6 +949,7 @@ class GoogleMapsScraper:
         logging.info("All WebDrivers closed.")
 
 async def main_async():
+    """Main asynchronous function to run the scraper. This is used for testing purposes."""
     # User inputs
     search_query = "personal care manufacturers near denver"  # Example search query
     json_path = 'GoogleMapsDataFast.json'

@@ -1,34 +1,47 @@
+"""
+Configuration Module
+
+This module loads and manages configuration settings for the application,
+including API keys, database credentials, and business type mappings.
+"""
+
 import os
+from typing import Dict, List
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
-# Print the current working directory and .env file path for debugging
-#print(f"Current working directory: {os.getcwd()}")
-#print(f".env file path: {os.path.join(os.getcwd(), '.env')}")
+# Helper function to get required environment variables
+def get_env_var(var_name: str) -> str:
+    """
+    Get a required environment variable or raise an error if it's not set.
 
-API_KEY = os.getenv('API_KEY')
-if not API_KEY:
-    raise ValueError("API_KEY is not set in environment variables.")
+    Args:
+        var_name (str): Name of the environment variable.
 
-GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
-if not GOOGLE_MAPS_API_KEY:
-    raise ValueError("GOOGLE_MAPS_API_KEY is not set in environment variables.")
+    Returns:
+        str: Value of the environment variable.
 
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://localhost:6379/0')
+    Raises:
+        ValueError: If the environment variable is not set.
+    """
+    value = os.getenv(var_name)
+    if not value:
+        raise ValueError(f"{var_name} is not set in environment variables.")
+    return value
 
-SUPABASE_URL = os.getenv('SUPABASE_URL')
-SUPABASE_KEY = os.getenv('SUPABASE_KEY')
-if not SUPABASE_URL or not SUPABASE_KEY:
-    raise ValueError("Supabase credentials are not set in environment variables.")
+# Application settings
+API_KEY = get_env_var('API_KEY')
+GOOGLE_MAPS_API_KEY = get_env_var('GOOGLE_MAPS_API_KEY')
+BASE_URL = get_env_var('BASE_URL')
 
-BASE_URL = os.getenv('BASE_URL')
-if not BASE_URL:
-    raise ValueError("BASE_URL is not set in environment variables.")
+# Database settings
+SUPABASE_URL = get_env_var('SUPABASE_URL')
+SUPABASE_KEY = get_env_var('SUPABASE_KEY')
 
-
-VALID_BUSINESS_TYPES = [
+# Business types and keywords
+VALID_BUSINESS_TYPES: List[str] = [
     "accounting", "airport", "amusement_park", "aquarium", "art_gallery", "atm", "bakery",
     "bank", "bar", "beauty_salon", "bicycle_store", "book_store", "bowling_alley",
     "bus_station", "cafe", "campground", "car_dealer", "car_rental", "car_repair",
@@ -48,8 +61,7 @@ VALID_BUSINESS_TYPES = [
     "travel_agency", "university", "veterinary_care", "zoo"
 ]
 
-# Update BUSINESS_TYPE_KEYWORDS with more mappings
-BUSINESS_TYPE_KEYWORDS = {
+BUSINESS_TYPE_KEYWORDS: Dict[str, List[str]] = {
     "restaurant": ["restaurant", "cafe", "bar", "meal_takeaway"],
     "cafe": ["cafe", "restaurant", "bakery"],
     "bar": ["bar", "night_club"],
