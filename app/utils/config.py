@@ -7,6 +7,10 @@ load_dotenv()
 #print(f"Current working directory: {os.getcwd()}")
 #print(f".env file path: {os.path.join(os.getcwd(), '.env')}")
 
+API_KEY = os.getenv('API_KEY')
+if not API_KEY:
+    raise ValueError("API_KEY is not set in environment variables.")
+
 GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
 if not GOOGLE_MAPS_API_KEY:
     raise ValueError("GOOGLE_MAPS_API_KEY is not set in environment variables.")

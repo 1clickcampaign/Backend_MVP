@@ -54,7 +54,7 @@ def make_api_request(business_types: List[str], lat: float, lon: float, radius: 
     headers = {
         "Content-Type": "application/json",
         "X-Goog-Api-Key": GOOGLE_MAPS_API_KEY,
-        "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.internationalPhoneNumber,places.websiteUri,places.rating,places.userRatingCount,places.types,places.businessStatus"
+        "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.internationalPhoneNumber,places.websiteUri,places.rating,places.userRatingCount,places.types,places.businessStatus,places.location"
     }
 
     data = {
@@ -95,14 +95,14 @@ def search_area(business_types: List[str], lon: float, lat: float, radius: float
             "source": "Google Maps",
             "external_id": place.get("id", ""),
             "business_phone": place.get("internationalPhoneNumber", ""),
-            "source_attributes": {
-                "formatted_address": place.get("formattedAddress", ""),
-                "website": place.get("websiteUri", ""),
-                "rating": place.get("rating", 0),
-                "user_ratings_total": place.get("userRatingCount", 0),
-                "types": place.get("types", []),
-                "business_status": place.get("businessStatus", "")
-            }
+            "formatted_address": place.get("formattedAddress", ""),
+            "website": place.get("websiteUri", ""),
+            "rating": place.get("rating", 0),
+            "user_ratings_total": place.get("userRatingCount", 0),
+            "types": place.get("types", []),
+            "business_status": place.get("businessStatus", ""),
+            "latitude": place.get("location", {}).get("latitude", 0),
+            "longitude": place.get("location", {}).get("longitude", 0),
         }
         if lead["external_id"] not in [l["external_id"] for l in all_leads]:
             all_leads.append(lead)

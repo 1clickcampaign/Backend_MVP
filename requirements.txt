@@ -104,4 +104,3 @@ websockets==13.1
 wrapt==1.16.0
 wsproto==1.2.0
 yarl==1.15.0
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.5.0/en_core_web_sm-3.5.0-py3-none-any.whl

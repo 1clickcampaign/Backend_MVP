@@ -35,23 +35,38 @@ def read_leads_from_json(file_path):
 async def upload_leads_to_supabase(leads: List[LeadCreate]):
     supabase = SupabaseClientSingleton.get_instance()
     
-    upload_tasks = []
+    total_leads = len(leads)
+    successful_uploads = 0
+    failed_uploads = 0
+
     for lead in leads:
-        upload_tasks.append(upload_lead_with_retry(lead))
-    await asyncio.gather(*upload_tasks)
+        result = await upload_lead_with_retry(lead)
+        if result:
+            successful_uploads += 1
+        else:
+            failed_uploads += 1
+
+    print(f"Upload summary: Total leads: {total_leads}, Successful: {successful_uploads}, Failed: {failed_uploads}")
 
 async def upload_lead_with_retry(lead: LeadCreate, max_retries=3):
     supabase = SupabaseClientSingleton.get_instance()
 
     for attempt in range(max_retries):
         try:
-            response = await supabase.table("leads").insert(lead.dict()).execute()
+            lead_dict = lead.dict()
+            print(f"Attempting to upsert lead: {lead.name}")
+            print(f"Lead data: {lead_dict}")
+            response = supabase.table("leads").upsert(lead_dict, on_conflict="source,external_id").execute()
             if response.data:
-                print(f"Successfully uploaded lead: {lead.name}")
-                return
-        except Exception as e:
-            print(f"Error uploading lead {lead.name}: {str(e)}")
-            if attempt == max_retries - 1:
-                print(f"Failed to upload lead {lead.name} after {max_retries} attempts")
+                print(f"Successfully upserted lead: {lead.name}")
+                return True
             else:
-                await asyncio.sleep(2 ** attempt)  # Exponential backoff
+                print(f"Failed to upsert lead: {lead.name}. Response: {response}")
+        except Exception as e:
+            print(f"Error upserting lead {lead.name}: {str(e)}")
+        
+        if attempt < max_retries - 1:
+            await asyncio.sleep(2 ** attempt)  # Exponential backoff
+    
+    print(f"Failed to upsert lead {lead.name} after {max_retries} attempts")
+    return False

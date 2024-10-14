@@ -1,13 +1,13 @@
 {
-    "family": "fastapi-app",
+    "family": "fastapi-backend",
     "networkMode": "awsvpc",
     "requiresCompatibilities": ["FARGATE"],
     "cpu": "256",
     "memory": "512",
     "containerDefinitions": [
       {
-        "name": "fastapi-app",
-        "image": "<your-ecr-repo-url>:latest",
+        "name": "fastapi-backend",
+        "image": "058264339376.dkr.ecr.us-east-2.amazonaws.com/datapull/fastapi-backend:latest",
         "portMappings": [
           {
             "containerPort": 8000,
@@ -28,8 +28,8 @@
         "logConfiguration": {
           "logDriver": "awslogs",
           "options": {
-            "awslogs-group": "/ecs/fastapi-app",
-            "awslogs-region": "<your-aws-region>",
+            "awslogs-group": "/ecs/fastapi-backend",
+            "awslogs-region": "us-east-2",
             "awslogs-stream-prefix": "ecs"
           }
         }
