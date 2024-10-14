@@ -3,3 +3,5 @@
 *.pyc
 __pycache__/
 scraper_timing.txt
+testing/
+
