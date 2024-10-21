@@ -8,7 +8,7 @@ env:
   AWS_REGION: us-east-2
   ECR_REPOSITORY: datapull/fastapi-backend
   ECS_CLUSTER: fastapi-backend-cluster
-  ECS_TASK_DEFINITION: fastapi-backend
+  ECS_TASK_DEFINITION: .aws/task-definition.json  # Path to your task definition file
   CONTAINER_NAME: fastapi-backend  # Make sure this matches the name in your task definition
 
 jobs:
@@ -53,7 +53,7 @@ jobs:
     - name: Deploy Amazon ECS task definition
       run: |
         aws ecs run-task --cluster ${{ env.ECS_CLUSTER }} \
-                         --task-definition ${{ env.ECS_TASK_DEFINITION }} \
+                         --task-definition ${{ steps.task-def.outputs.task-definition }} \
                          --launch-type FARGATE \
                          --network-configuration "awsvpcConfiguration={subnets=[subnet-0f6e20b38046dcc24],securityGroups=[sg-0b537ae831b15a808],assignPublicIp=ENABLED}" \
                          --region ${{ env.AWS_REGION }}
