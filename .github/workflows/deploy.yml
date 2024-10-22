@@ -8,8 +8,9 @@ env:
   AWS_REGION: us-east-2
   ECR_REPOSITORY: datapull/fastapi-backend
   ECS_CLUSTER: fastapi-backend-cluster
-  ECS_TASK_DEFINITION: .aws/task-definition.json  # Path to your task definition file
-  CONTAINER_NAME: fastapi-backend  # Make sure this matches the name in your task definition
+  ECS_SERVICE: fastapi-backend-service
+  ECS_TASK_DEFINITION: .aws/task-definition.json
+  CONTAINER_NAME: fastapi-backend
 
 jobs:
   deploy:
@@ -50,12 +51,15 @@ jobs:
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
 
-    - name: Deploy Amazon ECS task definition
+    - name: Substitute environment variables in task definition
       run: |
-        TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition fastapi-backend --region ${{ env.AWS_REGION }})
-        TASK_FAMILY=$(echo $TASK_DEFINITION | jq -r '.taskDefinition.family')
-        aws ecs run-task --cluster ${{ env.ECS_CLUSTER }} \
-                         --task-definition $TASK_FAMILY \
-                         --launch-type FARGATE \
-                         --network-configuration "awsvpcConfiguration={subnets=[subnet-0f6e20b38046dcc24],securityGroups=[sg-0b537ae831b15a808],assignPublicIp=ENABLED}" \
-                         --region ${{ env.AWS_REGION }}
+        sed -i 's|{{SUPABASE_URL}}|${{ secrets.SUPABASE_URL }}|g' ${{ steps.task-def.outputs.task-definition }}
+        sed -i 's|{{SUPABASE_KEY}}|${{ secrets.SUPABASE_KEY }}|g' ${{ steps.task-def.outputs.task-definition }}
+
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE }}
+        cluster: ${{ env.ECS_CLUSTER }}
+        wait-for-service-stability: true
