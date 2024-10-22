@@ -44,8 +44,6 @@ httpcore==1.0.6
 httpx==0.27.2
 hyperframe==6.0.1
 idna==3.10
-ipykernel==6.29.5
-ipython==8.28.0
 jedi==0.19.1
 Jinja2==3.1.4
 jiter==0.6.1
@@ -84,7 +82,6 @@ PySocks==1.7.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 python-Levenshtein==0.26.0
-pywin32==308
 pyzmq==26.2.0
 RapidFuzz==3.10.0
 realtime==2.0.5

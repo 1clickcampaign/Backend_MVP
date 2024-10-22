@@ -55,6 +55,9 @@ jobs:
       run: |
         sed -i 's|{{SUPABASE_URL}}|${{ secrets.SUPABASE_URL }}|g' ${{ steps.task-def.outputs.task-definition }}
         sed -i 's|{{SUPABASE_KEY}}|${{ secrets.SUPABASE_KEY }}|g' ${{ steps.task-def.outputs.task-definition }}
+        sed -i 's|{{API_KEY}}|${{ secrets.API_KEY }}|g' ${{ steps.task-def.outputs.task-definition }}
+        sed -i 's|{{GOOGLE_MAPS_API_KEY}}|${{ secrets.GOOGLE_MAPS_API_KEY }}|g' ${{ steps.task-def.outputs.task-definition }}
+        sed -i 's|{{CORS_ORIGINS}}|${{ secrets.CORS_ORIGINS }}|g' ${{ steps.task-def.outputs.task-definition }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
