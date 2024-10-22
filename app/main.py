@@ -8,34 +8,20 @@ It sets up routers, middleware, and global exception handlers.
 import os
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 from dotenv import load_dotenv
 
 from app.api import google_maps, shopify
-from app.utils.config import get_settings
 from app.utils.database import initialize_supabase_client
 
-# Load environment variables
-load_dotenv()
-
-# Initialize settings
-settings = get_settings()
+# Load environment variables (locally, uncomment when deploying)
+#load_dotenv()
 
 # Create FastAPI app
 app = FastAPI(
     title="DataPull API",
     version="1.0.0",
     description="API for generating and enriching leads from multiple sources.",
-)
-
-# Configure CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
 )
 
 # Initialize Supabase client
