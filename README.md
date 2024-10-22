@@ -18,13 +18,9 @@ uvicorn app.main:app --reload
 
 ### testing dockerized app locally (run docker first)
 ```
-docker-compose up --build
+docker build -t fastapi-backend .
+docker run -p 8000:8000 --env-file .env fastapi-backend
 ```
 
 ### deploying to aws
-```
-aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 058264339376.dkr.ecr.us-east-2.amazonaws.com
-docker build -t fastapi-backend .
-docker tag fastapi-backend:latest 058264339376.dkr.ecr.us-east-2.amazonaws.com/datapull/fastapi-backend:latest
-docker push 058264339376.dkr.ecr.us-east-2.amazonaws.com/datapull/fastapi-backend:latest
-```
+push to main branch

@@ -13,7 +13,11 @@ from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import google_maps, shopify
-from app.utils.database import initialize_supabase_client
+try:
+    from app.utils.database import SupabaseClientSingleton
+except ImportError:
+    print("Error importing SupabaseClientSingleton. Make sure the file exists and the class is defined.")
+    SupabaseClientSingleton = None
 
 # Load environment variables (locally, uncomment when deploying)
 #load_dotenv()
@@ -36,7 +40,7 @@ app.add_middleware(
 )
 
 # Initialize Supabase client
-supabase_client = initialize_supabase_client()
+supabase_client = SupabaseClientSingleton.get_instance()
 
 # Include routers
 app.include_router(google_maps.router, prefix="/leads/google_maps", tags=["Google Maps Leads"])
