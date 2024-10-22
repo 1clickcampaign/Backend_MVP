@@ -52,8 +52,10 @@ jobs:
 
     - name: Deploy Amazon ECS task definition
       run: |
+        TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition fastapi-backend --region ${{ env.AWS_REGION }})
+        TASK_FAMILY=$(echo $TASK_DEFINITION | jq -r '.taskDefinition.family')
         aws ecs run-task --cluster ${{ env.ECS_CLUSTER }} \
-                         --task-definition ${{ steps.task-def.outputs.task-definition }} \
+                         --task-definition $TASK_FAMILY \
                          --launch-type FARGATE \
                          --network-configuration "awsvpcConfiguration={subnets=[subnet-0f6e20b38046dcc24],securityGroups=[sg-0b537ae831b15a808],assignPublicIp=ENABLED}" \
                          --region ${{ env.AWS_REGION }}
