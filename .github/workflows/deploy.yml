@@ -43,6 +43,14 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
+    - name: Substitute environment variables in task definition
+      run: |
+        sed -i 's|{{SUPABASE_URL}}|${{ secrets.SUPABASE_URL }}|g' ${{ env.ECS_TASK_DEFINITION }}
+        sed -i 's|{{SUPABASE_KEY}}|${{ secrets.SUPABASE_KEY }}|g' ${{ env.ECS_TASK_DEFINITION }}
+        sed -i 's|{{API_KEY}}|${{ secrets.API_KEY }}|g' ${{ env.ECS_TASK_DEFINITION }}
+        sed -i 's|{{GOOGLE_MAPS_API_KEY}}|${{ secrets.GOOGLE_MAPS_API_KEY }}|g' ${{ env.ECS_TASK_DEFINITION }}
+        sed -i 's|{{CORS_ORIGINS}}|${{ secrets.CORS_ORIGINS }}|g' ${{ env.ECS_TASK_DEFINITION }}
+
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
@@ -50,14 +58,6 @@ jobs:
         task-definition: ${{ env.ECS_TASK_DEFINITION }}
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
-
-    - name: Substitute environment variables in task definition
-      run: |
-        sed -i 's|{{SUPABASE_URL}}|${{ secrets.SUPABASE_URL }}|g' ${{ steps.task-def.outputs.task-definition }}
-        sed -i 's|{{SUPABASE_KEY}}|${{ secrets.SUPABASE_KEY }}|g' ${{ steps.task-def.outputs.task-definition }}
-        sed -i 's|{{API_KEY}}|${{ secrets.API_KEY }}|g' ${{ steps.task-def.outputs.task-definition }}
-        sed -i 's|{{GOOGLE_MAPS_API_KEY}}|${{ secrets.GOOGLE_MAPS_API_KEY }}|g' ${{ steps.task-def.outputs.task-definition }}
-        sed -i 's|{{CORS_ORIGINS}}|${{ secrets.CORS_ORIGINS }}|g' ${{ steps.task-def.outputs.task-definition }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
