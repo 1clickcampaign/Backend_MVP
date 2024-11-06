@@ -6,25 +6,27 @@ based on a search query. It uses Google Maps API for geocoding and search,
 and also includes a fallback mechanism using Google Maps Scraper for complex queries.
 """
 
-from fastapi import APIRouter, HTTPException, Depends, Query
+from fastapi import APIRouter, HTTPException, Depends, Query, BackgroundTasks
 from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional
 import logging
+from app.utils.database import generate_business_hash
 
-from app.models.lead import LeadCreate
+from app.models.google_maps_lead import GoogleMapsLead
 from app.services.parse_service import parse_complex_query
-from app.services.google_maps_service import fetch_leads_from_google_maps
-from app.utils.database import upload_leads_to_supabase
+from app.services.google_maps_service import fetch_leads_from_google_maps, VALID_FIELDS as API_VALID_FIELDS, FIELD_MAPPINGS
+from app.services.gmaps_scraping_service import GoogleMapsScraper, VALID_SCRAPING_FIELDS
+from app.utils.auth import get_current_user
+from app.tasks import TaskManager
+from app.utils.string_matching import find_exact_match, find_best_matches
 from app.utils.config import VALID_BUSINESS_TYPES
-from app.services.gmaps_scraping_service import GoogleMapsScraper
-from app.utils.string_matching import find_exact_match
-from app.utils.auth import verify_api_key
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+task_manager = TaskManager()
 
 class GoogleMapsLeadRequest(BaseModel):
     """
@@ -32,117 +34,90 @@ class GoogleMapsLeadRequest(BaseModel):
     """
     query: str = Field(..., description="Search query for Google Maps")
     max_leads: int = Field(default=1000, ge=1, le=5000, description="Maximum number of leads to fetch (1-5000)")
+    fields: Optional[List[str]] = Field(default=None, description="Fields to include in the response")
 
-    @field_validator('query')
+    @field_validator('query', mode='before')
     @classmethod
-    def query_not_empty(cls, v):
+    def validate_query(cls, v):
         if not v.strip():
             raise ValueError('Query must not be empty')
         return v
 
-@router.post("/", response_model=List[LeadCreate], summary="Get leads from Google Maps")
-async def get_google_maps_leads(
+    @field_validator('fields', mode='before')
+    @classmethod
+    def validate_fields(cls, v):
+        if v is not None:
+            # Get valid fields from FIELD_MAPPINGS
+            valid_fields = set(FIELD_MAPPINGS.keys())
+            invalid_fields = [field for field in v if field not in valid_fields]
+            if invalid_fields:
+                raise ValueError(
+                    f"Invalid fields: {', '.join(invalid_fields)}. "
+                    f"Valid fields are: {', '.join(valid_fields)}"
+                )
+        return v
+
+@router.post("/", response_model=dict, summary="Queue a task to get leads from Google Maps")
+async def queue_google_maps_leads(
     request: GoogleMapsLeadRequest,
-    api_key: str = Depends(verify_api_key)
+    background_tasks: BackgroundTasks,
+    user_id: str = Depends(get_current_user)
 ):
-    """
-    Fetch business leads from Google Maps based on the provided query.
-
-    Args:
-        request (GoogleMapsLeadRequest): The request containing the search query and max leads.
-        api_key (str): API key for authentication (injected by dependency).
-
-    Returns:
-        List[LeadCreate]: A list of fetched leads.
-
-    Raises:
-        HTTPException: If there's an error in processing the request or fetching the data.
-    """
     try:
-        logger.info(f"Received query: {request.query}")
-        logger.info(f"Max leads requested: {request.max_leads}")
+        # Parse the query
+        business_type, location, _ = parse_complex_query(request.query)
+        
+        if business_type:
+            # Try to find exact match first
+            exact_match = find_exact_match(business_type, VALID_BUSINESS_TYPES)
+            if exact_match:
+                logger.info(f"Found exact match for business type: {exact_match}")
+                business_type = exact_match
+            else:
+                # Try fuzzy matching
+                best_matches = find_best_matches(business_type)
+                if best_matches:
+                    logger.info(f"Found fuzzy match for business type: {best_matches[0]}")
+                    business_type = best_matches[0]
+                else:
+                    logger.warning(f"No valid business type match found for '{business_type}', will use scraper")
+                    business_type = None
 
-        business_type, location, additional_keywords = parse_complex_query(request.query)
-        logger.info(f"Parsed query - Business type: {business_type}, Location: {location}, Additional keywords: {additional_keywords}")
+        # Queue the task with the validated/matched business type
+        task_id = await task_manager.fetch_leads(
+            query=request.query,
+            max_leads=request.max_leads,
+            fields=request.fields,
+            user_id=user_id,
+            matched_business_type=business_type  # Pass the matched business type to the task
+        )
 
-        if not business_type or not location:
-            raise HTTPException(
-                status_code=400,
-                detail="Could not extract business type and location from query."
-            )
+        return {
+            "task_id": task_id,
+            "status": "queued",
+            "message": "Task has been queued successfully. Use the /status/{task_id} endpoint to check the status."
+        }
 
-        exact_match = find_exact_match(business_type, VALID_BUSINESS_TYPES)
-        leads = []
-
-        if exact_match:
-            logger.info(f"Exact match found: {exact_match}")
-            logger.info(f"Fetching leads from Google Maps API for {exact_match} in {location}")
-            results = fetch_leads_from_google_maps([exact_match], location, request.max_leads)
-            leads = [
-                LeadCreate(
-                    name=result.get("name", ""),
-                    source="Google Maps API",
-                    external_id=result.get("external_id", ""),
-                    business_phone=result.get("formatted_phone_number", ""),
-                    source_attributes={
-                        "formatted_address": result.get("formatted_address", ""),
-                        "website": result.get("website", ""),
-                        "rating": result.get("rating"),
-                        "user_ratings_total": result.get("user_ratings_total"),
-                        "types": result.get("types", []),
-                        "business_status": result.get("business_status", ""),
-                        "latitude": result.get("latitude", {}),
-                        "longitude": result.get("longitude", {})
-                    }
-                )
-                for result in results[:request.max_leads]
-            ]
-        else:
-            logger.info(f"No exact match found. Using Google Maps scraper for query: {request.query}")
-            scraper = GoogleMapsScraper(headless=True, max_threads=4)
-            url = scraper.generate_search_url(request.query)
-            results = await scraper.scrape_google_maps_fast(url)
-            scraper.close()
-            
-            leads = [
-                LeadCreate(
-                    name=result.get("name", ""),
-                    source="Google Maps Scraper",
-                    external_id=result.get("href", "").split("https://www.google.com/maps/place/", 1)[-1] or "unknown",
-                    business_phone=result.get("phone", ""),
-                    source_attributes={
-                        "formatted_address": result.get("address", ""),
-                        "website": result.get("website", ""),
-                        "rating": result.get("rating"),
-                        "user_ratings_total": result.get("total_reviews"),
-                        "types": [result.get("business_type", "")],
-                        "business_status": result.get("business_status", ""),
-                        "href": result.get("href", ""),
-                        "num_reviews": result.get("num_reviews", ""),
-                        "business_type": result.get("business_type", ""),
-                        "address": result.get("address", ""),
-                        "latitude": result.get("latitude"),
-                        "longitude": result.get("longitude"),
-                        "total_reviews": result.get("total_reviews"),
-                        "wheelchair_accessible": result.get("wheelchair_accessible"),
-                        "hours": result.get("hours", {}),
-                        "region": result.get("region", ""),
-                        "additional_properties": result.get("additional_properties", []),
-                        "images": result.get("images", []),
-                        "reviews": result.get("reviews", [])
-                    }
-                )
-                for result in results[:request.max_leads]
-            ]
-
-        logger.info(f"Number of leads fetched: {len(leads)}")
-
-        logger.info("Uploading leads to Supabase")
-        await upload_leads_to_supabase(leads)
-        logger.info(f"Finished uploading {len(leads)} leads to Supabase")
-
-        return leads
-
+    except ValueError as ve:
+        if "Insufficient tokens" in str(ve):
+            raise HTTPException(status_code=402, detail=str(ve))
+        raise HTTPException(status_code=400, detail=str(ve))
     except Exception as e:
-        logger.error(f"Error in get_google_maps_leads: {str(e)}")
+        logger.error(f"Error in queue_google_maps_leads: {str(e)}")
         raise HTTPException(status_code=500, detail=f"An error occurred while processing your request: {str(e)}")
+
+@router.get("/status/{task_id}", summary="Get task status")
+async def get_task_status(task_id: str, user_id: str = Depends(get_current_user)):
+    status = task_manager.get_task_status(task_id, user_id)
+    if status is None:
+        raise HTTPException(status_code=404, detail="Task not found or unauthorized")
+    return status
+
+@router.get("/result/{task_id}", summary="Get task result")
+async def get_task_result(task_id: str, user_id: str = Depends(get_current_user)):
+    status = task_manager.get_task_status(task_id, user_id)
+    if status is None:
+        raise HTTPException(status_code=404, detail="Task not found or unauthorized")
+    if status["status"] != "completed":
+        raise HTTPException(status_code=400, detail="Task has not completed yet")
+    return status["result"]

@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env
+*.pyc
+__pycache__
+.pytest_cache
+.coverage
+htmlcov
+.venv
+.aws
+.github
+README.md
+*.md
+*.log

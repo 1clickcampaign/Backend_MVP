@@ -40,6 +40,16 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()],
 )
 
+# Define valid fields for scraping
+VALID_SCRAPING_FIELDS = {
+    "name", "rating", "total_reviews", "business_type", "wheelchair_accessible",
+    "address", "hours", "website", "phone", "region", "additional_properties",
+    "images", "reviews", "similar_businesses", "about"
+}
+
+# Import the field mappings from google_maps_service
+from app.services.google_maps_service import FIELD_MAPPINGS, DETAILED_SCRAPING_FIELDS
+
 class GoogleMapsScraper:
     """
     A class for scraping business information from Google Maps.
@@ -694,21 +704,28 @@ class GoogleMapsScraper:
             # Add the name to the set of processed items
             self.processed_items.add(name)
 
+            # Initialize result with all fields from GoogleMapsLead model
             result = {
+                'id': '',  # Will be set later by hash function
                 'name': name,
-                'href': href,
-                'rating': None,
-                'num_reviews': None,
-                'business_type': None,
-                'address': None,
-                'phone': None,
+                'business_phone': None,
+                'formatted_address': None,
                 'website': None,
+                'rating': None,
+                'user_ratings_total': None,
+                'types': [],
+                'business_status': 'OPERATIONAL',  # Default value
                 'latitude': None,
-                'longitude': None
+                'longitude': None,
+                'additional_properties': {},
+                'images': None,
+                'reviews': None,
+                'similar_businesses': None,
+                'about': None
             }
 
             # Extract latitude and longitude from href
-            parsed_url = urlparse(result['href'])
+            parsed_url = urlparse(href)
             query_params = parse_qs(parsed_url.query)
             
             if 'data' in query_params:
@@ -723,8 +740,11 @@ class GoogleMapsScraper:
                 if len(path_parts) > 2 and '@' in path_parts[2]:
                     coords = path_parts[2].split('@')[1].split(',')
                     if len(coords) >= 2:
-                        result['latitude'] = float(coords[0])
-                        result['longitude'] = float(coords[1])
+                        try:
+                            result['latitude'] = float(coords[0])
+                            result['longitude'] = float(coords[1])
+                        except ValueError:
+                            logging.warning(f"Could not parse coordinates from path: {coords}")
 
             # Extract all W4Efsd elements
             w4efsd_elements = item.find_elements(By.CSS_SELECTOR, "div.W4Efsd")
@@ -737,8 +757,11 @@ class GoogleMapsScraper:
                 if '(' in text and ')' in text and text[0].isdigit():
                     rating_parts = text.split('(')
                     if len(rating_parts) == 2:
-                        result['rating'] = rating_parts[0].strip()
-                        result['num_reviews'] = rating_parts[1].strip('()')
+                        try:
+                            result['rating'] = float(rating_parts[0].strip())
+                            result['user_ratings_total'] = int(rating_parts[1].strip('()').replace(',', ''))
+                        except (ValueError, IndexError):
+                            logging.warning(f"Could not parse rating from text: {text}")
                     continue
 
                 # Split by middot character
@@ -748,31 +771,31 @@ class GoogleMapsScraper:
             # Process info_parts to extract business type, address, and phone
             for part in info_parts:
                 if re.match(r'^\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}$', part):
-                    result['phone'] = part
+                    result['business_phone'] = part
                 elif any(char.isdigit() for char in part):
-                    if not result['address']:
-                        result['address'] = part
-                elif not result['business_type']:
-                    result['business_type'] = part
-                elif not result['address']:
-                    result['address'] = part
+                    if not result['formatted_address']:
+                        result['formatted_address'] = part
+                elif not result['types']:
+                    result['types'] = [part]
+                elif not result['formatted_address']:
+                    result['formatted_address'] = part
 
             # If we still don't have a business type or address, use the remaining parts
-            remaining_parts = [part for part in info_parts if part != result['phone']]
+            remaining_parts = [part for part in info_parts if part != result['business_phone']]
             if len(remaining_parts) == 1:
-                if not result['business_type']:
-                    result['business_type'] = remaining_parts[0]
-                elif not result['address']:
-                    result['address'] = remaining_parts[0]
+                if not result['types']:
+                    result['types'] = [remaining_parts[0]]
+                elif not result['formatted_address']:
+                    result['formatted_address'] = remaining_parts[0]
             elif len(remaining_parts) > 1:
-                if not result['business_type']:
-                    result['business_type'] = remaining_parts[0]
-                if not result['address']:
-                    result['address'] = ' '.join(remaining_parts[1:])
+                if not result['types']:
+                    result['types'] = [remaining_parts[0]] 
+                if not result['formatted_address']:
+                    result['formatted_address'] = ' '.join(remaining_parts[1:])
 
             # Clean the address
-            if result['address']:
-                result['address'] = self._clean_address(result['address'], result['business_type'])
+            if result['formatted_address']:
+                result['formatted_address'] = self._clean_address(result['formatted_address'], result['types'][0] if result['types'] else None)
 
             # Extract website if available
             try:
@@ -791,6 +814,7 @@ class GoogleMapsScraper:
                 logging.info(f"Scraped basic info for business: {result['name']}")
         except (NoSuchElementException, StaleElementReferenceException) as e:
             logging.error(f"Error processing entry: {e}")
+            logging.debug(traceback.format_exc())
 
     async def scrape_google_maps_fast(self, url: str, max_scrolls: int = 100) -> List[Dict[str, Any]]:
         """
@@ -948,11 +972,58 @@ class GoogleMapsScraper:
             driver.quit()
         logging.info("All WebDrivers closed.")
 
+    async def scrape(self, url: str, fields: Optional[List[str]] = None, max_scrolls: int = 100) -> List[Dict[str, Any]]:
+        """
+        Main scraping function that decides which scraping method to use based on requested fields.
+
+        Args:
+            url (str): The URL to scrape.
+            fields (Optional[List[str]]): Fields to include in the results.
+            max_scrolls (int): Maximum number of scrolls for fast scraping.
+
+        Returns:
+            List[Dict[str, Any]]: A list of dictionaries containing the scraped data.
+        """
+        if fields:
+            # Get the valid fields directly from FIELD_MAPPINGS
+            valid_fields = set(FIELD_MAPPINGS.keys())
+            invalid_fields = [field for field in fields if field not in valid_fields]
+            if invalid_fields:
+                valid_fields_list = sorted(valid_fields)  # Sort for consistent error messages
+                raise ValueError(f"Invalid fields requested: {', '.join(invalid_fields)}. Valid fields are: {', '.join(valid_fields_list)}")
+
+        # Perform fast scrape to get initial data
+        fast_results = await self.scrape_google_maps_fast(url, max_scrolls)
+
+        # Determine if detailed scraping is needed
+        need_detailed_scrape = fields and any(field in DETAILED_SCRAPING_FIELDS for field in fields)
+
+        if need_detailed_scrape:
+            detailed_results = await self._scrape_businesses_details_async(fast_results)
+            for i, detailed_data in enumerate(detailed_results):
+                fast_results[i].update(detailed_data)
+
+        # Map scraper fields to response fields
+        if fields:
+            filtered_results = []
+            for result in fast_results:
+                filtered_result = {}
+                for field in fields:
+                    scraper_field = FIELD_MAPPINGS[field]["scraper"]
+                    response_field = FIELD_MAPPINGS[field]["response"]
+                    if scraper_field in result:
+                        filtered_result[response_field] = result[scraper_field]
+                filtered_results.append(filtered_result)
+            return filtered_results
+
+        return fast_results
+
 async def main_async():
     """Main asynchronous function to run the scraper. This is used for testing purposes."""
     # User inputs
     search_query = "personal care manufacturers near denver"  # Example search query
     json_path = 'GoogleMapsDataFast.json'
+    fields = ["name", "rating", "address", "phone", "website"]  # Example fields
 
     scraper = GoogleMapsScraper(headless=True, max_threads=4)
 
@@ -961,10 +1032,10 @@ async def main_async():
         url = scraper.generate_search_url(search_query)
         logging.info(f"Generated search URL: {url}")
 
-        # Scrape basic data
-        logging.info("Starting fast scraping...")
-        results = await scraper.scrape_google_maps_fast(url)
-        logging.info(f"Fast scraping completed. Found {len(results)} entries.")
+        # Scrape data
+        logging.info("Starting scraping...")
+        results = await scraper.scrape(url, fields=fields)
+        logging.info(f"Scraping completed. Found {len(results)} entries.")
 
         # Save results to JSON
         if results:

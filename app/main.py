@@ -20,7 +20,7 @@ except ImportError:
     SupabaseClientSingleton = None
 
 # Load environment variables (locally, uncomment when deploying)
-#load_dotenv()
+load_dotenv()
 
 # Create FastAPI app
 app = FastAPI(

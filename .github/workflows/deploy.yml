@@ -50,6 +50,7 @@ jobs:
         sed -i 's|{{API_KEY}}|${{ secrets.API_KEY }}|g' ${{ env.ECS_TASK_DEFINITION }}
         sed -i 's|{{GOOGLE_MAPS_API_KEY}}|${{ secrets.GOOGLE_MAPS_API_KEY }}|g' ${{ env.ECS_TASK_DEFINITION }}
         sed -i 's|{{CORS_ORIGINS}}|${{ secrets.CORS_ORIGINS }}|g' ${{ env.ECS_TASK_DEFINITION }}
+        sed -i 's|{{ELASTICACHE_HOST}}|${{ secrets.ELASTICACHE_HOST }}|g' ${{ env.ECS_TASK_DEFINITION }}
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def

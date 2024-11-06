@@ -7,7 +7,6 @@ from app.models.lead import LeadCreate
 from app.services.parse_service import parse_query
 from app.utils.auth import verify_api_key
 
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
